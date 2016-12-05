@@ -12,7 +12,7 @@ module.exports = function(config){
     mongoose.connect(config.connectionString);
 
     //loading the models
-    let User = require('../models/usermodel');
+    let User = require('../models/user_model');
 
     //{ User: User, NeshtoDrugo.. }
     let models = { User: User };

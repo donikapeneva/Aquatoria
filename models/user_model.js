@@ -9,6 +9,7 @@ var requiredMessage = '{PATH} is required';
 const LETTERS = /^[A-Za-zА-Яа-я]+$/,
     EMAIL_PATTERN = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
+const roles = ['user', 'admin'];
 
 let userSchema = new mongoose.Schema({
     firstName: {

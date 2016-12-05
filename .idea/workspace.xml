@@ -2,12 +2,186 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6e47497a-73ea-43c0-97f6-5a43f3814f9d" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/app/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/passport/google-strategy.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/passport/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/passport/local-strategy.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/controllers/auth-controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/category-model.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/dummy_db.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/item-model.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/user_model.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/cookie-parser/HISTORY.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/cookie-parser/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/cookie-parser/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/cookie-parser/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/cookie-parser/node_modules/cookie-signature/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/cookie-parser/node_modules/cookie-signature/History.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/cookie-parser/node_modules/cookie-signature/Readme.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/cookie-parser/node_modules/cookie-signature/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/cookie-parser/node_modules/cookie-signature/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/cookie-parser/node_modules/cookie/HISTORY.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/cookie-parser/node_modules/cookie/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/cookie-parser/node_modules/cookie/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/cookie-parser/node_modules/cookie/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/cookie-parser/node_modules/cookie/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/cookie-parser/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/HISTORY.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/cookie-signature/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/cookie-signature/History.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/cookie-signature/Readme.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/cookie-signature/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/cookie-signature/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/cookie/HISTORY.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/cookie/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/cookie/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/cookie/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/cookie/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/crc/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/crc/lib/crc1.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/crc/lib/crc16.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/crc/lib/crc16_ccitt.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/crc/lib/crc16_kermit.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/crc/lib/crc16_modbus.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/crc/lib/crc16_xmodem.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/crc/lib/crc24.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/crc/lib/crc32.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/crc/lib/crc8.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/crc/lib/crc8_1wire.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/crc/lib/define_crc.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/crc/lib/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/crc/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/debug/.jshintrc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/debug/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/debug/History.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/debug/Makefile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/debug/Readme.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/debug/bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/debug/browser.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/debug/component.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/debug/debug.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/debug/node.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/debug/node_modules/ms/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/debug/node_modules/ms/History.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/debug/node_modules/ms/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/debug/node_modules/ms/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/debug/node_modules/ms/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/debug/node_modules/ms/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/debug/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/depd/History.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/depd/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/depd/Readme.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/depd/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/depd/lib/browser/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/depd/lib/compat/buffer-concat.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/depd/lib/compat/callsite-tostring.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/depd/lib/compat/event-listener-count.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/depd/lib/compat/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/depd/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/on-headers/HISTORY.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/on-headers/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/on-headers/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/on-headers/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/on-headers/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/parseurl/HISTORY.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/parseurl/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/parseurl/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/parseurl/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/parseurl/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/uid-safe/HISTORY.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/uid-safe/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/uid-safe/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/uid-safe/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/uid-safe/node_modules/base64-url/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/uid-safe/node_modules/base64-url/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/uid-safe/node_modules/base64-url/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/uid-safe/node_modules/base64-url/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/uid-safe/node_modules/random-bytes/HISTORY.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/uid-safe/node_modules/random-bytes/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/uid-safe/node_modules/random-bytes/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/uid-safe/node_modules/random-bytes/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/uid-safe/node_modules/random-bytes/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/uid-safe/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/utils-merge/.travis.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/utils-merge/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/utils-merge/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/utils-merge/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/node_modules/utils-merge/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/session/cookie.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/session/memory.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/session/session.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/express-session/session/store.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongoose-unique-validator/.editorconfig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongoose-unique-validator/.eslintrc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongoose-unique-validator/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongoose-unique-validator/.travis.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongoose-unique-validator/CHANGELOG.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongoose-unique-validator/CONTRIBUTING.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongoose-unique-validator/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongoose-unique-validator/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongoose-unique-validator/node_modules/lodash.foreach/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongoose-unique-validator/node_modules/lodash.foreach/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongoose-unique-validator/node_modules/lodash.foreach/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongoose-unique-validator/node_modules/lodash.foreach/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongoose-unique-validator/node_modules/lodash.get/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongoose-unique-validator/node_modules/lodash.get/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongoose-unique-validator/node_modules/lodash.get/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongoose-unique-validator/node_modules/lodash.get/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongoose-unique-validator/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongoose-unique-validator/test/helpers.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongoose-unique-validator/test/index.spec.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongoose-unique-validator/test/tests/messages.spec.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongoose-unique-validator/test/tests/types.spec.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongoose-unique-validator/test/tests/validation.spec.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport-local/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport-local/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport-local/lib/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport-local/lib/strategy.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport-local/lib/utils.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport-local/node_modules/passport-strategy/.jshintrc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport-local/node_modules/passport-strategy/.travis.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport-local/node_modules/passport-strategy/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport-local/node_modules/passport-strategy/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport-local/node_modules/passport-strategy/lib/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport-local/node_modules/passport-strategy/lib/strategy.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport-local/node_modules/passport-strategy/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport-local/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport/lib/authenticator.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport/lib/errors/authenticationerror.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport/lib/framework/connect.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport/lib/http/request.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport/lib/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport/lib/middleware/authenticate.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport/lib/middleware/initialize.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport/lib/strategies/session.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport/node_modules/passport-strategy/.jshintrc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport/node_modules/passport-strategy/.travis.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport/node_modules/passport-strategy/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport/node_modules/passport-strategy/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport/node_modules/passport-strategy/lib/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport/node_modules/passport-strategy/lib/strategy.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport/node_modules/passport-strategy/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport/node_modules/pause/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport/node_modules/pause/History.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport/node_modules/pause/Makefile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport/node_modules/pause/Readme.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport/node_modules/pause/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport/node_modules/pause/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/passport/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/routers/auth-router.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/user-details.pug" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/usermodel.js" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/npm-debug.log" afterPath="" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/controllers/user_controller.js" afterPath="$PROJECT_DIR$/controllers/user-controller.js" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/data/userdata.js" afterPath="$PROJECT_DIR$/data/user-data.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/models/usermodel.js" afterPath="$PROJECT_DIR$/models/user_model.js" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/routers/userrouter.js" afterPath="$PROJECT_DIR$/routers/user-router.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/views/user_details.pug" afterPath="$PROJECT_DIR$/views/user-details.pug" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/views/user_details.pug" afterPath="$PROJECT_DIR$/config/passport/facebook-strategy.js" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/views/user_list.pug" afterPath="$PROJECT_DIR$/views/user-list.pug" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
@@ -378,15 +552,15 @@
       <option name="presentableId" value="Default" />
       <updated>1480678724535</updated>
       <workItem from="1480678726809" duration="14873000" />
-      <workItem from="1480923839433" duration="22247000" />
+      <workItem from="1480923839433" duration="22351000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37120000" />
+    <option name="totallyTimeSpent" value="37224000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1911" y="-536" width="1938" height="1048" extended-state="7" />
+    <frame x="1911" y="-536" width="1938" height="1048" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16458334" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />

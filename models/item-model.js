@@ -34,7 +34,10 @@ let itemSchema = new mongoose.Schema({
     },
     //TODO: maybe -> link to creator
     madeBy: {
-        type: String
+        // _id: {},
+        fullName: {
+            type: String
+        }
     }
 });
 

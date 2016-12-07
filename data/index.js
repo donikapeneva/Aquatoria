@@ -1,4 +1,4 @@
-/*glbals module require */
+/* globals module require **/
 
 'use strict'
 
@@ -30,9 +30,8 @@ module.exports = function (config) {
     fs.readdirSync('./data')
         .filter(x => x.includes('-data'))
         .forEach(file => {
-            //__dirname return the concrete dir where the file is, absolute path
-            //the require returns the function from the userdata,
-            // so we want to execute it with object (user model) // {User: User}
+            //the require returns the function from the <module>-data,
+            //so we want to execute it with object
             let dataModule = require(path.join(__dirname, file))(models);
 
             //returns an array with the object's properties' names
@@ -43,5 +42,4 @@ module.exports = function (config) {
                 });
         });
     return data;
-
 };

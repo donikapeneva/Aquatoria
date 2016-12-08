@@ -39,10 +39,10 @@ let itemSchema = new mongoose.Schema({
             type: String
         }
     },
-    coverUrl: {
-        type: String
-    },
-    coverUrls: []
+    isDeleted: {
+       type: Boolean,
+        default: false
+    }
 });
 
 mongoose.model('Item', itemSchema);

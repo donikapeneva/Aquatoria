@@ -13,7 +13,7 @@ module.exports = function(app, data){
 
     //loading all the modules
     fs.readdirSync('./routers')
-        .filter(x => x.includes('router'))
+        .filter(x => x.includes('-router'))
         .forEach(file => {
             //each router should know how to connect itself to relevant app
             let dataModule = require(path.join(__dirname, file))(app, data);

@@ -1,23 +1,33 @@
-/* globals module require */
-
 'use strict'
 
 const express = require('express');
 
-
-// export in other module
-// let controller = require('../controllers/user-controller');
-//should require
-
 module.exports = function (app, data) {
-    let controller = require('../controllers/user-controller')(data);
+    let userController = require('../controllers/user-controller')(data);
+    let authController = require('../controllers/auth-controller')(data);
 
     let router = new express.Router();
 
     router
-        .get('/', controller.getAll)
-        .get('/:id', controller.getById)
-        .post('/', controller.create);
+        .get('/login', userController.getLogin)
+        .post('/login', authController.loginLocal)
+        //fb & google
+        .get('/logout', authController.logout)
 
-    app.use('/users', router);
+        .get('/register', userController.getRegister)
+        .post('/register', authController.register)
+
+        .get('/profile', userController.getProfile)
+        .post('/profile', userController.updateProfile)
+        //avatar
+        .get('/profile/avatar', userController.getProfileAvatar)
+        .post('/profile/avatar', userController.uploadProfileAvatar)
+
+        .get('/unauthorized', userController.getUnauthorized)
+
+        .get('/contact', userController.getContactForm)
+        .post('/contact', userController.sendEmail)
+
+    app.use(userController);
+    // app.use('/users', userController);
 }

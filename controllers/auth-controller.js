@@ -4,7 +4,7 @@ const passport = require('passport');
 
 module.exports = function (data) {
     return {
-        login(req, res, next){
+        loginLocal(req, res, next){
             const auth = passport.authenticate('local', function (err, user) {
                 if (err) {
                     next(err);
@@ -13,44 +13,69 @@ module.exports = function (data) {
 
                 if (!user) {
                     //ajax
+                    res.status(400);
                     res.json({
                         seccess: false,
-                        message: 'user not found...'
+                        message: 'Invalid name or password'
                     });
                 }
 
                 //save in session
                 req.login(user, err => {
-                    if(err){
-                        //predavame po verigata s next ili prikliuchvame tuk
+                    if (err) {
                         next(err);
                         return;
                     }
 
-                    res.redirect('/profile');
+                    res.status(200)
+                    // if authorized -> redirectRoute: '/adminProfile';
+                        .send({redirectRoute: '/home'})
                 });
             });
 
-            auth(req, res, next);
+            return Promise.resolve()
+                .then(() => {
+                    if (!req.isAuthenticated()) {
+                        auth(req, res, next);
+                    } else {
+                        res.redirect('/home');
+                    }
+                })
         },
         logout(req, res){
-            req.logout();
-            res.redirect('/home');
+            return Promise.resolve()
+                .then(() => {
+                    if (!req.isAuthenticated()) {
+                        res.redirect('/home');
+                    } else {
+                        req.logout();
+                        res.redirect('/home');
+                    }
+                });
         },
         register(req, res){
-            const user = {
-                username: req.body.username,
-                password: req.body.password,
-                email: 'mail'
-            };
+            const user = req.body;
+            // const user = {username: req.body.username, password: req.body.password };
 
-            data.createUser(user)
-                .then(dbUser => {
-                    res.status(201).send('<h1> Weee </h1>');
+            return Promise.resolve()
+                .then(() => {
+                    if(!req.isAuthenticated()){
+                        return data.createUser(user);
+                    } else {
+                        res.redirect('/home');
+                    }
                 })
-                //sent message w/ error, like such user allready exists
-                .catch(error => res.status(500).json(error));
+                .then(dbUser => {
+                    passport.authenticate('local')(req, res, () => {
+                        res.status(200)
+                            .send({ redirectRoute: '/profile'});
+                    });
+                })
+                .catch(error => {
+                    res.status(400)
+                        // helpers = require('../helpers');
+                        // .send(JSON.stringify({validationError : helpers.errorHelper(error)}));
+                });
         }
-    }
-
-}
+    };
+};

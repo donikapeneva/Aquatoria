@@ -82,6 +82,21 @@ module.exports = function (models) {
                 });
             });
         },
+        findUserByIdAndUpdate(id, update) {
+            return new Promise((resolve, reject) => {
+                User.findOneAndUpdate({_id: id}, update, {new: true}, (err, user) => {
+                    if (err) {
+                        return reject(err);
+                    }
+
+                    if (!user) {
+                        return reject(user);
+                    }
+
+                    return resolve(user);
+                });
+            });
+        },
         getUserByFacebookId(id) {
             return new Promise((resolve, reject) => {
                 User.findOne({'social.facebook.id': id}, (err, user) => {

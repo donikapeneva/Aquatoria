@@ -1,8 +1,6 @@
 'use strict'
 
-const express = require('express');
-
-module.exports = function (app, data) {
+module.exports = function (app, data, express) {
     let userController = require('../controllers/user-controller')(data);
     let authController = require('../controllers/auth-controller')(data);
 

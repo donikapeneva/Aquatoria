@@ -38,7 +38,11 @@ let itemSchema = new mongoose.Schema({
         fullName: {
             type: String
         }
-    }
+    },
+    coverUrl: {
+        type: String
+    },
+    coverUrls: []
 });
 
 mongoose.model('Item', itemSchema);

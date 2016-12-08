@@ -5,7 +5,8 @@ module.exports = function (models) {
     return {
         createCategory(category){
             let createCategory = new Category({
-                name: category.name
+                name: category.name,
+                type: category.type
             });
 
             return new Promise((resolve, reject) => {
@@ -24,8 +25,8 @@ module.exports = function (models) {
                         return reject(err);
                     }
                     return resolve(category);
-                })
-            })
+                });
+            });
         },
         getAllCategories(){
             return new Promise((resolve, reject) => {
@@ -37,7 +38,17 @@ module.exports = function (models) {
                 });
             });
         },
-        findItemAndUpdate(id, update) {
+        getCategoriesByType(type){
+            return new Promise((resolve, reject) => {
+                Category.findOne({type: type}, (err, categories) => {
+                    if (err) {
+                        return reject(err);
+                    }
+                    return resolve(categories);
+                });
+            });
+        },
+        findCategoryAndUpdate(id, update) {
             return new Promise((resolve, reject) => {
                 Category.findOneAndUpdate({_id: id}, update, {new: true}, (err, category) => {
                     if (err) {

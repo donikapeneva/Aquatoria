@@ -1,0 +1,15 @@
+extends _layout
+
+block app-title
+    | AquatoriaDesigns
+
+block vars
+    - var type = 'photos';
+
+block content
+    div
+        h2 Aqua
+    div
+        a(href="/" + type) Photos
+        if !user
+            a(href="/login") Login or Register

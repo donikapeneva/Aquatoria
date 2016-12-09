@@ -18,6 +18,6 @@ app.use(session({secret: 'purple'}));
 
 require('../passport/')(app);
 //TODO: dinamicaly loading all the routers
-require('../../routing/auth-router')(app);
+// require('../../routing/auth-router')(app);
 
 module.exports = app;

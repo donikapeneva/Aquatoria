@@ -8,23 +8,6 @@ const helper = require('../helper'),
 
 const EXTENSION_PATTERN = /\.(jpg|jpeg|png)$/i;
 
-var render = function(req, res, data, viewPath){
-    if (!req.isAuthenticated()) {
-        res.render(viewPath, {result: data});
-    } else {
-        if (req.user.role === 'admin') {
-            res.render(viewPath, {result: data, user: req.user, isAdmin: true});
-
-        } else {
-            res.render(viewPath, {
-                result: data,
-                user: req.user,
-                isAdmin: false
-            });
-        }
-    }
-}
-
 module.exports = function (data) {
     return {
         getItems(req, res){
@@ -166,4 +149,22 @@ module.exports = function (data) {
             });
         }
     };
+};
+
+
+var render = function(req, res, data, viewPath){
+    if (!req.isAuthenticated()) {
+        res.render(viewPath, {result: data});
+    } else {
+        if (req.user.role === 'admin') {
+            res.render(viewPath, {result: data, user: req.user, isAdmin: true});
+
+        } else {
+            res.render(viewPath, {
+                result: data,
+                user: req.user,
+                isAdmin: false
+            });
+        }
+    }
 };

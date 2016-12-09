@@ -20,5 +20,5 @@ let categorySchema = new mongoose.Schema({
     }
 });
 
-mongoose.model('Category', itemSchema);
+mongoose.model('Category', categorySchema);
 module.exports = mongoose.model('Category');

@@ -1,7 +1,7 @@
 'use strict';
 
-module.exports = function(app, express) {
-    let homeController = require('../controllers/home-controller')();
+module.exports = function(app, data, express) {
+    let homeController = require('../controllers/home_controller')();
 
     let router = new express.Router();
 

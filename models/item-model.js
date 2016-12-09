@@ -27,7 +27,7 @@ let itemSchema = new mongoose.Schema({
         type: Date,
         required: true,
         //TODO: check it
-        default: new Date.now()
+        default: Date.now()
     },
     description: {
         type: String

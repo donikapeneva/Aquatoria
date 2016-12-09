@@ -29,7 +29,7 @@ module.exports = function (data) {
                     } else if (req.user.role === 'admin') {
                         //TODO
                         return Promise.all([data.getCategoriesByType(req.params.type)])
-                            .then(([categories]) => {
+                            .then((categories) => {
                                 return res.render('categories/add-category', {
                                     user: req.user,
                                     categories: categories,
@@ -39,7 +39,7 @@ module.exports = function (data) {
                     } else {
                         return res.redirect('/login');
                     }
-                })
+                });
         },
         addCategory(req, res){
             return Promise.resolve()

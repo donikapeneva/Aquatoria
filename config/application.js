@@ -22,7 +22,7 @@ app.use(session({secret: 'purple'}));
 
 require('./passport/')(app);
 //TODO: dinamicaly loading all the routers
-require('../routers/auth-router')(app);
+// require('../routers/index')(app);
 
 
 module.exports = app;

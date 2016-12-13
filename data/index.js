@@ -1,5 +1,3 @@
-/* globals module require **/
-
 'use strict'
 
 const mongoose = require('mongoose');

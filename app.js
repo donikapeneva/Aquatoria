@@ -1,4 +1,3 @@
-/* globals require console */
 'use strict'
 
 const config = require('./config');
@@ -8,13 +7,11 @@ const app = require('./config/application');
 
 //data layer
 //data module returns some services (create...)
-//we pass config because
 const data = require('./data')(config);
 
-//console.log(data);
+// console.log(data);
 
 //this will connect routers and controllers ..
 require('./routers')(app, data);
 
-
-app.listen(config.port, () => console.log('Running at: ${config.port}'));
+app.listen(config.port, () => console.log('Running at: ' + config.port));

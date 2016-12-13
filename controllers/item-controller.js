@@ -1,7 +1,7 @@
 'use strict'
 
-const helper = require('../helper'),
-    formidable = require('formidable'),
+// const helper = require('../helper'),
+    const formidable = require('formidable'),
     path = require('path'),
     fs = require('fs'),
     uploader = require('../helper/uploader');
@@ -96,7 +96,7 @@ module.exports = function (data) {
                 return res.redirect('/login');
             } else if (req.user.role === 'admin') {
                 return Promise.all([data.getCategoriesByType(req.params.type)])
-                    .then(([categories]) => {
+                    .then((categories) => {
                         return res.render('items/upload-item', {
                             user: req.user,
                             categories: categories,

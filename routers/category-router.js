@@ -13,5 +13,6 @@ module.exports = function (app, data, express) {
         .get('/:type/add', categoryController.getAddCategoryForm)
         .post('/:type/add', categoryController.addCategory);
 
-    app.use('/categories', categoryController);
+    app.use('/categories', router);
+
 };

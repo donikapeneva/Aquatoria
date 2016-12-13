@@ -1,4 +1,3 @@
-/* globals require module */
 'use strict'
 
 //server configuration
@@ -21,8 +20,5 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(session({secret: 'purple'}));
 
 require('./passport/')(app);
-//TODO: dinamicaly loading all the routers
-// require('../routers/index')(app);
-
 
 module.exports = app;

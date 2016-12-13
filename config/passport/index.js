@@ -1,9 +1,9 @@
 'use strict'
 
+//TODO:
 const passport = require('passport'),
     db = require('../../models/dummy_db');
 
-//serializing
 passport.serializeUser((user, done) => {
     if (user) {
         done(null, user.id);
@@ -17,7 +17,6 @@ passport.deserializeUser((userId, done) => {
             return;
         }
         done(null, false);
-
         //done(null, user || false);
     }).catch(error => done(error, false));
 });

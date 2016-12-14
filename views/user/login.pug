@@ -1,0 +1,27 @@
+extends ../_layout
+
+block app-title
+    | Login | AquatoriaDesign
+
+block content
+    h1
+        strong Login or Register in our site
+
+    h3 Login to our site
+    p Enter email and password to log on:
+    p You don't have an account?
+        a(href="/register")
+            strong REGISTER NOW
+
+    ul
+        form(role="form" action="" method="post" id="user-login-form")
+            label(for="form-email") Email
+            input(type="text" name="email" plaseholder="Email..." id="form-email")
+
+            label(for="form-password") Password
+            input(type="password" name="password" placeholder="Password" id="form-password")
+
+            button(type="button" id="login-button") Sign in
+
+    block specificJs
+        script(src="/static/scripts/utils/validator.js")

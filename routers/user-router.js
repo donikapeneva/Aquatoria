@@ -26,5 +26,5 @@ module.exports = function (app, data, express) {
         .get('/contact', userController.getContactForm)
         .post('/contact', userController.sendEmail)
 
-    app.use('/users', router);
+    app.use(router);
 }

@@ -1,0 +1,29 @@
+extends ../_layout
+
+block app-title
+    | Register | AquatoriaDesigns
+
+block content
+    h1
+        strong Make a new registration
+
+    h3 Sign up now
+    p Fill in the form below to get instant access:
+
+    form(role="form" action="" method="post" id="user-registration-form")
+        label(for="form-email") Email :
+        input(type="email" id="form-email" placeholder="Email@")
+        br
+        label(for="form-first-name") First name :
+        input(type="text" id="form-first-name" placeholder="First name")
+        br
+        label(for="form-last-name") Last name :
+        input(type="text" id="form-last-name" placeholder="Last name")
+        br
+        label(for="form-password") Password :
+        input(type="password" id="form-password" placeholder="password")
+        br
+        label(for="form-repeat-password") Repeat password :
+        input(type="password" id="form-repeat-password" placeholder="Repeat password")
+        br
+        button(type="button" id="register-button") Sign me up

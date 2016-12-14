@@ -1,23 +1,24 @@
-//extends _layout
-//
-//block app-title
-//    | AquatoriaDesigns
-//
-//block vars
-//    - var type = 'photos';
-//
-//block content
-//    div
-//        h2 Aqua
-//    div
-//        a(href="/" + type) Photos
-//        if !user
-//            a(href="/login") Login or Register
+extends _layout
 
-<!DOCTYPE html>
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-    body
-        div
-            h2 Aqua
+block app-title
+    | AquatoriaDesigns
+
+block vars
+    - var photosLink = 'photos';
+    - var musicLink = 'music';
+    - var videosLink = 'videos';
+    - var designLink = 'photos';
+
+
+
+block content
+    div
+        h2 Aqua
+    div
+        a(href="/" + photosLink) Photos
+        a(href="/" + videosLink) Videos
+        a(href="/" + musicLink) Music
+        //a(href="/" + designLink) Design
+        br
+        if !user
+            a(href="/login") Login or Register

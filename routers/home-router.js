@@ -7,12 +7,9 @@ module.exports = function(app, data, express) {
 
     router
         .get('/', (req, res) => {
-            console.log('no in ho me ');
             res.redirect('/home');
         })
         .get('/home', homeController.home);
 
-    console.log('Im in homeee');
-
-    // app.use('/', router);
+    app.use(router);
 };

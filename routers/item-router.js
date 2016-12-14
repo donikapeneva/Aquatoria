@@ -15,5 +15,5 @@ module.exports = function (app, data, express) {
         .get('/:type/create', itemController.getUploadItemForm)
         .post('/:type/create', itemController.uploadItem);
 
-    app.use(router);
+    app.use('items', router);
 };

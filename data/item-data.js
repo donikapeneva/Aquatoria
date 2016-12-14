@@ -56,7 +56,7 @@ module.exports = function (models) {
         },
         getItemsGroupedByCategories(type) {
             return new Promise((resolve, reject) => {
-                Event.find({type: type}, (err, items) => {
+                Item.find({type: type}, (err, items) => {
                     if (err) {
                         return reject(err);
                     }
@@ -70,7 +70,7 @@ module.exports = function (models) {
         },
         getItemsGroupedByType() {
             return new Promise((resolve, reject) => {
-                Event.find((err, items) => {
+                Item.find((err, items) => {
                     if (err) {
                         return reject(err);
                     }

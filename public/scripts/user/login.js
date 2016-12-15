@@ -6,9 +6,6 @@ const EMAIL_PATTERN = /^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[
     MAX_NAME_LENGTH = 30;
 
 (() => {
-
-    console.log("Vlizam v login");
-
     const $loginForm = $('#user-login-form'),
         $loginButton = $('#login-button'),
         $loginFormErrorContainer = $('#error-container');
@@ -64,12 +61,15 @@ const EMAIL_PATTERN = /^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[
     function displayValidationErrors(message, container) {
         // container.show();
 
-        container.find('ul').append(
-            $(document.createElement('li')).text(message)
+        container.append(
+            $(document.createElement('p')).text(message)
         );
     }
 
     function validateRegistrationForm() {
+
+        console.log("Validtion function");
+
         let isFormValid = false,
             isEmailValid = false,
             isPasswordValid = false;

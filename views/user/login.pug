@@ -13,15 +13,18 @@ block content
         a(href="/register")
             strong REGISTER NOW
 
-    ul
-        form(role="form" action="" method="post" id="user-login-form")
-            label(for="form-email") Email
-            input(type="text" name="email" plaseholder="Email..." id="form-email")
+    span(id="error-container") helloo
+        ul
+            form(role="form" action="" method="post" id="user-login-form")
 
-            label(for="form-password") Password
-            input(type="password" name="password" placeholder="Password" id="form-password")
+                label(for="form-email") Email
+                input(type="email" name="email" placeholder="Email@" id="form-email")
 
-            button(type="button" id="login-button") Sign in
+                label(for="form-password") Password
+                input(type="password" name="password" placeholder="Password" id="form-password")
+
+                button(type="button" id="login-button") Sign in
 
     block specificJs
         script(src="/static/scripts/utils/validator.js")
+        script(src="/static/scripts/user/login.js")

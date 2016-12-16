@@ -3,8 +3,6 @@
 var validator = (function () {
 
     function validateInputString(input, min = 0, max = 100, pattern = '') {
-            // console.log('validateInputCharacters ' + validateInputCharacters(input.val(), pattern));
-
         let isValid = false;
 
         if (input.val() === '') {
@@ -13,7 +11,6 @@ var validator = (function () {
         else if (!validateInputLength(input.val(), min, max)) {
             //show error
         } else if (!validateInputCharacters(input.val(), pattern)) {
-            console.log('validateInputCharacters ');
             //show error
         } else {
             //remove errors
@@ -35,12 +32,10 @@ var validator = (function () {
     function validateInputCharacters(value, pattern) {
         let isValid = false;
 
-        // console.log(value.match(pattern) + " chars test");
         if (pattern.test(value)) {
             isValid = true;
         }
 
-        console.log(isValid + " chars isValid");
         return isValid;
     }
 

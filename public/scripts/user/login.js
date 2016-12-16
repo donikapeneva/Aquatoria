@@ -1,25 +1,19 @@
 (() => {
     const ALPHA_PATTERN = /^[A-Za-zА-Яа-я1-9]+$/,
         EMAIL_PATTERN = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-        // EMAIL_PATTERN = /^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$/,
         MIN_NAME_LENGTH = 2,
         MAX_NAME_LENGTH = 30;
 
     const $loginForm = $('#user-login-form'),
         $loginButton = $('#login-button'),
         $loginFormErrorContainer = $('#error-container');
-    console.log('in function ' + this.caller);
-
-    $.ajax();
 
     $loginButton.on('click', () => {
         resetErrorContainer();
 
         let isFormValid = validateRegistrationForm();
 
-        console.log('isFormValid ' + isFormValid);
         if(isFormValid) {
-
             return Promise.resolve()
                 .then(() => {
                     let dataArray = $loginForm.serializeArray(),
@@ -46,7 +40,6 @@
                         });
                 })
                 .catch((err) => {
-                    console.log('v catch');
                     let errorObj = JSON.parse(err.responseText);
                     displayValidationErrors(errorObj.message, $loginFormErrorContainer);
                 });
@@ -70,9 +63,6 @@
     }
 
     function validateRegistrationForm() {
-
-        console.log("Validtion function");
-
         let isFormValid = false,
             isEmailValid = false,
             isPasswordValid = false;
@@ -83,14 +73,10 @@
 
             if (inputName === 'email') {
                 isEmailValid = validator.validateInputString(input, MIN_NAME_LENGTH, MAX_NAME_LENGTH, EMAIL_PATTERN);
-
-                console.log('email ' + isEmailValid);
             }
 
             if (inputName === 'password') {
                 isPasswordValid = validator.validateInputString(input, MIN_NAME_LENGTH, MAX_NAME_LENGTH, ALPHA_PATTERN);
-
-                console.log('password ' + isPasswordValid);
             }
         });
 

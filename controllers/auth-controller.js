@@ -15,7 +15,7 @@ module.exports = function (data) {
                     //ajax
                     res.status(400);
                     res.json({
-                        seccess: false,
+                        success: false,
                         message: 'Invalid name or password'
                     });
                 }

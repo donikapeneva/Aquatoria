@@ -12,8 +12,10 @@ module.exports = function (data) {
             return Promise.resolve()
                 .then(()=> {
                     if (!req.isAuthenticated()) {
+                        console.log('redirecting ');
                         res.render('user/login', {});
                     } else {
+                        console.log('for some reason ..  ');
                         // res.redirect('/home');
                         if (req.user.role === 'admin') {
                             res.redirect('home', {isAdmin: true});

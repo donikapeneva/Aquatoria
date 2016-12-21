@@ -1,7 +1,6 @@
 'use strict'
 
 const mongoose = require('mongoose');
-//TODO : unique validator
 
 var requiredMessage = '{PATH} is required';
 const roles = ['picture', 'song', 'videoLink'];
@@ -26,7 +25,6 @@ let itemSchema = new mongoose.Schema({
     date: {
         type: Date,
         required: true,
-        //TODO: check it
         default: Date.now()
     },
     description: {
@@ -34,7 +32,6 @@ let itemSchema = new mongoose.Schema({
     },
     //TODO: maybe -> link to creator
     madeBy: {
-        // _id: {},
         fullName: {
             type: String
         }

@@ -1,7 +1,6 @@
 'use strict'
 
 const mongoose = require('mongoose');
-//TODO : unique validator
 
 var requiredMessage = '{PATH} is required',
     types = ['photo', 'video', 'music'];

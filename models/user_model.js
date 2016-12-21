@@ -1,8 +1,8 @@
 /* globals require module */
 'use strict'
 
-const mongoose = require('mongoose');
-//TODO : unique validator
+const mongoose = require('mongoose'),
+    uniqueValidator = require('mongoose-unique-validator');
 //TODO : move encryption in utilities folder
 
 var requiredMessage = '{PATH} is required';
@@ -65,6 +65,9 @@ let userSchema = new mongoose.Schema({
     }
 
 });
+
+userSchema
+    .plugin(uniqueValidator, { message: 'Error, expected {PATH} to be unique.' });
 
 userSchema
     .virtual('password')

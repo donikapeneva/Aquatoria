@@ -20,6 +20,7 @@ app.use('/scripts/jquery', express.static(path.join(__dirname, '../node_modules/
 //app middlewares for sessions
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 
 //TODO: the secret must be read from a config file
 app.use(session({secret: 'purple'}));

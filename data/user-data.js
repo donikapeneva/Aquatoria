@@ -3,20 +3,27 @@
 module.exports = function (models) {
     let User = models.User;
     return {
-        createUser(firstName, lastName, email, password){
-            let user = new User({
-                firstName: firstName,
-                lastName: lastName,
-                email: email,
-                password: password
+        createUser(user){
+
+            console.log(user);
+
+            let userObj = new User({
+                firstName: user.firstName,
+                lastName: user.lastName,
+                email: user.email,
+                password: user.password
             });
 
             return new Promise((resolve, reject) => {
-                user.save(err => {
+                console.log('Doing data');
+                userObj.save(err => {
                     if (err) {
+                        console.log('errror :: ' + err);
+
                         return reject(err);
                     }
-                    return resolve(user);
+                    console.log('resolve ::' + userObj);
+                    return resolve(userObj);
                 });
             });
         },
@@ -36,7 +43,6 @@ module.exports = function (models) {
                 });
             });
         },
-        //TODO: is nessessary ?
         getUserByEmail(email){
             return new Promise((resolve, reject) => {
                 User.findOne({email: email}, (err, user) => {

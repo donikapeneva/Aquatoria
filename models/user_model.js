@@ -6,8 +6,8 @@ const mongoose = require('mongoose'),
 //TODO : move encryption in utilities folder
 
 var requiredMessage = '{PATH} is required';
-const LETTERS = /^[A-Za-zА-Яа-я]+$/,
-    EMAIL_PATTERN = /^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$/;
+const EMAIL_PATTERN = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+    LETTERS = /^[A-Za-zА-Яа-я]+$/;
 
 const roles = ['user', 'admin'];
 

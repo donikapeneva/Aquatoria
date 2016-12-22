@@ -8,9 +8,9 @@ var validator = (function () {
         if (input.val() === '') {
             //show error
         }
-        else if (!validateInputLength(input.val(), min, max)) {
+        else if (!validateInputLength(input, min, max)) {
             //show error
-        } else if (!validateInputCharacters(input.val(), pattern)) {
+        } else if (!validateInputByPattern(input, pattern)) {
             //show error
         } else {
             //remove errors
@@ -19,20 +19,20 @@ var validator = (function () {
         return isValid;
     }
 
-    function validateInputLength(value, min, max) {
+    function validateInputLength(input, min, max) {
         let isValid = false;
 
-        if (value.length > min && value.length < max) {
+        if (input.val().length > min && input.val().length < max) {
             isValid = true;
         }
 
         return isValid;
     }
 
-    function validateInputCharacters(value, pattern) {
+    function validateInputByPattern(input, pattern) {
         let isValid = false;
 
-        if (pattern.test(value)) {
+        if (pattern.test(input.val())) {
             isValid = true;
         }
 
@@ -41,6 +41,7 @@ var validator = (function () {
 
     return {
         validateInputString,
-        validateInputLength
+        validateInputLength,
+        validateInputByPattern
     }
 })();

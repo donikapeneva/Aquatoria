@@ -1,6 +1,7 @@
 'use strict'
 
-const passport = require('passport');
+const passport = require('passport'),
+    helper = require('../helper');
 
 module.exports = function (data) {
     return {
@@ -53,28 +54,53 @@ module.exports = function (data) {
                     }
                 });
         },
-        register(req, res){
+        register(req, res, next){
             const user = req.body;
-            // const user = {username: req.body.username, password: req.body.password };
+            console.log(req.body);
 
             return Promise.resolve()
                 .then(() => {
-                    if(!req.isAuthenticated()){
-                        return data.createUser(user);
+                    if (!req.isAuthenticated()) {
+                        let crUser = data.createUser(user);
+                        console.log('create user :: ' + crUser);
+                        return crUser;
                     } else {
                         res.redirect('/home');
                     }
                 })
                 .then(dbUser => {
-                    passport.authenticate('local')(req, res, () => {
+                    console.log('cretated ' + dbUser);
+
+                    // passport.authenticate('local', function (err, user, info) {
+                    //     console.log(info);
+                    //     if (err) {
+                    //         console.log(err);
+                    //         console.log('err');
+                    //         return next(err);
+                    //     }
+                    //     if (!user) {
+                    //         return res.redirect('/login');
+                    //     }
+                    //     req.logIn(user, function (err) {
+                    //         if (err) {
+                    //             return next(err);
+                    //         }
+                    //         return res.send({redirectRoute: '/profile'});
+                    //     });
+                    // })(req, res, next);
+
+                    passport.authenticate('local')(req, res, function () {
+                        console.log('authenticate ');
                         res.status(200)
-                            .send({ redirectRoute: '/profile'});
+                            .send({redirectRoute: '/profile'});
                     });
                 })
                 .catch(error => {
+
+                    console.log('contoller errror :: ' + error);
                     res.status(400)
-                        // helpers = require('../helpers');
-                        // .send(JSON.stringify({validationError : helpers.errorHelper(error)}));
+                        .send(JSON.stringify(helper().errorHelper(error)));
+                    // .send(JSON.stringify({error : helper().errorHelper(error)}));
                 });
         }
     };

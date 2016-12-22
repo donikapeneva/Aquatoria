@@ -1,31 +1,29 @@
 'use strict'
 
-//TODO:
-const passport = require('passport'),
-    db = require('../../models/dummy_db');
+const passport = require('passport');
 
-passport.serializeUser((user, done) => {
-    if (user) {
-        done(null, user.id);
-    }
-});
+module.exports = (app, data) => {
 
-passport.deserializeUser((userId, done) => {
-    db.findById(userId).then(user => {
+
+    passport.serializeUser((user, done) => {
         if (user) {
-            done(null, user);
-            return;
+            done(null, user.id);
         }
-        done(null, false);
-        //done(null, user || false);
-    }).catch(error => done(error, false));
-});
+    });
 
-require('./local-strategy')(passport);
+    passport.deserializeUser((userId, done) => {
+        data.getUserById(userId).then(user => {
+            if (user) {
+                done(null, user);
+                return;
+            }
+            done(null, false);
+            //done(null, user || false);
+        }).catch(error => done(error, false));
+    });
 
-//accept the server and attach to it
-//attach passport middleware to app
-module.exports = app => {
+    require('./local-strategy')(passport, data);
+
     app.use(passport.initialize());
     app.use(passport.session());
-};
+}

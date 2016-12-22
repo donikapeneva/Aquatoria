@@ -9,6 +9,9 @@ const app = require('./config/application');
 //data module returns some services (create...)
 const data = require('./data')(config);
 
+//TODO
+const passport = require('./config/passport')(app, data);
+
 // console.log(data);
 
 //this will connect routers and controllers ..

@@ -11,9 +11,12 @@ module.exports = function (data) {
         getLogin(req, res){
             return Promise.resolve()
                 .then(()=> {
+
+                    //TODO: when the back button is pressed it crashes w/ status code 0
+
                     if (!req.isAuthenticated()) {
                         console.log('redirecting ');
-                        res.render('user/login', {});
+                        res.render('user/login');
                     } else {
                         console.log('for some reason ..  ');
                         // res.redirect('/home');

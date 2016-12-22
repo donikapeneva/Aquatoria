@@ -25,6 +25,6 @@ app.use(bodyParser.json());
 //TODO: the secret must be read from a config file
 app.use(session({secret: 'purple'}));
 
-require('./passport/')(app);
+// require('./passport/')(app);
 
 module.exports = app;

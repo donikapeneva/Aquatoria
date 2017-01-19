@@ -45,19 +45,12 @@ module.exports = function (data) {
                 })
         },
         logout(req, res){
-            console.log('loging out');
             return Promise.resolve()
                 .then(() => {
                     if (!req.isAuthenticated()) {
-                        console.log('no user -> redirection to home')
                         res.redirect('/home');
                     } else {
-                        console.log('user -> log out');
-                        console.log('req : ' + req);
-
                         req.logout();
-
-                        console.log('user -> logged out');
                         // res.redirect('/');
                         res.status(200)
                             .send({redirectRoute: '/home'});

@@ -91,16 +91,19 @@ userSchema.methods = {
         return Math.round((new Date().valueOf() * Math.random())) + '';
     },
     encryptPassword: function (password) {
+
         if (!password) {
             return '';
         }
 
         try {
-            return crypto
+            return require('crypto')
                 .createHmac('sha1', this.salt)
                 .update(password)
                 .digest('hex');
         } catch (err) {
+            //TODO: no user creation!!!
+            console.log('err pass : ' + err);
             return '';
         }
     },

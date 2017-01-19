@@ -17,6 +17,7 @@ module.exports = function (app, data, express) {
 
         .get('/profile', userController.getProfile)
         .post('/profile', userController.updateProfile)
+        .post('/changePassword', userController.changePassword)
         //avatar
         .get('/profile/avatar', userController.getProfileAvatar)
         .post('/profile/avatar', userController.uploadProfileAvatar)

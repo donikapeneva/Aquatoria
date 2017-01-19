@@ -7,6 +7,9 @@ module.exports = function (data) {
     return {
         loginLocal(req, res, next){
             const auth = passport.authenticate('local', function (err, user) {
+
+                console.log(user);
+
                 if (err) {
                     next(err);
                     return;

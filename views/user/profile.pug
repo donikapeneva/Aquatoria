@@ -1,1 +1,61 @@
-h1 profile
+extends ../_layout
+
+block app-title
+    | Profile | AquatoriaDesigns
+
+block vars
+
+
+block content
+    span
+        h1
+            strong= user.fullName + "'s profile"
+    span
+            button(type="button" id="logout-button") logout
+    div
+        h3 Here you can edit your profile information
+            img(src= user.avatarUrl id="profile-avatar")
+
+        span(id='password-error-container')
+
+        a(href="/profile/avatar") Change your avatar
+
+
+        table
+            tr
+                td Email:
+                td #{user.email}
+            tr
+                td Name:
+                td #{user.fullName}
+
+        br
+
+        form(role="form" action="" method="post" id="change-password-form")
+
+            label(class="" for="form-old-password") Old password
+                input(type="password"
+                name="oldPassword"
+                id="form-old-password")
+
+            br
+
+            label(class="" for="form-new-password") New password
+            input(type="password"
+                name="newPassword"
+                id="form-new-password")
+
+            br
+
+            label(class="" for="form-repeat-new-password") Repeat password
+            input(type="password"
+                name="repeatNewPassword"
+                id="form-repeat-new-password")
+
+            br
+
+            button(type="button" id="save-password-button") Save
+
+        block specificJs
+            script(src="/static/scripts/utils/validator.js")
+            script(src="/static/scripts/user/edit-profile.js")

@@ -35,13 +35,19 @@
     $changePassButton.unbind('click');
     $changePassButton.on('click', (event) => {
 
+        console.log('cliiiiick to save');
+
         resetErrorContainer();
 
         let isFormValid = validatePassForm();
 
         if(isFormValid){
+            console.log('is form valid');
             return Promise.resolve()
                 .then(() => {
+
+                    console.log('first then');
+
                     let dataArray = $changePassForm.serializeArray(),
                         dataObj = {};
 
@@ -52,6 +58,8 @@
                     return dataObj;
                 })
                 .then((password) => {
+
+                    console.log('sendidng: ' + password);
 
                     $.ajax({
                         url: '/changePassword',
@@ -64,12 +72,12 @@
                         })
                         .fail((err) => {
                             let errorObj = JSON.parse(err.responseText);
-                            displayValidationErrors(errorObj.message, $loginFormErrorContainer);
+                            displayValidationErrors(errorObj.message, $passError);
                         });
                 })
                 .catch((err) => {
                     let errorObj = JSON.parse(err.responseText);
-                    displayValidationErrors(errorObj.message, $loginFormErrorContainer);
+                    displayValidationErrors(errorObj.message, $passError);
                 });
         }
     });
@@ -82,13 +90,18 @@
             hasNewPass = false,
             errMessage = '';
 
+        if($changePassForm.find("input[name='newPassword']").val().length !== 0 ){
+            hasNewPass = true;
+        }
+
         $changePassForm.find('input').each(function () {
             let input = $(this),
-                inputName = input.attr('name');
-
+                inputName = input.attr('name'),
+                isFieldEmpty = input.val().length === 0;
 
             if(inputName === 'oldPassword'){
-                if(input.val() === '' && !validator.validateInputByPattern(input, PASSWORD_PATTERN)){
+
+                if(hasNewPass && isFieldEmpty && !validator.validateInputByPattern(input, PASSWORD_PATTERN)){
                     areFieldsValid = false;
                     errMessage = 'You must enter your old password';
                     displayValidationErrors(errMessage, $passError);
@@ -97,10 +110,6 @@
             }
 
             if(inputName === 'newPassword'){
-                if(input.val() !== ''){
-                    hasNewPass = true;
-                }
-
                 if (hasNewPass && !validator.validateInputByPattern(input, PASSWORD_PATTERN)) {
                     areFieldsValid = false;
                     errMessage = 'The password must be between 6 and 10 symbols';
@@ -108,7 +117,7 @@
                     return;
                 }
             } else if (inputName === 'repeatNewPassword'){
-                if(hasNewPass && input.val() === ''){
+                if(hasNewPass && isFieldEmpty){
                     areFieldsValid = false;
                     errMessage = 'You have to repeat your password';
                     displayValidationErrors(errMessage, $passError);
@@ -121,7 +130,10 @@
                     return;
                 }
             }
+
         });
+        console.log(areFieldsValid);
+        return areFieldsValid;
     }
 
     function displayValidationErrors(message, container) {

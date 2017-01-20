@@ -42,6 +42,7 @@ module.exports = function (data) {
             return Promise.resolve()
                 .then(() => {
                     if (!req.isAuthenticated()) {
+                        //TODO redirect to home 
                         res.status(401).redirect('/unauthorized');
                     } else {
                         if (req.user.role === 'admin') {
@@ -61,6 +62,31 @@ module.exports = function (data) {
                         res.redirect('/home');
                     } else {
                         return data.findUserByIdAndUpdate(req.body._id, updatedUser);
+                    }
+                })
+                .then(user => {
+                    res.status(200)
+                        .send({redirectRoute: '/profile'});
+                })
+                .catch(err => {
+                    res.status(400)
+                    // .send(JSON.stringify({validationError: helpers.errorHelper(err)}));
+                });
+        },
+        changePassword(req, res){
+            const passwordObj = req.body;
+            console.log(req.user);
+
+            return Promise.resolve()
+                .then(() => {
+                    if (!req.isAuthenticated()) {
+                        res.redirect('/home');
+                    } else {
+                        let user = data.getUserById(req.user._id);
+                        user.password = passwordObj.newPassword;
+                        console.log(passwordObj.newPassword);
+                        // console.log(data.findUserByIdAndUpdate(req.user._id, user));
+                        return data.changePasswordByUserId(req.user._id, passwordObj.newPassword);
                     }
                 })
                 .then(user => {

@@ -9,9 +9,6 @@ module.exports = function (passport, data) {
         usernameField: 'email',
         passwordField: 'password'
     }, function (email, password, done) {
-
-        console.log('local strategy function called');
-
         data.getUserByEmail(email)
             .then(user => {
                 if (user && user.authenticatePassword(password)) {

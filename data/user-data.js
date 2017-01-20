@@ -99,6 +99,28 @@ module.exports = function (models) {
                         return reject(user);
                     }
 
+                    console.log(user);
+
+                    return resolve(user);
+                });
+            });
+        },
+        changePasswordByUserId(id, newPassword){
+            return new Promise((resolve, reject) => {
+                User.findOneAndUpdate({_id: id}, {$set:{_password: newPassword}}, (err, user) => {
+
+                    console.log('Changing password');
+
+                    if (err) {
+                        return reject(err);
+                    }
+
+                    if (!user) {
+                        return reject(user);
+                    }
+
+                    console.log(user);
+
                     return resolve(user);
                 });
             });

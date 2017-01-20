@@ -67,7 +67,7 @@ let userSchema = new mongoose.Schema({
 });
 
 userSchema
-    .plugin(uniqueValidator, { message: 'Error, expected {PATH} to be unique.' });
+    .plugin(uniqueValidator, {message: 'Error, expected {PATH} to be unique.'});
 
 userSchema
     .virtual('password')
@@ -84,6 +84,38 @@ userSchema
     .virtual('fullName')
     .get(function () {
         return this.firstName + ' ' + this.lastName;
+    });
+
+userSchema
+    .pre('save', function (next) {
+        var user = this,
+            SALT_FACTOR = 5;
+
+        console.log('pre save');
+
+        if (!user.isModified('_password')) {
+            console.log('pass is modified');
+            return next();
+        }
+
+        this._password = user.password;
+        this.salt = this.generateSalt();
+        this.passwordHash = this.encryptPassword(user.password);
+
+        // bcrypt.genSalt(SALT_FACTOR, function (err, salt) {
+        //     if (err) {
+        //         return next(err);
+        //     }
+        //
+        //     bcrypt.hash(user.password, salt, null, function (err, hash) {
+        //         if (err) {
+        //             return next(err);
+        //         }
+        //         user.password = hash;
+        //         next();
+        //     });
+
+        // });
     });
 
 userSchema.methods = {
@@ -110,8 +142,13 @@ userSchema.methods = {
     authenticatePassword: function (password) {
         return this.encryptPassword(password) === this.passwordHash;
     }
-}
-
+    // comparePasswords: function (candidatePassword, cb){
+    //     bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+    //         if (err) return cb(err);
+    //         cb(null, isMatch);
+    //     });
+    // }
+};
 
 mongoose.model('User', userSchema);
 module.exports = mongoose.model('User');

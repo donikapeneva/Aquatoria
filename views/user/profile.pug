@@ -14,12 +14,13 @@ block content
             button(type="button" id="logout-button") logout
     div
         h3 Here you can edit your profile information
-            img(src= user.avatarUrl id="profile-avatar")
+
+        div
+            img(src= user.avatar id="profile-avatar")
 
         span(id='password-error-container')
 
         a(href="/profile/avatar") Change your avatar
-
 
         table
             tr

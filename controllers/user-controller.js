@@ -2,7 +2,8 @@
 
 const formidable = require('formidable'),
     uploader = require('../helper/uploader'),
-    path = require('path');
+    path = require('path'),
+    helpers = require('../helper');
 
 const EXTENSION_PATTERN = /\.(jpg|jpeg|png)$/i;
 
@@ -11,8 +12,6 @@ module.exports = function (data) {
         getLogin(req, res){
             return Promise.resolve()
                 .then(()=> {
-
-                    //TODO: when the back button is pressed it crashes w/ status code 0
 
                     if (!req.isAuthenticated()) {
                         console.log('redirecting ');
@@ -46,7 +45,7 @@ module.exports = function (data) {
                         res.status(401).redirect('/unauthorized');
                     } else {
                         if (req.user.role === 'admin') {
-                            res.render('user/profile', {user: req.user, isAdmin: true});
+                            res.render('user/profile', {user: req.user, isAdmin: true,});
                         } else {
                             res.render('user/profile', {user: req.user, isAdmin: false});
                         }
@@ -73,29 +72,71 @@ module.exports = function (data) {
                     // .send(JSON.stringify({validationError: helpers.errorHelper(err)}));
                 });
         },
-        changePassword(req, res){
+        //                         ?
+        changePassword(req, res, done){
             const passwordObj = req.body;
-            console.log(req.user);
 
             return Promise.resolve()
                 .then(() => {
                     if (!req.isAuthenticated()) {
                         res.redirect('/home');
                     } else {
-                        let user = data.getUserById(req.user._id);
-                        user.password = passwordObj.newPassword;
-                        console.log(passwordObj.newPassword);
-                        // console.log(data.findUserByIdAndUpdate(req.user._id, user));
-                        return data.changePasswordByUserId(req.user._id, passwordObj.newPassword);
+                        return data.getUserById(req.user._id)
+
+                        // .then(() => {
+                        //     //when i repair 'done' callback <- this will work
+                        //    // and redirection (success) code is here
+                        // res.status(200)
+                        //     .send({redirectRoute: '/profile'});
+                        // })
+                        // .catch(error => {
+                        //     // console.log('catch the errrorororo');
+                        //     // // error = {'ValidationError' : 'You must enter your current password'};
+                        //     // console.log(error);
+                        //     // res.status(400)
+                        //     //     .send(JSON.stringify({validationError: helpers.errorHelper(error)}));
+                        //     // // done(error, false)
+                        //     next(error);
+                        // });
+
+                        // return data.findUserByIdAndUpdate(req.user._id, { password : passwordObj.newPassword } );
+                        // return data.changePasswordByUserId(req.user._id, passwordObj.newPassword);
                     }
                 })
                 .then(user => {
-                    res.status(200)
-                        .send({redirectRoute: '/profile'});
+
+                    if (user && user.authenticatePassword(passwordObj.oldPassword)) {
+                        console.log('The password is correct');
+
+                        //TODO : validate newPass === repeateNewPass
+
+                        let user = req.user;
+                        user.password = passwordObj.newPassword;
+                        user.save(function (err) {
+                            if (err) {
+                                next(err);
+                            } else {
+                                //TODO is it possible the problem with double loading be caused by redirection & redirectionRoute ?
+                                console.log('1st redirectoin');
+                                res.status(200)
+                                    .send({redirectRoute: '/profile'});
+                            }
+                        });
+                    } else {
+                        console.log('The password is not correct');
+                        //TODO: done <- callback, from where?
+                        // done(null, false);
+
+                        let err = new Error('The password is not correct');
+
+                        res.status(400)
+                            .send(JSON.stringify({validationError: helpers.errorHelper(err)}));
+                    }
                 })
                 .catch(err => {
+                    console.log(err);
                     res.status(400)
-                    // .send(JSON.stringify({validationError: helpers.errorHelper(err)}));
+                        .send(JSON.stringify({validationError: helpers.errorHelper(err)}));
                 });
         },
         getProfileAvatar(req, res){
@@ -112,7 +153,6 @@ module.exports = function (data) {
                     }
                 });
         },
-        //TODO:
         uploadProfileAvatar(req, res){
             return new Promise((resolve, reject) => {
                 if (!req.isAuthenticated()) {
@@ -120,6 +160,7 @@ module.exports = function (data) {
                     reject();
                 } else {
                     let form = new formidable.IncomingForm();
+                    //max size: 2MB
                     form.maxFieldSize = 2 * 1024 * 1024;
 
                     form.onPart = function (part) {
@@ -136,9 +177,15 @@ module.exports = function (data) {
                                     uploadPathToFolder = path.join(__dirname, '../public/uploads/users', userFolder),
                                     newFileName = 'avatar';
 
-                                uploader.uploadFile(this.openedFiles[0], uploadPathToFolder, newFileName)
+                                let _this = this;
+
+                                //uploading an avatar picture in user's folder
+                                uploader.uploadFile(_this.openedFiles[0], uploadPathToFolder, newFileName)
                                     .then(uploadedFileName => {
                                         resolve(uploadedFileName);
+                                    })
+                                    .catch((err) => {
+                                        console.log(err);
                                     });
                             });
 
@@ -158,8 +205,16 @@ module.exports = function (data) {
                         return;
                     }
 
+                    //the url should not be absolute path
+                    //TODO: check for relative path formatter function
                     let avatarUrl = '/static/uploads/users/' + req.user.id + '/' + fileName;
-                    data.findUserByIdAndUpdate(req.user.id, {avatarUrl});
+
+                    //update on user's avatar
+                    data.findUserByIdAndUpdate(req.user.id, {avatar: avatarUrl});
+                })
+                .then(() => {
+                    res.status(200)
+                        .send({redirectRoute: '/profile'});
                 })
                 .catch((err) => {
                     res.status(400)

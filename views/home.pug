@@ -4,10 +4,12 @@ block app-title
     | AquatoriaDesigns
 
 block vars
-    - var photosLink = 'photos';
+    - var photosLink = '../photos/photos';
     - var musicLink = 'music';
     - var videosLink = 'videos';
     - var designLink = 'photos';
+
+    - var profileLink = 'profile';
 
 
 
@@ -15,6 +17,8 @@ block content
     div
         h2 Aqua
     div
+        if user
+            a(href="/" + profileLink) Profile
         a(href="/" + photosLink) Photos
         a(href="/" + videosLink) Videos
         a(href="/" + musicLink) Music
@@ -22,3 +26,4 @@ block content
         br
         if !user
             a(href="/login") Login or Register
+

@@ -37,9 +37,9 @@ let userSchema = new mongoose.Schema({
         type: String
     },
     avatar: {
-        type: String
+        type: String,
         //TODO:
-        //default: '/static/uploads/users/avatar.jpg'
+        default: '/static/uploads/users/avatar.jpg'
     },
     role: {
         type: String,
@@ -88,19 +88,37 @@ userSchema
 
 userSchema
     .pre('save', function (next) {
-        var user = this,
-            SALT_FACTOR = 5;
-
         console.log('pre save');
 
-        if (!user.isModified('_password')) {
-            console.log('pass is modified');
+        var user = this;
+
+        //check if password is modified, else no need to do anything
+        if (!user.isModified('password')) {
             return next();
         }
 
-        this._password = user.password;
-        this.salt = this.generateSalt();
-        this.passwordHash = this.encryptPassword(user.password);
+        user.pass = bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+        next();
+        //
+        // console.log('pre save');
+        //
+        // var user = this,
+        //     SALT_FACTOR = 5;
+        //
+        // console.log('pre save');
+        //
+        // if (!user.isModified('_password')) {
+        //     console.log('pass is modified');
+        //     return next();
+        // }
+        //
+        // this._password = user.password;
+        // this.salt = this.generateSalt();
+        // this.passwordHash = this.encryptPassword(user.password);
+
+
+
+
 
         // bcrypt.genSalt(SALT_FACTOR, function (err, salt) {
         //     if (err) {
@@ -116,6 +134,8 @@ userSchema
         //     });
 
         // });
+
+        // next();
     });
 
 userSchema.methods = {

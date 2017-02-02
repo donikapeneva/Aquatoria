@@ -1,6 +1,6 @@
 'use strict'
 
-const fs = require('fs'),
+const fs = require('fs-extra'),
     path = require('path');
 
 module.exports = {
@@ -8,7 +8,7 @@ module.exports = {
         return new Promise((resolve, reject) => {
             let tempPath = file.path,
                 openedFileName = file.name,
-                fileExtension = openedFileName.substring(openedFileName.lastIndexOf('.'), openedFileName.length);
+                fileExtension = openedFileName.substring(openedFileName.lastIndexOf('.'), openedFileName.length).toLowerCase();
 
             uploadedFileName += fileExtension;
 

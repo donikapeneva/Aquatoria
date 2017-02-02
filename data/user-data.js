@@ -89,13 +89,19 @@ module.exports = function (models) {
             });
         },
         findUserByIdAndUpdate(id, update) {
+
+            console.log('updating user');
+
             return new Promise((resolve, reject) => {
                 User.findOneAndUpdate({_id: id}, update, {new: true}, (err, user) => {
                     if (err) {
+                        console.log('err');
+                        console.log(err);
                         return reject(err);
                     }
 
                     if (!user) {
+                        console.log('no user');
                         return reject(user);
                     }
 

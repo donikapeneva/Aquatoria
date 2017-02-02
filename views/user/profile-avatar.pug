@@ -1,0 +1,26 @@
+extends ../_layout
+
+block app-title
+    | Profile | AquatoriaDesigns
+
+block content
+            h3 Here you can change your avatar
+
+            div
+                img(src=user.avatar id="profile-avatar")
+
+            span(id="error-container")
+
+            form(role="form" enctype="multipart/form-data" action="" method="post" class="profile-form" id="user-profile-form")
+
+                label(class="sr-only" for="form-file") File
+                input(type="file"
+                    multiple="multiple"
+                    name="file"
+                    class="form-file form-control"
+                    id="form-file")
+                br
+                button(type="button" class="btn" id="upload-button") Upload
+
+block specificJs
+    script(src="/static/scripts/user/profile-avatar.js")

@@ -1,4 +1,7 @@
 (() => {
+
+    console.log('edit profile script loaded');
+
     const NAME_PATTERN = /^[A-Za-zА-Яа-я]+$/,
         PASSWORD_PATTERN = /^(?=.*).{5,10}$/,
         EMAIL_PATTERN = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
@@ -35,8 +38,6 @@
     $changePassButton.unbind('click');
     $changePassButton.on('click', (event) => {
 
-        console.log('cliiiiick to save');
-
         resetErrorContainer();
 
         let isFormValid = validatePassForm();
@@ -45,9 +46,6 @@
             console.log('is form valid');
             return Promise.resolve()
                 .then(() => {
-
-                    console.log('first then');
-
                     let dataArray = $changePassForm.serializeArray(),
                         dataObj = {};
 
@@ -58,9 +56,6 @@
                     return dataObj;
                 })
                 .then((password) => {
-
-                    console.log('sendidng: ' + password);
-
                     $.ajax({
                         url: '/changePassword',
                         method: 'POST',
@@ -148,8 +143,5 @@
         $passError.find('p').html('');
         $passError.find('p').remove();
     }
-
-
-
 
 })();

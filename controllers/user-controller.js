@@ -12,22 +12,13 @@ module.exports = function (data) {
         getLogin(req, res){
             return Promise.resolve()
                 .then(()=> {
-
                     if (!req.isAuthenticated()) {
-                        console.log('redirecting ');
                         res.render('user/login');
                     } else {
                         console.log('the user is logged and presses back button to return on login page');
                         //TODO : this doesnt solve the problem
                         //TODO : research if exist fragments (like these in android)
                         res.redirect('/home');
-                        // if (req.user.role === 'admin') {
-                        //     console.log('admin role');
-                        //     res.redirect('home', {isAdmin: true});
-                        // } else {
-                        //     console.log('user role');
-                        //     res.redirect('home', {isAdmin: false});
-                        // }
                     }
                 });
         },
@@ -73,6 +64,7 @@ module.exports = function (data) {
                 })
                 .catch(err => {
                     res.status(400)
+                    // .send(JSON.stringify(helper().errorHelper(error)));
                     // .send(JSON.stringify({validationError: helpers.errorHelper(err)}));
                 });
         },
@@ -88,49 +80,31 @@ module.exports = function (data) {
                     }
                 })
                 .then(user => {
-
                     if (user && user.authenticatePassword(passwordObj.oldPassword)) {
-                        console.log('The password is correct');
-
-                        //TODO : validate newPass === repeateNewPass
-
-                        let user = req.user;
-                        user.password = passwordObj.newPassword;
-                        user.save(function (err) {
-                            if (err) {
-                                next(err);
-                            } else {
-                                //TODO is it possible the problem with double loading be caused by redirection & redirectionRoute ?
-                                res.status(200)
-                                    .send({redirectRoute: '/profile'});
-                            }
-                        });
+                        if (passwordObj.newPassword !== passwordObj.repeatNewPassword) {
+                            throw new Error('Passwords don\'t match');
+                        } else {
+                            let user = req.user;
+                            user.password = passwordObj.newPassword;
+                            user.save(function (err) {
+                                if (err) {
+                                    next(err);
+                                } else {
+                                    //TODO is it possible the problem with double loading be caused by redirection & redirectionRoute ?
+                                    res.status(200)
+                                        .send({redirectRoute: '/profile'});
+                                }
+                            });
+                        }
                     } else {
-                        console.log('The password is not correct');
-
-                        // return done('You must enter your current password', false);
-                        //
-                        // let err = new Error('The password is not correct');
-                        //
-
-                        // return done({name: 'ValidationError', message: 'File types allowed: jpg, jpeg, png.'}, false);
-
-                        // let errors = [];
-                        // errors[0] = 'You must enter your current password';
-                        //
-                        // let err = {
-                        //     errors : errors,
-                        //     name : 'ValidationError'
-                        // };
-
                         throw new Error('You must enter your current password');
-
-                        // res.status(400)
-                        //     .send(JSON.stringify({validationError: helpers.errorHelper(null)}));
                     }
                 })
                 .catch(err => {
                     res.status(400)
+                    //TODO: all this redirections and errors should be passed identically
+                    // if the error is not throwed -> res.redirect ...
+                    // .send(JSON.stringify(helper().errorHelper(error)));
                         .send(JSON.stringify({message: err.message}));
                 });
         },

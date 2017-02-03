@@ -4,9 +4,6 @@ module.exports = function (models) {
     let User = models.User;
     return {
         createUser(user){
-
-            console.log(user);
-
             let userObj = new User({
                 firstName: user.firstName,
                 lastName: user.lastName,
@@ -19,10 +16,8 @@ module.exports = function (models) {
                 userObj.save(err => {
                     if (err) {
                         console.log('errror :: ' + err);
-
                         return reject(err);
                     }
-                    console.log('resolve ::' + userObj);
                     return resolve(userObj);
                 });
             });
@@ -89,9 +84,7 @@ module.exports = function (models) {
             });
         },
         findUserByIdAndUpdate(id, update) {
-
             console.log('updating user');
-
             return new Promise((resolve, reject) => {
                 User.findOneAndUpdate({_id: id}, update, {new: true}, (err, user) => {
                     if (err) {
@@ -101,31 +94,8 @@ module.exports = function (models) {
                     }
 
                     if (!user) {
-                        console.log('no user');
                         return reject(user);
                     }
-
-                    console.log(user);
-
-                    return resolve(user);
-                });
-            });
-        },
-        changePasswordByUserId(id, newPassword){
-            return new Promise((resolve, reject) => {
-                User.findOneAndUpdate({_id: id}, {$set:{_password: newPassword}}, (err, user) => {
-
-                    console.log('Changing password');
-
-                    if (err) {
-                        return reject(err);
-                    }
-
-                    if (!user) {
-                        return reject(user);
-                    }
-
-                    console.log(user);
 
                     return resolve(user);
                 });

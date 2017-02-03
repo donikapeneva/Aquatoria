@@ -9,7 +9,7 @@ module.exports = function (app, data, express) {
     router
         .get('/login', userController.getLogin)
         .post('/login', authController.loginLocal)
-        //fb & google
+        //TODO : fb & google
         .get('/logout', authController.logout)
 
         .get('/register', userController.getRegister)

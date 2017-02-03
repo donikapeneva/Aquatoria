@@ -99,18 +99,18 @@ module.exports = function (data) {
                     // })(req, res, next);
 
                     passport.authenticate('local')(req, res, function () {
-                        console.log('authenticate ');
                         res.status(200)
                             .send({redirectRoute: '/profile'});
                     });
                 })
                 .catch(error => {
-
-                    console.log('contoller errror :: ' + error);
                     res.status(400)
                         .send(JSON.stringify(helper().errorHelper(error)));
                     // .send(JSON.stringify({error : helper().errorHelper(error)}));
                 });
+        },
+        loginFacebook(req, res, next){
+
         }
     };
 };

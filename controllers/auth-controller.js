@@ -6,43 +6,50 @@ const passport = require('passport'),
 module.exports = function (data) {
     return {
         loginLocal(req, res, next){
-            const auth = passport.authenticate('local', function (err, user) {
+            if (req.isAuthenticated()) {
+                console.log('redirecting ');
+                res.render('home');
+            } else {
 
-                if (err) {
-                    next(err);
-                    return;
-                }
+                const auth = passport.authenticate('local', function (err, user) {
 
-                if (!user) {
-                    //ajax
-                    res.status(400);
-                    res.json({
-                        success: false,
-                        message: 'Invalid name or password'
-                    });
-                }
-
-                //save in session
-                req.login(user, err => {
                     if (err) {
                         next(err);
                         return;
                     }
 
-                    res.status(200)
-                    // if authorized -> redirectRoute: '/adminProfile';
-                        .send({redirectRoute: '/home'})
-                });
-            });
-
-            return Promise.resolve()
-                .then(() => {
-                    if (!req.isAuthenticated()) {
-                        auth(req, res, next);
-                    } else {
-                        res.redirect('/home');
+                    if (!user) {
+                        //ajax
+                        res.status(400);
+                        res.json({
+                            success: false,
+                            message: 'Invalid name or password'
+                        });
                     }
-                })
+
+                    //save in session
+                    req.login(user, err => {
+                        if (err) {
+                            next(err);
+                            return;
+                        }
+
+                        res.status(200)
+                        // if authorized -> redirectRoute: '/adminProfile';
+                            .send({redirectRoute: '/home'})
+                    });
+                });
+
+                return Promise.resolve()
+                    .then(() => {
+                        if (!req.isAuthenticated()) {
+                            auth(req, res, next);
+                        } else {
+                            res.redirect('/home');
+                        }
+                    })
+
+            }
         },
         logout(req, res){
             return Promise.resolve()

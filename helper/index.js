@@ -3,8 +3,14 @@
 const util = require('util');
 
 module.exports = function () {
+
+    console.log('helper');
+
     return {
         errorHelper(err) {
+
+            console.log('helper');
+            console.log(err);
 
             let errors = [],
                 messages = {

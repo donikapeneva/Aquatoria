@@ -52,7 +52,6 @@
                     $(dataArray).each(function (i, field) {
                         dataObj[field.name] = field.value;
                     });
-                    console.log(dataObj);
                     return dataObj;
                 })
                 .then((password) => {
@@ -66,6 +65,8 @@
                             window.location = res.redirectRoute;
                         })
                         .fail((err) => {
+                            //TODO : do parser ?
+                            //TODO: in browser it returns 500 error, see why
                             let errorObj = JSON.parse(err.responseText);
                             displayValidationErrors(errorObj.message, $passError);
                         });

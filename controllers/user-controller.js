@@ -3,7 +3,7 @@
 const formidable = require('formidable'),
     uploader = require('../helper/uploader'),
     path = require('path'),
-    helpers = require('../helper');
+    helpers = require('../helper/index.js');
 
 const EXTENSION_PATTERN = /\.(jpg|jpeg|png)$/i;
 
@@ -17,13 +17,17 @@ module.exports = function (data) {
                         console.log('redirecting ');
                         res.render('user/login');
                     } else {
-                        console.log('for some reason ..  ');
-                        // res.redirect('/home');
-                        if (req.user.role === 'admin') {
-                            res.redirect('home', {isAdmin: true});
-                        } else {
-                            res.redirect('home', {isAdmin: false});
-                        }
+                        console.log('the user is logged and presses back button to return on login page');
+                        //TODO : this doesnt solve the problem
+                        //TODO : research if exist fragments (like these in android)
+                        res.redirect('/home');
+                        // if (req.user.role === 'admin') {
+                        //     console.log('admin role');
+                        //     res.redirect('home', {isAdmin: true});
+                        // } else {
+                        //     console.log('user role');
+                        //     res.redirect('home', {isAdmin: false});
+                        // }
                     }
                 });
         },
@@ -72,8 +76,7 @@ module.exports = function (data) {
                     // .send(JSON.stringify({validationError: helpers.errorHelper(err)}));
                 });
         },
-        //                         ?
-        changePassword(req, res, done){
+        changePassword(req, res){
             const passwordObj = req.body;
 
             return Promise.resolve()
@@ -81,26 +84,7 @@ module.exports = function (data) {
                     if (!req.isAuthenticated()) {
                         res.redirect('/home');
                     } else {
-                        return data.getUserById(req.user._id)
-
-                        // .then(() => {
-                        //     //when i repair 'done' callback <- this will work
-                        //    // and redirection (success) code is here
-                        // res.status(200)
-                        //     .send({redirectRoute: '/profile'});
-                        // })
-                        // .catch(error => {
-                        //     // console.log('catch the errrorororo');
-                        //     // // error = {'ValidationError' : 'You must enter your current password'};
-                        //     // console.log(error);
-                        //     // res.status(400)
-                        //     //     .send(JSON.stringify({validationError: helpers.errorHelper(error)}));
-                        //     // // done(error, false)
-                        //     next(error);
-                        // });
-
-                        // return data.findUserByIdAndUpdate(req.user._id, { password : passwordObj.newPassword } );
-                        // return data.changePasswordByUserId(req.user._id, passwordObj.newPassword);
+                        return data.getUserById(req.user._id);
                     }
                 })
                 .then(user => {
@@ -117,26 +101,37 @@ module.exports = function (data) {
                                 next(err);
                             } else {
                                 //TODO is it possible the problem with double loading be caused by redirection & redirectionRoute ?
-                                console.log('1st redirectoin');
                                 res.status(200)
                                     .send({redirectRoute: '/profile'});
                             }
                         });
                     } else {
                         console.log('The password is not correct');
-                        //TODO: done <- callback, from where?
-                        // done(null, false);
 
-                        let err = new Error('The password is not correct');
+                        // return done('You must enter your current password', false);
+                        //
+                        // let err = new Error('The password is not correct');
+                        //
 
-                        res.status(400)
-                            .send(JSON.stringify({validationError: helpers.errorHelper(err)}));
+                        // return done({name: 'ValidationError', message: 'File types allowed: jpg, jpeg, png.'}, false);
+
+                        // let errors = [];
+                        // errors[0] = 'You must enter your current password';
+                        //
+                        // let err = {
+                        //     errors : errors,
+                        //     name : 'ValidationError'
+                        // };
+
+                        throw new Error('You must enter your current password');
+
+                        // res.status(400)
+                        //     .send(JSON.stringify({validationError: helpers.errorHelper(null)}));
                     }
                 })
                 .catch(err => {
-                    console.log(err);
                     res.status(400)
-                        .send(JSON.stringify({validationError: helpers.errorHelper(err)}));
+                        .send(JSON.stringify({message: err.message}));
                 });
         },
         getProfileAvatar(req, res){

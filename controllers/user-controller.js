@@ -40,11 +40,39 @@ module.exports = function (data) {
                         res.status(401).redirect('/unauthorized');
                     } else {
                         if (req.user.role === 'admin') {
-                            res.render('user/profile', {user: req.user, isAdmin: true,});
+
+                            //TODO: load the admins
+                            return data.getAllAdmins();
+                            // res.render('user/profile', {user: req.user, isAdmin: true,});
                         } else {
+                            console.log('isAdmin ' + req.user.role);
                             res.render('user/profile', {user: req.user, isAdmin: false});
                         }
                     }
+                })
+                .then((admins) => {
+
+                    console.log('reseived admins');
+                    console.log(admins);
+
+                    let adminList = [];
+
+                    for (let i = 0; i < admins.length; i++) {
+                        adminList.push({
+                            fullName: admins[i].fullName,
+                            email: admins[i].email
+                        });
+                    }
+
+                    console.log(adminList);
+                    res.render('user/profile', {user: req.user, isAdmin: true, adminList: adminList});
+
+
+                })
+                .catch(err => {
+                    res.status(400);
+                    // .send(JSON.stringify(helper().errorHelper(error)));
+                    // .send(JSON.stringify({validationError: helpers.errorHelper(err)}));
                 });
         },
         updateProfile(req, res){
@@ -68,6 +96,134 @@ module.exports = function (data) {
                     // .send(JSON.stringify({validationError: helpers.errorHelper(err)}));
                 });
         },
+        updateAdmins(req, res){
+
+            //old admins should be replaced by the new ones
+            //working only with the users emails
+
+            console.log('updating admins (controller)');
+            let adminEmails = req.body,
+                toUserEmails = [];
+
+            console.log(adminEmails);
+
+            return Promise.resolve()
+                .then(() => {
+                    if (!req.isAuthenticated()) {
+                        res.redirect('/home');
+                    } else {
+                        return data.getAllAdmins();
+                    }
+                })
+                .then(currentAdmins => {
+
+                    // Array.prototype.unique = function () {
+                    //     let currentArray = this.concat();
+                    //     let emailOnlyArray = [];
+                    //     emailOnlyArray[0] = currentArray[0].email;
+                    //     for (let i = 1; i < currentArray.length; i++) {
+                    //         for (let j = i + 1; j < currentArray.length; j++) {
+                    //             if (currentArray[i].email === currentArray[j].email) {
+                    //                 currentArray.splice(j--, 1);
+                    //                 emailOnlyArray.push(currentArray[i])
+                    //             }
+                    //         }
+                    //     }
+                    //     console.log('unique');
+                    //     console.log(currentArray);
+                    //     return currentArray;
+                    // };
+
+                    for (let i = 0; i < currentAdmins.length; i++){
+                        // make it regular user
+                        console.log(adminEmails);
+                        console.log(adminEmails.indexOf(currentAdmins[i].email));
+                        if(adminEmails.indexOf(currentAdmins[i].email) < 0){
+                            toUserEmails.push(currentAdmins[i].email);
+                        }
+                    }
+
+
+                    console.log('admin emails');
+                    console.log(adminEmails);
+
+                    console.log('to user');
+                    console.log(toUserEmails);
+
+                    return Promise.resolve()
+                        .then(() => {
+                            // return data.updateAdminsToUsers(toUserEmails);
+                            return data.updateAdmins(adminEmails, toUserEmails);
+
+                        })
+                        .catch(err => {
+                            throw new Error('data is not returned');
+                            // res.status(400)
+                            // .send(JSON.stringify(helper().errorHelper(error)));
+                            // .send(JSON.stringify({validationError: helpers.errorHelper(err)}));
+                        });
+
+                })
+                // .then(updatedAdminList => {
+                //
+                //     console.log('updatedAdminList');
+                //     console.log(updatedAdminList);
+                //     res.status(200)
+                //         .send({redirectRoute: '/profile', adminList: updatedAdminList});
+                // })
+                .catch(err => {
+
+                    console.log('err');
+                    console.log(err);
+                    res.status(400)
+                    // .send(JSON.stringify(helper().errorHelper(error)));
+                    // .send(JSON.stringify({validationError: helpers.errorHelper(err)}));
+                });
+        },
+        // addAdmin(req, res){
+        //     const userToAdmin = req.body;
+        //     console.log(userToAdmin);
+        //
+        //     return Promise.resolve()
+        //         .then(() => {
+        //             if (!req.isAuthenticated()) {
+        //                 res.redirect('/home');
+        //             } else {
+        //                 return data.makeAdmin(userToAdmin.email);
+        //             }
+        //         })
+        //         .then(user => {
+        //             res.status(200)
+        //                 .send({redirectRoute: '/profile', adminName: user.fullName, adminEmail: user.email});
+        //         })
+        //         .catch(err => {
+        //             res.status(400)
+        //             // .send(JSON.stringify(helper().errorHelper(error)));
+        //             // .send(JSON.stringify({validationError: helpers.errorHelper(err)}));
+        //         });
+        // },
+        // removeAdmin(req, res){
+        //     const removeAdmin = req.body;
+        //     console.log(removeAdmin);
+        //
+        //     // return Promise.resolve()
+        //     //     .then(() => {
+        //     //         if (!req.isAuthenticated()) {
+        //     //             res.redirect('/home');
+        //     //         } else {
+        //     //             return data.makeAdmin(removeAdmin.email);
+        //     //         }
+        //     //     })
+        //     //     .then(user => {
+        //     //         res.status(200)
+        //     //             .send({redirectRoute: '/profile', adminName: user.fullName, adminEmail: user.email});
+        //     //     })
+        //     //     .catch(err => {
+        //     //         res.status(400)
+        //     //         // .send(JSON.stringify(helper().errorHelper(error)));
+        //     //         // .send(JSON.stringify({validationError: helpers.errorHelper(err)}));
+        //     //     });
+        // },
         changePassword(req, res){
             const passwordObj = req.body;
 

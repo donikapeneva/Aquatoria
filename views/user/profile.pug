@@ -11,8 +11,46 @@ block content
         h1
             strong= user.fullName + "'s profile"
     span
+        p #{isAdmin ? 'admin' : 'user'}
+
+    span
             button(type="button" id="logout-button") logout
-    div
+
+
+    //TODO: local includes ?
+
+    if isAdmin
+        span
+            h3 add/remove admin:
+
+            span(id="error-add-admin-container")
+
+            form(role="form" action="" method="post" id="add-admin-form")
+
+                input(type="email" name="email" placeholder="Email@" id="form-email")
+
+                button(type="button" id="add-admin-button") Add
+
+
+            p #{adminList}
+
+            //script.adminListData='#{adminList}'
+
+            ul(id="admin-list")
+                //script var adminListData = #{adminList}
+
+                //each admin in adminList
+                //    li= admin.fullName
+                //    //button(type="button" ) X
+                //else
+                //    li There are no admins
+
+
+            button(type="button" id="save-admins-button") Save Admins
+
+
+
+    span
         h3 Here you can edit your profile information
 
         div
@@ -60,3 +98,8 @@ block content
         block specificJs
             script(src="/static/scripts/utils/validator.js")
             script(src="/static/scripts/user/edit-profile.js")
+            script(src="/static/scripts/user/add-admin.js")
+                //parse/ stringify
+            script(type='text/javascript').var adminListData = !{JSON.stringify(adminList)};
+
+

@@ -22,6 +22,12 @@ module.exports = function (app, data, express) {
         .get('/profile/avatar', userController.getProfileAvatar)
         .post('/profile/avatar', userController.uploadProfileAvatar)
 
+        .post('/manageAdmins', userController.updateAdmins)
+
+        // .post('/addAdmin', userController.addAdmin)
+        // .post('/removeAdmin', userController.removeAdmin)
+
+
         .get('/unauthorized', userController.getUnauthorized)
 
         .get('/contact', userController.getContactForm)

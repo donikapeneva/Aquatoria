@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 
 var requiredMessage = '{PATH} is required';
-const roles = ['picture', 'song', 'videoLink'];
+const roles = ['photo', 'song', 'videoLink'];
 
 let itemSchema = new mongoose.Schema({
     title: {

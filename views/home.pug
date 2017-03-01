@@ -4,7 +4,7 @@ block app-title
     | AquatoriaDesigns
 
 block vars
-    - var photosLink = '../photos/photos';
+    - var photosLink = 'items/photos';
     - var musicLink = 'music';
     - var videosLink = 'videos';
     - var designLink = 'photos';
@@ -19,7 +19,7 @@ block content
     div
         if user
             a(href="/" + profileLink) Profile
-        a(href="/" + photosLink) Photos
+        a(href= "/" + photosLink) Photos
         a(href="/" + videosLink) Videos
         a(href="/" + musicLink) Music
         //a(href="/" + designLink) Design

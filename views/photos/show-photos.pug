@@ -1,1 +1,65 @@
-something
+extends ../_layout
+
+block app-title
+    | Photos | AquatoriaDesigns
+
+block vars
+    - imageUrl = 'lalal'
+
+block content
+
+    div
+        h2 Photos
+
+    div
+        if isAdmin
+            span
+                h3 upload photo
+
+                span(id="error-upload-photo-container")
+
+                form(role="form" enctype="multipart/form-data" action="" method="post" id="upload-photo-form")
+
+                    label(for="form-file") File
+                    input(type="file"
+                        multiple="multiple"
+                        name="file"
+                        id="form-file")
+                    br
+
+                    label(for="form-upload-title") Title
+                    input(type="text"
+                        name="uploadTitle"
+                        id="form-upload-title")
+                    br
+
+                    label(for="form-upload-category") Category
+                        input(type="text"
+                        name="uploadCategory"
+                        id="form-upload-category")
+                    br
+
+                    label(for="form-upload-description") Description
+                        input(type="text"
+                        name="uploadDescription"
+                        id="form-upload-description")
+                    br
+
+                    button(type="button" id="upload-button") Upload
+
+
+    //select(id="select-category")
+    //    option(value="test")
+
+
+    span(id="item-container")
+
+
+
+    block specificJs
+        script(src="/static/scripts/utils/validator.js")
+        script(src="/static/scripts/items/photos/upload-photo.js")
+        script(type='text/javascript').var itemsListData = !{JSON.stringify(items)};
+
+
+

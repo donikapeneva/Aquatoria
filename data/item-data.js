@@ -17,7 +17,11 @@ module.exports = function (models) {
 
             return new Promise((resolve, reject) => {
                 createItem.save(err => {
+
                     if (err) {
+
+                    console.log(err);
+                    console.log('err');
                         return reject(err);
                     }
                     return resolve(createItem);

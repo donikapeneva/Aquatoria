@@ -33,10 +33,15 @@ block content
                         id="form-upload-title")
                     br
 
-                    label(for="form-upload-category") Category
-                        input(type="text"
-                        name="uploadCategory"
-                        id="form-upload-category")
+                    label(for="form-select-category" || "form-input-category" ) Category
+                        select(id="form-select-category" name="uploadCategory")
+                            each category in categories.length ? categories : ['There are no categories']
+                                option(value=category) #{category}
+
+
+
+                    button(type="button" id="new-category-button") New Category
+
                     br
 
                     label(for="form-upload-description") Description
@@ -48,8 +53,10 @@ block content
                     button(type="button" id="upload-button") Upload
 
 
-    //select(id="select-category")
-    //    option(value="test")
+    div
+        select(id="select-category")
+            each category in categories.length ? categories : ['There are no categories']
+                option(value=category) #{category}
 
 
     span(id="item-container")
@@ -59,7 +66,9 @@ block content
     block specificJs
         script(src="/static/scripts/utils/validator.js")
         script(src="/static/scripts/items/photos/upload-photo.js")
-        script(type='text/javascript').var itemsListData = !{JSON.stringify(items)};
+        script(src="/static/scripts/items/photos/show-photos.js")
+        script(type='text/javascript').var itemsListData = !{JSON.stringify(itemsByCategories)};
+        script(type='text/javascript').var categories = !{JSON.stringify(categories)};
 
 
 

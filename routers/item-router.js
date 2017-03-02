@@ -7,10 +7,7 @@ module.exports = function (app, data, express) {
     let router = new express.Router();
 
     router
-        .get('/:type', function(req, res){
-            categoryController.getCategories(req, res);
-            itemController.getItems(req, res);
-        })
+        .get('/:type', itemController.getItems)
         // .get('/photos', itemController.getItems)
         .get('/:type/:category', itemController.getItemsByCategory)
         .get('/:type/:id', itemController.getItemDetails)
@@ -18,7 +15,8 @@ module.exports = function (app, data, express) {
         //TODO: search
 
         .get('/:type/create', itemController.getUploadItemForm)
-        .post('/:type/create', itemController.uploadItem);
+        .post('/:type/create', itemController.uploadItem)
+        .post('/:type/delete/:id', itemController.deleteItem);
 
     app.use('/items', router);
 };

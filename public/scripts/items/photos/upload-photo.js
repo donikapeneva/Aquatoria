@@ -12,39 +12,34 @@
         $uploadPhotoButton = $('#upload-button'),
         $photoFile = $('#form-file'),
         itemContainer = document.getElementById('item-container'),
-        itemListChildren = itemContainer.children;
+        itemListChildren = itemContainer.children,
+        $newCategoryBtn = $('#new-category-button');
 
-    listPhotos();
-    // evalPhotoList();
 
-    function listPhotos() {
-        for (let i = 0; i < itemsListData.length; i++) {
+    console.log(categories);
 
-            console.log(itemsListData[i]);
-            console.log(itemsListData[i].body);
+    $newCategoryBtn.unbind('click');
+    $newCategoryBtn.on('click', function(){
+        console.log('click new category');
 
-            let itemData, itemInfo;
+        resetErrorContainer();
 
-            itemData = document.createElement('img');
-            itemData.src = itemsListData[i].body;
-            console.log(itemData);
+        var category = prompt("Enter new category");
 
-            itemContainer.append(itemData);
+        if (category != null) {
+            if(categories.includes(category)){
+                alert('This category already exists.');
+            } else{
+                //TODO: jquery or vanilla ?
+                let categorySelect = document.getElementById('form-select-category');
+                categorySelect.options[categorySelect.options.length] = new Option(category, category);
+                $("#form-select-category").val(category);
+            }
         }
-    }
+
+    });
 
 
-    // //BIND CLICK EVENTS TO ELEMENTS
-    // function evalPhotoList() {
-    //     let removeBtn;
-    //     for (let i = 0; i < itemListChildren.length; i++) {
-    //         console.log('element ' + i);
-    //         console.log(adminListData[i]);
-    //         //ADD CLICK EVENT TO DELETE BUTTON
-    //         removeBtn = itemListChildren[i].getElementsByTagName('button')[0];
-    //         removeBtn.onclick = removeAdmin.bind(this, i);
-    //     }
-    // }
 
 
     $uploadPhotoButton.unbind('click');
@@ -102,12 +97,13 @@
                     })
                         .done((res) => {
                             console.log('done');
-                            // window.location = res.redirectRoute;
+                            console.log(res.redirectRoute);
+                            window.location = res.redirectRoute;
                         })
                         .fail((err) => {
                             console.log('fail');
                             let errorObj = JSON.parse(err.responseText);
-                            displayValidationErrors(errorObj.message, 'avatar not uploaded');
+                            displayValidationErrors(errorObj.message, $errorUploadPhotoContainer);
                         });
                     // })
                     // .catch((err) => {
@@ -161,11 +157,9 @@
 
             } else {
                 //inputName === 'upload-title'
-                //inputName === 'upload-category'
                 if (!validator.validateInputString(input, MIN_ALPHA_LENGTH, MAX_ALPHA_LENGTH, ALPHA_PATTERN)) {
                     isFormValid = false;
-                    let inputLabel = inputName === 'upload-title' ? 'title' : 'category';
-                    errMessage = 'The length of the ' + inputLabel + ' must be between 2 and 30 symbols, and cannot contains special signs';
+                    errMessage = 'The length of the title must be between 2 and 30 symbols, and cannot contains special signs';
                     displayValidationErrors(errMessage, $errorUploadPhotoContainer);
                 }
             }

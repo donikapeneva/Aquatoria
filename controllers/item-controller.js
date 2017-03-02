@@ -11,6 +11,7 @@ const EXTENSION_PATTERN = /\.(jpg|jpeg|png)$/i;
 module.exports = function (data) {
     return {
         getItems(req, res){
+            console.log('again');
             // console.log('the item type is');
             // console.log(req.query);
 
@@ -25,14 +26,20 @@ module.exports = function (data) {
                     // return data.getItemsGroupedByCategories(req.params.type);
                     return data.getItemsGroupedByCategories('photo');
                 })
-                .then(items => {
+                .then(itemsByCategories => {
                     //TODO: see if you can export it in function :/
 
-                    let categoryItems = items.test.items;
-                    console.log('items');
-                    console.log(items.test.items);
+                    // let categoryItems = items.test.items;
+                    // console.log('items');
+                    console.log(itemsByCategories);
 
-                    res.render('photos/show-photos', {items: categoryItems, isAdmin: true});
+                    let categories = Object.keys(itemsByCategories);
+
+                    console.log(categories);
+
+
+
+                    res.render('photos/show-photos', {categories: categories, itemsByCategories: itemsByCategories, isAdmin: true});
                     // res.render('photos/show-photos');
                     // res.render('photos/show-photos', {items: items});
 
@@ -59,6 +66,7 @@ module.exports = function (data) {
                 });
         },
         getItemsByCategory(req, res){
+
             return Promise.resolve()
                 .then(() => {
                     return data.getItemsByCategory(req.params.type, req.params.category);
@@ -174,27 +182,26 @@ module.exports = function (data) {
                         if (photoFile.size > form.maxFieldSize) {
                             return reject({name: 'ValidationError', message: 'Maximum file size is 2MB'});
                         } else {
-                            res.status(200)
-                                .send({redirectRoute: '/photos'});
+                            let categoryFolder = photoInfo.uploadCategory,
+                                uploadPathToFolder = path.join(__dirname, '../public/uploads/photos', categoryFolder),
+                                newFileName = photoInfo.uploadTitle + Date.now();
+
+                            //uploading an avatar picture in user's folder
+                            uploader.uploadFile(photoFile, uploadPathToFolder, newFileName)
+                                .then(uploadedFileName => {
+                                    console.log('uploaded');
+                                    resolve(uploadedFileName);
+                                })
+                                .catch((err) => {
+                                    console.log(err);
+                                });
+
+                            // console.log('photoInfo');
+                            // console.log(photoInfo);
+                            // res.end();
                         }
 
-                        let categoryFolder = photoInfo.uploadCategory,
-                            uploadPathToFolder = path.join(__dirname, '../public/uploads/photos', categoryFolder),
-                            newFileName = photoInfo.uploadTitle + Date.now();
 
-                        //uploading an avatar picture in user's folder
-                        uploader.uploadFile(photoFile, uploadPathToFolder, newFileName)
-                            .then(uploadedFileName => {
-                                console.log('uploaded');
-                                resolve(uploadedFileName);
-                            })
-                            .catch((err) => {
-                                console.log(err);
-                            });
-
-                        // console.log('photoInfo');
-                        // console.log(photoInfo);
-                        // res.end();
                     });
 
             })
@@ -220,13 +227,41 @@ module.exports = function (data) {
                 .then((something) => {
                     console.log(something);
                     res.status(200)
-                        .send({redirectRoute: '/photos'});
+                        .send({redirectRoute: '/items/' + req.params.type});
                 })
                 .catch((err) => {
                     res.status(400)
                         .send(JSON.stringify({validationError: [err.message]}));
                 });
 
+        },
+        deleteItem(req, res){
+            return Promise.resolve()
+                .then(() => {
+                    return data.findItemAndUpdate(req.params.id, {isDeleted: true});
+                })
+                .then(item => {
+                    console.log(item);
+                    res.status(200)
+                        .send({redirectRoute: '/items/' + req.params.type});
+
+                    /*
+                     if (!req.isAuthenticated()) {
+                     res.render('items/show-items', {items: items});
+                     } else {
+                     if (req.user.role === 'admin') {
+                     res.render('items/show-items', {items: items, user: req.user, isAdmin: true});
+
+                     } else {
+                     res.render('items/show-items', {items: items, user: req.user, isAdmin: false});
+                     }
+                     }
+                     */
+                })
+                .catch(err => {
+                    res.status(400)
+                        .send(JSON.stringify({validationError: [err.message]}));
+                });
         }
     };
 };

@@ -60,7 +60,7 @@ module.exports = function (models) {
         },
         getItemsGroupedByCategories(type) {
             return new Promise((resolve, reject) => {
-                Item.find({type: type}, (err, items) => {
+                Item.find({type: type, isDeleted: false}, (err, items) => {
                     if (err) {
                         return reject(err);
                     }
@@ -86,9 +86,11 @@ module.exports = function (models) {
             });
         },
         findItemAndUpdate(id, update) {
+            console.log('updating');
             return new Promise((resolve, reject) => {
                 Item.findOneAndUpdate({_id: id}, update, {new: true}, (err, item) => {
                     if (err) {
+                        console.log(err);
                         return reject(err);
                     }
 
@@ -99,6 +101,9 @@ module.exports = function (models) {
                     return resolve(item);
                 });
             });
+        },
+        getCategoriesByType(type){
+
         }
     }
 };

@@ -12,12 +12,10 @@ module.exports = function (config) {
     //loading the models
     let User = require('../models/user_model');
     let Item = require('../models/item-model');
-    let Category = require('../models/category-model');
 
     let models = {
         User: User,
-        Item: Item,
-        Category: Category
+        Item: Item
     };
 
     //if we have different models we just pin them to data

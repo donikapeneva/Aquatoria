@@ -2,7 +2,6 @@
 
 module.exports = function (app, data, express) {
     let itemController = require('../controllers/item-controller')(data);
-    let categoryController = require('../controllers/category-controller')(data);
 
     let router = new express.Router();
 

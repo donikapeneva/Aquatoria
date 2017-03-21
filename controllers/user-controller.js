@@ -36,7 +36,7 @@ module.exports = function (data) {
             return Promise.resolve()
                 .then(() => {
                     if (!req.isAuthenticated()) {
-                        //TODO redirect to home 
+                        //TODO redirect to home
                         res.status(401).redirect('/unauthorized');
                     } else {
                         if (req.user.role === 'admin') {
@@ -246,7 +246,6 @@ module.exports = function (data) {
                                 if (err) {
                                     next(err);
                                 } else {
-                                    //TODO is it possible the problem with double loading be caused by redirection & redirectionRoute ?
                                     res.status(200)
                                         .send({redirectRoute: '/profile'});
                                 }

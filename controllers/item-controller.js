@@ -6,42 +6,24 @@ const formidable = require('formidable'),
     fs = require('fs'),
     uploader = require('../helper/uploader');
 
-const EXTENSION_PATTERN = /\.(jpg|jpeg|png)$/i;
-
 module.exports = function (data) {
     return {
         getItems(req, res){
-            console.log('again');
-            // console.log('the item type is');
-            // console.log(req.query);
-
-
             console.log(req.isAuthenticated());
 
             return Promise.resolve()
                 .then(() => {
-                    //TODO: this may not be valid for music or video
+                    //TODO: cases of params.type
                     console.log(req.params.type);
-                    // return data.getAllItems();
                     // return data.getItemsGroupedByCategories(req.params.type);
                     return data.getItemsGroupedByCategories('photo');
                 })
                 .then(itemsByCategories => {
                     //TODO: see if you can export it in function :/
-
-                    // let categoryItems = items.test.items;
-                    // console.log('items');
-                    console.log(itemsByCategories);
-
                     let categories = Object.keys(itemsByCategories);
 
-                    console.log(categories);
-
-
-
+                    let templatePath = req.params.type + '/show-' + req.params.type;
                     res.render('photos/show-photos', {categories: categories, itemsByCategories: itemsByCategories, isAdmin: true});
-                    // res.render('photos/show-photos');
-                    // res.render('photos/show-photos', {items: items});
 
                     // if (!req.isAuthenticated()) {
                     //     res.render('items/show-items-by-categories', {items: items});

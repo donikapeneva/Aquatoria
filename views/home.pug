@@ -11,19 +11,42 @@ block vars
 
     - var profileLink = 'profile';
 
+    - var bodyClass = 'home';
+
 
 
 block content
-    div
-        h2 Aqua
-    div
-        if user
-            a(href="/" + profileLink) Profile
-        a(href= "/" + photosLink) Photos
-        a(href="/" + videosLink) Videos
-        a(href="/" + musicLink) Music
-        //a(href="/" + designLink) Design
-        br
-        if !user
-            a(href="/login") Login or Register
+    #homepage-cover
+
+            div
+                h2#title Aquatoria Designs
+                if !user
+                    a(href="/login") Login or Register
+
+            span.align
+                if user
+                    a(href="/" + profileLink) Profile
+                .wrap
+                    div.aligningPoint
+
+
+                        //button.homeButton.photos
+                        //    span Photos
+                    div.wrapper.triangle.bottom
+                        //button.homeButton.videos
+                            span Videos
+
+                    div.wrapper.triangle.left
+                    div.wrapper.triangle.right
+                    div.wrapper.triangle.up
+                    //button.homeButton.music
+                    //    span Music
+                    //
+                    //button.homeButton.design
+                    //    span.rotate-opposite Design
+                //a.homeButton(href= "/" + photosLink) Photos
+                //a.homeButton(href="/" + videosLink) Videos
+                //a.homeButton(href="/" + musicLink) Music
+                //a(href="/" + designLink) Design
+
 

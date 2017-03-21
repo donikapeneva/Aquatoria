@@ -9,8 +9,13 @@ html(lang="en")
         title
             block app-title
 
-            block vars
-    body
+        link(rel="stylesheet", href="/static/styles/css/main.css")
+        link(rel="stylesheet", href="/static/styles/css/home.css")
+
+    block vars
+        - var bodyClass = '';
+
+    body(class='page-' + bodyClass)
         nav
 
         block content

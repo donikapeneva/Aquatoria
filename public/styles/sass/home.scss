@@ -28,19 +28,16 @@
 
   .align {
     position: fixed;
-    width: 500px;
-    height: 200px;
-    top: 50%;
-    left: 50%;
-    margin-top: -100px; /* Negative half of height. */
-    margin-left: -250px; /* Negative half of width. */
+    width: 300px;
+    height: 300px;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    //margin-top: -100px; /* Negative half of height. */
+    //margin-left: -250px; /* Negative half of width. */
 
-    //position: fixed;
-    //width: 500px;
-    //height: 200px;
-    //margin: 5% auto; /* Will not center vertically and won't work in IE6/7. */
-    //left: 0;
-    //right: 0;
 
     -webkit-box-align: center;
     -webkit-box-pack: center;
@@ -52,6 +49,7 @@
       position: relative;
       overflow: hidden;
       margin: 2px auto;
+
 
       .aligningPoint {
         background: brown;
@@ -69,15 +67,23 @@
         }
       }
 
+
       .wrapper {
 
         margin: auto;
         bottom: 20px;
         position: absolute;
         left: 75px;
+        opacity: 0.5;
 
-        //background-position-x: -14px;
-        //background-position-y: -18px;
+        &.bottom,
+        &.left,
+        &.top,
+        &.right {
+          &:hover {
+            opacity: 1;
+          }
+        }
 
         &.bottom {
 
@@ -88,7 +94,7 @@
           left: 0;
         }
 
-        &.up {
+        &.top {
           position: relative;
           left: 12px;
           bottom: 52px;
@@ -100,12 +106,14 @@
           top: 88px;
         }
 
+
+
         &.triangle {
 
-          background-position-x: -14px;
-          background-position-y: -18px;
+          //background-position-x: -14px;
+          //background-position-y: -18px;
           //position: relative;
-          background: url('/static/media/net.jpg');;
+          background: url('/static/media/net.jpg');
           text-align: left;
         }
         &.triangle:before,
@@ -116,13 +124,19 @@
           content: '';
           position: absolute;
           background: inherit;
+
         }
         &.triangle,
         &.triangle:before,
         &.triangle:after {
-
+          //opacity: 0.5;
           background-position-x: -14px;
           background-position-y: -18px;
+
+          //&:hover {
+          //  opacity: 1;
+          //}
+
           width: 50px;
           height: 50px;
           border-top-right-radius: 30%;
@@ -135,7 +149,7 @@
             transform: rotate(-90deg) skewX(-30deg) scale(1, .866);
           }
 
-          &.up {
+          &.top {
             transform: rotate(0deg) skewX(-30deg) scale(1, .866);
           }
 
@@ -153,152 +167,55 @@
 
       }
 
-      /*
+    }
 
-      // this makes the form with borders
-      // the last one - with overflow: hidden
 
-      .homeButton {
+    .container {
 
-        overflow: hidden;
 
-        // button shape by borders
-        //width: 0;
-        //height: 0;
-        //border-left: 50px dashed transparent;
-        //border-right: 50px dashed transparent;
-        //border-bottom: 60px dashed #ccc;
-        //border-top: 0;
-        //margin: -2px -45px;
-        //transition: margin .2s ease, border .2s ease;
-        //position: absolute;
-        //z-index: 1;
-        //padding: 0;
-        //background: transparent;
-        //
-        //border-radius: 3px;
-        //
-        //margin: auto;
-        //
-        //bottom: 0;
+      &.right,
+      &.left,
+      &.top,
+      &.bottom  {
+        background: #162b2d;
+        opacity: 0.5;
+        visibility: hidden;
+      }
 
-        left: 50px;
+      &.right,
+      &.left {
+        width: 400px;
+        height: 250px;
+      }
 
+      &.left {
+        // left: - (align.weight + this.weight - align.weight) = this.weight
         position: absolute;
-        height: 70%;
-        width: 70%;
-        background: url('/static/media/net.jpg');
-        transform-origin: bottom left;
-        bottom: 0;
-        transition: all 0.6s;
-        left: 2px;
-        //left: 0;
-        cursor: pointer;
-        transform: rotate(45deg);
-
-        text-align: center;
-        vertical-align: middle;
-
-        &.photos {
-          //transform: rotate(90deg);
-          transform-origin: bottom right;
-          right: 0;
-          transform: rotate(45deg);
-          bottom: 0;
-          left: 30%;
-
-          //transform-origin: top right;
-          //right: 2px;
-          //transform: rotate(-45deg);
-          //top: 2px;
-          //left: 30%;
-        }
-
-        &.wrap.music {
-          transform-origin: bottom left;
-
-          transform: rotate(-180deg);
-          top: 0;
-          left: 152px;
-          margin: 0;
-
-        }
-
-        &.wrap.design {
-          transform-origin: bottom right;
-
-          transform: rotate(90deg);
-          bottom: 20px;
-          left: -65px;
-        }
-
-        //span {
-        //  display: inline-block;
-        //  transform: rotate(-45deg);
-        //
-        //  &.rotate-opposite {
-        //    transform: rotate(45deg);
-        //  }
-        //}
+        left: -400px;
+        // top: (align.height - this.height) / 2
+        top: 25px;
 
       }
-*/
-      /*
-              position: absolute;
-              height: 70%;
-              width: 70%;
-              background: url('/static/media/cover.jpg');
-              transform-origin: bottom left;
-              bottom: 0;
-              transition: all 0.6s;
-              left: 2px;
-              //left: 0;
-              cursor: pointer;
-              transform: rotate(45deg);
 
-              text-align: center;
-              vertical-align: middle;
+      &.top,
+      &.bottom {
+        width: 400px;
+        height: 200px;
+        position: absolute;
+        //left: - (this.height/2 - align.height/2 )
+        left: -50px;
+      }
 
-              &.photos {
-                //transform: rotate(90deg);
-                transform-origin: bottom right;
-                right: 0;
-                transform: rotate(45deg);
-                bottom: 0;
-                left: 30%;
+      &.top {
+        //top: this.height
+        top: -200px;
+      }
 
-                //transform-origin: top right;
-                //right: 2px;
-                //transform: rotate(-45deg);
-                //top: 2px;
-                //left: 30%;
-              }
+      &.bottom {
+        //top: align.height - this.height + this.height = align.height
+        top: 300px;
+      }
 
-              &.design {
-                transform: rotate(-45deg);
-
-                span {
-                  transform: rotate(45deg);
-                }
-              }
-
-              &.music {
-                transform-origin: top right;
-                right: 0;
-                transform: rotate(45deg);
-                top: 0;
-                left: 30%;
-              }
-
-              span {
-                display: inline-block;
-                transform: rotate(-45deg);
-
-                &.rotate-opposite {
-                  transform: rotate(45deg);
-                }
-              }
-      */
     }
 
   }

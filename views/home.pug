@@ -4,7 +4,7 @@ block app-title
     | AquatoriaDesigns
 
 block vars
-    - var photosLink = 'items/photos';
+    - var photosLink = '/items/photos';
     - var musicLink = 'music';
     - var videosLink = 'videos';
     - var designLink = 'photos';
@@ -29,24 +29,27 @@ block content
                 .wrap
                     div.aligningPoint
 
-
-                        //button.homeButton.photos
-                        //    span Photos
-                    div.wrapper.triangle.bottom
-                        //button.homeButton.videos
-                            span Videos
-
+                    div.wrapper.triangle.bottom(onclick="location.href='" + photosLink + "';"
+                                                style="cursor:pointer;")
+                    //span Videos
                     div.wrapper.triangle.left
-                    div.wrapper.triangle.right
-                    div.wrapper.triangle.up
-                    //button.homeButton.music
+                    div.wrapper.triangle.right(onclick="location.href='" + '/home' + "';"
+                                                style="cursor:pointer;")
+                    div.wrapper.triangle.top(onclick="location.href='" + '/home' + "';"
+                                                style="cursor:pointer;")
+
+                div.container.right
+                div.container.left
+                div.container.top
+                div.container.bottom
+
                     //    span Music
-                    //
-                    //button.homeButton.design
                     //    span.rotate-opposite Design
                 //a.homeButton(href= "/" + photosLink) Photos
                 //a.homeButton(href="/" + videosLink) Videos
                 //a.homeButton(href="/" + musicLink) Music
                 //a(href="/" + designLink) Design
 
+block specificJs
+    script(src="/static/scripts/home.js")
 

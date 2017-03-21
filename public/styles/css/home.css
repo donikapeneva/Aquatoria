@@ -19,14 +19,13 @@
     letter-spacing: 4px; }
   .page-home .align {
     position: fixed;
-    width: 500px;
-    height: 200px;
-    top: 50%;
-    left: 50%;
-    margin-top: -100px;
-    /* Negative half of height. */
-    margin-left: -250px;
-    /* Negative half of width. */
+    width: 300px;
+    height: 300px;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
     -webkit-box-align: center;
     -webkit-box-pack: center;
     display: -webkit-box; }
@@ -35,153 +34,7 @@
       width: 200px;
       position: relative;
       overflow: hidden;
-      margin: 2px auto;
-      /*
-
-      // this makes the form with borders
-      // the last one - with overflow: hidden
-
-      .homeButton {
-
-        overflow: hidden;
-
-        // button shape by borders
-        //width: 0;
-        //height: 0;
-        //border-left: 50px dashed transparent;
-        //border-right: 50px dashed transparent;
-        //border-bottom: 60px dashed #ccc;
-        //border-top: 0;
-        //margin: -2px -45px;
-        //transition: margin .2s ease, border .2s ease;
-        //position: absolute;
-        //z-index: 1;
-        //padding: 0;
-        //background: transparent;
-        //
-        //border-radius: 3px;
-        //
-        //margin: auto;
-        //
-        //bottom: 0;
-
-        left: 50px;
-
-        position: absolute;
-        height: 70%;
-        width: 70%;
-        background: url('/static/media/net.jpg');
-        transform-origin: bottom left;
-        bottom: 0;
-        transition: all 0.6s;
-        left: 2px;
-        //left: 0;
-        cursor: pointer;
-        transform: rotate(45deg);
-
-        text-align: center;
-        vertical-align: middle;
-
-        &.photos {
-          //transform: rotate(90deg);
-          transform-origin: bottom right;
-          right: 0;
-          transform: rotate(45deg);
-          bottom: 0;
-          left: 30%;
-
-          //transform-origin: top right;
-          //right: 2px;
-          //transform: rotate(-45deg);
-          //top: 2px;
-          //left: 30%;
-        }
-
-        &.wrap.music {
-          transform-origin: bottom left;
-
-          transform: rotate(-180deg);
-          top: 0;
-          left: 152px;
-          margin: 0;
-
-        }
-
-        &.wrap.design {
-          transform-origin: bottom right;
-
-          transform: rotate(90deg);
-          bottom: 20px;
-          left: -65px;
-        }
-
-        //span {
-        //  display: inline-block;
-        //  transform: rotate(-45deg);
-        //
-        //  &.rotate-opposite {
-        //    transform: rotate(45deg);
-        //  }
-        //}
-
-      }
-*/
-      /*
-              position: absolute;
-              height: 70%;
-              width: 70%;
-              background: url('/static/media/cover.jpg');
-              transform-origin: bottom left;
-              bottom: 0;
-              transition: all 0.6s;
-              left: 2px;
-              //left: 0;
-              cursor: pointer;
-              transform: rotate(45deg);
-
-              text-align: center;
-              vertical-align: middle;
-
-              &.photos {
-                //transform: rotate(90deg);
-                transform-origin: bottom right;
-                right: 0;
-                transform: rotate(45deg);
-                bottom: 0;
-                left: 30%;
-
-                //transform-origin: top right;
-                //right: 2px;
-                //transform: rotate(-45deg);
-                //top: 2px;
-                //left: 30%;
-              }
-
-              &.design {
-                transform: rotate(-45deg);
-
-                span {
-                  transform: rotate(45deg);
-                }
-              }
-
-              &.music {
-                transform-origin: top right;
-                right: 0;
-                transform: rotate(45deg);
-                top: 0;
-                left: 30%;
-              }
-
-              span {
-                display: inline-block;
-                transform: rotate(-45deg);
-
-                &.rotate-opposite {
-                  transform: rotate(45deg);
-                }
-              }
-      */ }
+      margin: 2px auto; }
       .page-home .align .wrap .aligningPoint {
         background: brown;
         height: 10px;
@@ -196,11 +49,14 @@
         margin: auto;
         bottom: 20px;
         position: absolute;
-        left: 75px; }
+        left: 75px;
+        opacity: 0.5; }
+        .page-home .align .wrap .wrapper.bottom:hover, .page-home .align .wrap .wrapper.left:hover, .page-home .align .wrap .wrapper.top:hover, .page-home .align .wrap .wrapper.right:hover {
+          opacity: 1; }
         .page-home .align .wrap .wrapper.left {
           bottom: 87px;
           left: 0; }
-        .page-home .align .wrap .wrapper.up {
+        .page-home .align .wrap .wrapper.top {
           position: relative;
           left: 12px;
           bottom: 52px; }
@@ -209,8 +65,6 @@
           right: 0;
           top: 88px; }
         .page-home .align .wrap .wrapper.triangle {
-          background-position-x: -14px;
-          background-position-y: -18px;
           background: url("/static/media/net.jpg");
           text-align: left; }
         .page-home .align .wrap .wrapper.triangle:before, .page-home .align .wrap .wrapper.triangle:after {
@@ -227,7 +81,7 @@
           transform: rotate(-60deg) skewX(-30deg) scale(1, 0.866); }
           .page-home .align .wrap .wrapper.triangle.left {
             transform: rotate(-90deg) skewX(-30deg) scale(1, 0.866); }
-          .page-home .align .wrap .wrapper.triangle.up {
+          .page-home .align .wrap .wrapper.triangle.top {
             transform: rotate(0deg) skewX(-30deg) scale(1, 0.866); }
           .page-home .align .wrap .wrapper.triangle.right {
             transform: rotate(90deg) skewX(-30deg) scale(1, 0.866); }
@@ -235,5 +89,25 @@
           transform: rotate(-135deg) skewX(-45deg) scale(1.414, 0.707) translate(0, -50%); }
         .page-home .align .wrap .wrapper.triangle:after {
           transform: rotate(135deg) skewY(-45deg) scale(0.707, 1.414) translate(50%); }
+    .page-home .align .container.right, .page-home .align .container.left, .page-home .align .container.top, .page-home .align .container.bottom {
+      background: #162b2d;
+      opacity: 0.5;
+      visibility: hidden; }
+    .page-home .align .container.right, .page-home .align .container.left {
+      width: 400px;
+      height: 250px; }
+    .page-home .align .container.left {
+      position: absolute;
+      left: -400px;
+      top: 25px; }
+    .page-home .align .container.top, .page-home .align .container.bottom {
+      width: 400px;
+      height: 200px;
+      position: absolute;
+      left: -50px; }
+    .page-home .align .container.top {
+      top: -200px; }
+    .page-home .align .container.bottom {
+      top: 300px; }
 
 /*# sourceMappingURL=home.css.map */

@@ -4,16 +4,8 @@ block app-title
     | AquatoriaDesigns
 
 block vars
-    - var photosLink = '/items/photos';
-    - var musicLink = 'music';
-    - var videosLink = 'videos';
-    - var designLink = 'photos';
-
     - var profileLink = 'profile';
-
     - var bodyClass = 'home';
-
-
 
 block content
     #homepage-cover
@@ -21,34 +13,39 @@ block content
             div
                 h2#title Aquatoria Designs
                 if !user
-                    a(href="/login") Login or Register
+                    a#loginLink(href="/login") Login or Register
 
-            span.align
+            div.align
                 if user
                     a(href="/" + profileLink) Profile
-                .wrap
-                    div.aligningPoint
-
-                    div.wrapper.triangle.bottom(onclick="location.href='" + photosLink + "';"
-                                                style="cursor:pointer;")
-                    //span Videos
+                .wrap-buttons
+                    div.wrapper.triangle.bottom
                     div.wrapper.triangle.left
-                    div.wrapper.triangle.right(onclick="location.href='" + '/home' + "';"
-                                                style="cursor:pointer;")
-                    div.wrapper.triangle.top(onclick="location.href='" + '/home' + "';"
-                                                style="cursor:pointer;")
+                    div.wrapper.triangle.right
+                    div.wrapper.triangle.top
+                    //span.bottom-category Videos
 
                 div.container.right
+                    span.img-box
+                    span.img-box
+                    span.img-box
+                    span.img-box
                 div.container.left
+                    span.img-box
+                    span.img-box
+                    span.img-box
+                    span.img-box
                 div.container.top
+                    span.img-box
+                    span.img-box
+                    span.img-box
+                    span.img-box
                 div.container.bottom
+                    span.img-box
+                    span.img-box
+                    span.img-box
+                    span.img-box
 
-                    //    span Music
-                    //    span.rotate-opposite Design
-                //a.homeButton(href= "/" + photosLink) Photos
-                //a.homeButton(href="/" + videosLink) Videos
-                //a.homeButton(href="/" + musicLink) Music
-                //a(href="/" + designLink) Design
 
 block specificJs
     script(src="/static/scripts/home.js")

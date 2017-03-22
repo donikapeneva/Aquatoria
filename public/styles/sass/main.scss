@@ -14,26 +14,22 @@ body {
     overflow-x: hidden;
 }
 
-#homepage-cover {
-    background: url('/static/media/cover.jpg') no-repeat center center fixed;
+.homepage-cover {
+    background: url('/static/media/cover1.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     width: 100vw;
     height: 100vh;
-    //float: left;
     position: fixed;
+    transform: scale(1.02); // removes border
 }
 
-
-.homepage-cover {
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    width: 100vw;
-    height: 100vh;
-    //float: left;
-    position: fixed;
+.blured {
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -o-filter: blur(2px);
+    -ms-filter: blur(2px);
 }

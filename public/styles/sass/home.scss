@@ -1,14 +1,20 @@
 $triangle-btn-height: 55px;
 $triangle-btn-width: 55px;
+
 $align-buttons-box-width: 300px;
 $align-buttons-box-height: 300px;
+
 $wrap-buttons-width: 200px;
 $wrap-buttons-height: 200px;
+
 $container-background: #162b2d;
+
 $side-container-width: 400px;
 $side-container-height: 250px;
+
 $top-bottom-container-width: 400px;
 $top-bottom-container-height: 200px;
+
 $container-border-radius: 5%;
 
 .page-home {
@@ -46,13 +52,8 @@ $container-border-radius: 5%;
     width: 15%;
     float: left;
     font-weight: 600;
-    //font-style: normal;
-    //text-shadow: none;
     letter-spacing: 4px;
     //text-transform: uppercase;
-    //animation-duration: 1.5s;
-    //animation-delay: 2s;
-    //animation-iteration-count: 1;
   }
 
   .align {
@@ -64,9 +65,6 @@ $container-border-radius: 5%;
     right: 0;
     left: 0;
     margin: auto;
-    //margin-top: -100px; /* Negative half of height. */
-    //margin-left: -250px; /* Negative half of width. */
-
     -webkit-box-align: center;
     -webkit-box-pack: center;
     display: -webkit-box;
@@ -91,7 +89,6 @@ $container-border-radius: 5%;
         &.right {
           &:hover {
             opacity: 1;
-
           }
         }
 
@@ -164,37 +161,12 @@ $container-border-radius: 5%;
         &.triangle:after {
           transform: rotate(135deg) skewY(-45deg) scale(.707, 1.414) translate(50%);
         }
-
       }
     }
-
-
-
-      //&:before {
-      //  content: '';
-      //  position: absolute;
-      //  background: inherit;
-      //
-      //  width: 0;
-      //  height: 0;
-      //  border-left: 5px solid transparent;
-      //  border-right: 5px solid transparent;
-      //
-      //  border-bottom: 5px solid black;
-      //
-      //}
 
       .container {
 
         border-radius: $container-border-radius;
-
-
-
-        //display: inline-grid;
-        //grid-template-columns: 50% 50%;
-        //grid-template-rows: 50% 50%;
-        //padding: 5px;
-        //border-radius: $container-border-radius;
 
         &.right,
         &.left,
@@ -203,16 +175,6 @@ $container-border-radius: 5%;
           background: $container-background;
           opacity: 0.5;
           visibility: hidden;
-
-          &:before {
-            content: '';
-            position: absolute;
-            background-color: darkgreen ;
-            //overflow: hidden;
-
-
-
-          }
         }
 
         &.bottom {
@@ -245,7 +207,6 @@ $container-border-radius: 5%;
 
         &.bottom {
           top: $align-buttons-box-height;
-
         }
 
         .container-box {

@@ -11,7 +11,6 @@ $top-bottom-container-width: 400px;
 $top-bottom-container-height: 200px;
 $container-border-radius: 5%;
 
-
 .page-home {
   float: left;
   width: 100%;
@@ -32,11 +31,12 @@ $container-border-radius: 5%;
     }
 
     &:hover {
-        color: darkcyan;
+      color: darkcyan;
     }
   }
 
   #title {
+    position: fixed;
     margin: 20px 45px;
     color: rgb(0, 255, 255);
     font-size: 30px;
@@ -67,7 +67,6 @@ $container-border-radius: 5%;
     //margin-top: -100px; /* Negative half of height. */
     //margin-left: -250px; /* Negative half of width. */
 
-
     -webkit-box-align: center;
     -webkit-box-pack: center;
     display: -webkit-box;
@@ -92,11 +91,11 @@ $container-border-radius: 5%;
         &.right {
           &:hover {
             opacity: 1;
+
           }
         }
 
         &.bottom {
-
         }
 
         &.left {
@@ -169,63 +168,106 @@ $container-border-radius: 5%;
       }
     }
 
-    .container {
-
-      display: inline-grid;
-      grid-template-columns: 50% 50%;
-      grid-template-rows: 50% 50%;
-      padding: 5px;
-      border-radius: $container-border-radius;
-
-      &.right,
-      &.left,
-      &.top,
-      &.bottom  {
-        background: $container-background;
-        opacity: 0.5;
-        //visibility: hidden;
 
 
+      //&:before {
+      //  content: '';
+      //  position: absolute;
+      //  background: inherit;
+      //
+      //  width: 0;
+      //  height: 0;
+      //  border-left: 5px solid transparent;
+      //  border-right: 5px solid transparent;
+      //
+      //  border-bottom: 5px solid black;
+      //
+      //}
 
-      }
+      .container {
 
-      &.right,
-      &.left {
-        width: $side-container-width;
-        height: $side-container-height;
-      }
-
-      &.left {
-        position: absolute;
-        left: - $side-container-width;
-        top: ($align-buttons-box-height - $side-container-height) / 2;
-      }
-
-      &.top,
-      &.bottom {
-        width: $top-bottom-container-width;
-        height: $top-bottom-container-height;
-        position: absolute;
-        left: - ($align-buttons-box-height / 2 - $top-bottom-container-height / 2);
-      }
-
-      &.top {
-        top: - $top-bottom-container-height;
-      }
-
-      &.bottom {
-        top: $align-buttons-box-height;
-      }
-
-      .img-box {
-        background-color: #444;
-        color: #fff;
         border-radius: $container-border-radius;
-        padding: 2px;
-        margin: 2px;
+
+
+
+        //display: inline-grid;
+        //grid-template-columns: 50% 50%;
+        //grid-template-rows: 50% 50%;
+        //padding: 5px;
+        //border-radius: $container-border-radius;
+
+        &.right,
+        &.left,
+        &.top,
+        &.bottom {
+          background: $container-background;
+          opacity: 0.5;
+          visibility: hidden;
+
+          &:before {
+            content: '';
+            position: absolute;
+            background-color: darkgreen ;
+            //overflow: hidden;
+
+
+
+          }
+        }
+
+        &.bottom {
+
+        }
+
+        &.right,
+        &.left {
+          width: $side-container-width;
+          height: $side-container-height;
+        }
+
+        &.left {
+          position: absolute;
+          left: - $side-container-width;
+          top: ($align-buttons-box-height - $side-container-height) / 2;
+        }
+
+        &.top,
+        &.bottom {
+          width: $top-bottom-container-width;
+          height: $top-bottom-container-height;
+          position: absolute;
+          left: - ($align-buttons-box-height / 2 - $top-bottom-container-height / 2);
+        }
+
+        &.top {
+          top: - $top-bottom-container-height;
+        }
+
+        &.bottom {
+          top: $align-buttons-box-height;
+
+        }
+
+        .container-box {
+          width: 100%;
+          height: 100%;
+          display: inline-grid;
+          grid-template-columns: 50% 50%;
+          grid-template-rows: 50% 50%;
+          padding: 5px;
+
+          .img-box {
+            background-color: #444;
+            color: #fff;
+            border-radius: $container-border-radius;
+            padding: 2px;
+            margin: 2px;
+          }
+        }
+
       }
 
-    }
+
   }
 }
 

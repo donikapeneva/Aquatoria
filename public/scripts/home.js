@@ -1,56 +1,131 @@
 (() => {
     'use strict';
 
-    // const $toVideo = $('#user-login-form'),
-    //     $loginButton = $('#login-button'),
-    //     $loginFormErrorContainer = $('#error-container');
 
-    $('.wrapper.triangle.top')
-        .on('click', function () {
-            location.href = '/home';
-        })
-        .hover(function () {
-                $('div.container.top').css('visibility', 'visible').fadeIn(500);
-            },
-            function () {
-                $('.container.top').css('visibility', 'hidden').fadeOut(100);
-            });
+    const fadeInTime = 300,
+        fadeOutTime = 100,
+        onHoverOpacity = '1',
+        fadeOpacity = '0.5';
 
-    $('.wrapper.triangle.right')
-        .on('click', function () {
-            location.href = '/items/photos';
-        })
-        .hover(
-            function () {
-                $('div.container.right').css('visibility', 'visible').fadeIn(500);
-            },
-            function () {
-                $('.container.right').css('visibility', 'hidden').fadeOut(100);
-            });
+    let topTriangleBtn = $('.wrapper.triangle.top'),
+        rightTriangleBtn = $('.wrapper.triangle.right'),
+        bottomTriangleBtn = $('.wrapper.triangle.bottom'),
+        leftTriangleBtn = $('.wrapper.triangle.left'),
+        topContainer = $('.container.top'),
+        rightContainer = $('.container.right'),
+        bottomContainer = $('.container.bottom'),
+        leftContainer = $('.container.left');
 
-
-    $('.wrapper.triangle.bottom')
+    topTriangleBtn
         .on('click', function () {
             location.href = '/home';
         })
         .hover(
             function () {
-                $('div.container.bottom').css('visibility', 'visible').fadeIn(500);
+                topContainer.css('visibility', 'visible').fadeIn(fadeInTime);
+                topTriangleBtn.css('opacity', onHoverOpacity);
             },
             function () {
-                $('.container.bottom').css('visibility', 'hidden').fadeOut(100);
+                setTimeout(() => {
+                    if ($('.container.top:hover').length == 0) {
+                        topContainer.css('visibility', 'hidden').fadeOut(fadeOutTime);
+                        topTriangleBtn.css('opacity', fadeOpacity);
+                    }
+                }, 200);
             });
 
-    $('.wrapper.triangle.left')
+    topContainer
+        .hover(
+            function () {
+                topContainer.css('visibility', 'visible');
+            },
+            function () {
+                topContainer.css('visibility', 'hidden').fadeOut(fadeOutTime);
+                topTriangleBtn.css('opacity', fadeOpacity);
+            });
+
+    rightTriangleBtn
         .on('click', function () {
             location.href = '/home';
         })
         .hover(
             function () {
-                $('div.container.left').css('visibility', 'visible').fadeIn(500);
+                rightContainer.css('visibility', 'visible').fadeIn(fadeInTime);
+                rightTriangleBtn.css('opacity', onHoverOpacity);
             },
             function () {
-                $('.container.left').css('visibility', 'hidden').fadeOut(100);
+                setTimeout(() => {
+                    if ($('.container.right:hover').length == 0) {
+                        rightContainer.css('visibility', 'hidden').fadeOut(fadeOutTime);
+                        rightTriangleBtn.css('opacity', fadeOpacity);
+                    }
+                }, 200);
+            });
+
+    rightContainer
+        .hover(
+            function () {
+                rightContainer.css('visibility', 'visible');
+            },
+            function () {
+                rightContainer.css('visibility', 'hidden').fadeOut(fadeOutTime);
+                rightTriangleBtn.css('opacity', fadeOpacity);
+            });
+
+    bottomTriangleBtn
+        .on('click', function () {
+            location.href = '/home';
+        })
+        .hover(
+            function () {
+                bottomContainer.css('visibility', 'visible').fadeIn(fadeInTime);
+                bottomTriangleBtn.css('opacity', onHoverOpacity);
+            },
+            function () {
+                setTimeout(() => {
+                    if ($('.container.bottom:hover').length == 0) {
+                        bottomContainer.css('visibility', 'hidden').fadeOut(fadeOutTime);
+                        bottomTriangleBtn.css('opacity', fadeOpacity);
+                    }
+                }, 200);
+            });
+
+    bottomContainer
+        .hover(
+            function () {
+                bottomContainer.css('visibility', 'visible');
+            },
+            function () {
+                bottomContainer.css('visibility', 'hidden').fadeOut(fadeOutTime);
+                bottomTriangleBtn.css('opacity', fadeOpacity);
+            });
+
+    leftTriangleBtn
+        .on('click', function () {
+            location.href = '/home';
+        })
+        .hover(
+            function () {
+                leftContainer.css('visibility', 'visible').fadeIn(fadeInTime);
+                leftTriangleBtn.css('opacity', onHoverOpacity);
+            },
+            function () {
+                setTimeout(() => {
+                    if ($('.container.left:hover').length == 0) {
+                        leftContainer.css('visibility', 'hidden').fadeOut(fadeOutTime);
+                        leftTriangleBtn.css('opacity', fadeOpacity);
+                    }
+                }, 200);
+            });
+
+    leftContainer
+        .hover(
+            function () {
+                leftContainer.css('visibility', 'visible');
+            },
+            function () {
+                leftContainer.css('visibility', 'hidden').fadeOut(fadeOutTime);
+                leftTriangleBtn.css('opacity', fadeOpacity);
             });
 
 })();

@@ -6,45 +6,55 @@ block app-title
 block vars
     - var profileLink = 'profile';
     - var bodyClass = 'home';
+    - var slideshowPictures = [{url: '/static/media/cover1.jpg'}, {url: '/static/media/cover2.jpg'}, {url: '/static/media/cover3.jpg'}, {url: '/static/media/cover4.jpg'} ];
+
 
 block content
-    #homepage-cover
+    div.homepage-cover.blured
 
-            div
-                h2#title Aquatoria Designs
-                if !user
-                    a#loginLink(href="/login") Login or Register
+    div
+        h2#title Aquatoria Designs
+        if !user
+            a#loginLink(href="/login") Login or Register
 
-            div.align
-                if user
-                    a(href="/" + profileLink) Profile
-                .wrap-buttons
-                    div.wrapper.triangle.bottom
-                    div.wrapper.triangle.left
-                    div.wrapper.triangle.right
-                    div.wrapper.triangle.top
-                    //span.bottom-category Videos
+    div.align
+        if user
+            a(href="/" + profileLink) Profile
+        .wrap-buttons
+            div.wrapper.triangle.bottom
+            div.wrapper.triangle.left
+            div.wrapper.triangle.right
+            div.wrapper.triangle.top
+            //span.bottom-category Videos
 
-                div.container.right
-                    span.img-box
-                    span.img-box
-                    span.img-box
-                    span.img-box
-                div.container.left
-                    span.img-box
-                    span.img-box
-                    span.img-box
-                    span.img-box
-                div.container.top
-                    span.img-box
-                    span.img-box
-                    span.img-box
-                    span.img-box
-                div.container.bottom
-                    span.img-box
-                    span.img-box
-                    span.img-box
-                    span.img-box
+
+        div.container.right
+            div.container-box
+                span.img-box
+                span.img-box
+                span.img-box
+                span.img-box
+
+        div.container.left
+            div.container-box
+                span.img-box
+                span.img-box
+                span.img-box
+                span.img-box
+
+        div.container.top
+            div.container-box
+                span.img-box
+                span.img-box
+                span.img-box
+                span.img-box
+
+        div.container.bottom
+            div.container-box
+                span.img-box
+                span.img-box
+                span.img-box
+                span.img-box
 
 
 block specificJs

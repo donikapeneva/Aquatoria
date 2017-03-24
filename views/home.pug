@@ -10,7 +10,12 @@ block vars
 
 
 block content
-    div.homepage-cover.blured
+    //  homepage-slide <- only options for centering
+    div.homepage-cover
+        div.homepage-cover.blured.first
+        //div.homepage-cover.blured.second
+        //div.homepage-cover.blured.first
+        //div.homepage-cover.blured.first
 
     div
         h2#title Aquatoria Designs
@@ -59,4 +64,5 @@ block content
 
 block specificJs
     script(src="/static/scripts/home.js")
+    script(src="/static/scripts/slideshow.js")
 

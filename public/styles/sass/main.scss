@@ -14,8 +14,16 @@ body {
     overflow-x: hidden;
 }
 
+@mixin blur($px: 2px) {
+    filter: blur($px);
+    -webkit-filter: blur($px);
+    -moz-filter: blur($px);
+    -o-filter: blur($px);
+    -ms-filter: blur($px);
+}
+
 .homepage-cover {
-    background: url('/static/media/cover1.jpg') no-repeat center center fixed;
+    background: no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -27,9 +35,5 @@ body {
 }
 
 .blured {
-    filter: blur(2px);
-    -webkit-filter: blur(2px);
-    -moz-filter: blur(2px);
-    -o-filter: blur(2px);
-    -ms-filter: blur(2px);
+    @include blur;
 }

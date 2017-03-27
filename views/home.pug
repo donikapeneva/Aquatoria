@@ -34,28 +34,28 @@ block content
 
 
         div.container.right
-            div.container-box
-                span.img-box
-                span.img-box
-                span.img-box
-                span.img-box
+            div#rightContainer.container-box
+                img.img-box
+                img.img-box
+                img.img-box
+                img.img-box
 
         div.container.left
-            div.container-box
+            div#leftContainer.container-box
                 span.img-box
                 span.img-box
                 span.img-box
                 span.img-box
 
         div.container.top
-            div.container-box
+            div#topContainer.container-box
                 span.img-box
                 span.img-box
                 span.img-box
                 span.img-box
 
         div.container.bottom
-            div.container-box
+            div#bottomContainer.container-box
                 span.img-box
                 span.img-box
                 span.img-box
@@ -63,6 +63,7 @@ block content
 
 
 block specificJs
-    script(src="/static/scripts/home.js")
-    script(src="/static/scripts/slideshow.js")
+    script(src="/static/scripts/home/home-buttons.js")
+    script(src="/static/scripts/home/slideshow.js")
+    script(src="/static/scripts/home/load-demo-items.js")
 

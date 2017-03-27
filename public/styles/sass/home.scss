@@ -7,7 +7,9 @@ $align-buttons-box-height: 300px;
 $wrap-buttons-width: 200px;
 $wrap-buttons-height: 200px;
 
-$container-background: #162b2d;
+//$container-background: #162b2d;
+$container-background: rgba(22, 43, 45, 0.6);
+$image-box: rgba(68, 68, 68, 0.6);
 
 $side-container-width: 400px;
 $side-container-height: 250px;
@@ -96,13 +98,13 @@ $container-border-radius: 5%;
         }
 
         &.left {
-          bottom: 87px;
+          bottom: 82px;
           left: 0;
         }
 
         &.top {
           position: relative;
-          left: 12px;
+          left: 14px;
           bottom: 52px;
         }
 
@@ -172,8 +174,8 @@ $container-border-radius: 5%;
         &.left,
         &.top,
         &.bottom {
-          background: $container-background;
-          opacity: 0.5;
+          background-color: $container-background;
+          //opacity: 0.5;
           visibility: hidden;
         }
 
@@ -218,7 +220,8 @@ $container-border-radius: 5%;
           padding: 5px;
 
           .img-box {
-            background-color: #444;
+            opacity: 1;
+            background-color: $image-box;
             color: #fff;
             border-radius: $container-border-radius;
             padding: 2px;
@@ -227,7 +230,6 @@ $container-border-radius: 5%;
         }
 
       }
-
 
   }
 }

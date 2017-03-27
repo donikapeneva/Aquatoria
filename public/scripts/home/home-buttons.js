@@ -1,7 +1,6 @@
 (() => {
     'use strict';
 
-
     const fadeInTime = 300,
         fadeOutTime = 100,
         onHoverOpacity = '1',
@@ -52,6 +51,7 @@
             function () {
                 rightContainer.css('visibility', 'visible').fadeIn(fadeInTime);
                 rightTriangleBtn.css('opacity', onHoverOpacity);
+                // console.log($('#rightContainer > .img-box').css('opacity', onHoverOpacity));
             },
             function () {
                 setTimeout(() => {

@@ -6,7 +6,8 @@ block app-title
 block vars
     - var profileLink = 'profile';
     - var bodyClass = 'home';
-    - var slideshowPictures = [{url: '/static/media/cover1.jpg'}, {url: '/static/media/cover2.jpg'}, {url: '/static/media/cover3.jpg'}, {url: '/static/media/cover4.jpg'} ];
+    - var demoPictures = [{url: '/static/media/cover1.jpg'}, {url: '/static/media/cover2.jpg'}, {url: '/static/media/cover3.jpg'}, {url: '/static/media/cover4.jpg'} ];
+    - var demoDesigns = [{url: '/static/media/cover1.jpg'}, {url: '/static/media/cover2.jpg'}, {url: '/static/media/cover3.jpg'}, {url: '/static/media/cover4.jpg'} ];
 
 
 block content
@@ -32,38 +33,33 @@ block content
             div.wrapper.triangle.top
             //span.bottom-category Videos
 
-
         div.container.right
             div#rightContainer.container-box
-                img.img-box
-                img.img-box
-                img.img-box
-                img.img-box
+                each picture in demoPictures
+                    img.item-box(src=picture.url)
 
         div.container.left
             div#leftContainer.container-box
-                span.img-box
-                span.img-box
-                span.img-box
-                span.img-box
+                each design in demoDesigns
+                    img.item-box(src=design.url)
 
         div.container.top
             div#topContainer.container-box
-                span.img-box
-                span.img-box
-                span.img-box
-                span.img-box
+                span.item-box
+                span.item-box
+                span.item-box
+                span.item-box
 
         div.container.bottom
             div#bottomContainer.container-box
-                span.img-box
-                span.img-box
-                span.img-box
-                span.img-box
+                span.item-box
+                span.item-box
+                span.item-box
+                span.item-box
 
 
 block specificJs
     script(src="/static/scripts/home/home-buttons.js")
     script(src="/static/scripts/home/slideshow.js")
-    script(src="/static/scripts/home/load-demo-items.js")
+    //script(src="/static/scripts/home/load-demo-items.js")
 

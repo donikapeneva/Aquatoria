@@ -4,7 +4,11 @@
     const fadeInTime = 300,
         fadeOutTime = 100,
         onHoverOpacity = '1',
-        fadeOpacity = '0.5';
+        fadeOpacity = '0.5',
+        linkToPhotos = '/items/photos',
+        linkToVideos = '',
+        linkToMusic = '',
+        linkToDesign = '';
 
     let topTriangleBtn = $('.wrapper.triangle.top'),
         rightTriangleBtn = $('.wrapper.triangle.right'),
@@ -37,6 +41,9 @@
         .hover(
             function () {
                 topContainer.css('visibility', 'visible');
+                rightContainer.on('click', function () {
+                    location.href = '/home';
+                });
             },
             function () {
                 topContainer.css('visibility', 'hidden').fadeOut(fadeOutTime);
@@ -45,13 +52,12 @@
 
     rightTriangleBtn
         .on('click', function () {
-            location.href = '/home';
+            location.href = linkToPhotos;
         })
         .hover(
             function () {
                 rightContainer.css('visibility', 'visible').fadeIn(fadeInTime);
                 rightTriangleBtn.css('opacity', onHoverOpacity);
-                // console.log($('#rightContainer > .img-box').css('opacity', onHoverOpacity));
             },
             function () {
                 setTimeout(() => {
@@ -66,6 +72,9 @@
         .hover(
             function () {
                 rightContainer.css('visibility', 'visible');
+                rightContainer.on('click', function () {
+                    location.href = linkToPhotos;
+                });
             },
             function () {
                 rightContainer.css('visibility', 'hidden').fadeOut(fadeOutTime);
@@ -94,6 +103,9 @@
         .hover(
             function () {
                 bottomContainer.css('visibility', 'visible');
+                rightContainer.on('click', function () {
+                    location.href = '/home';
+                });
             },
             function () {
                 bottomContainer.css('visibility', 'hidden').fadeOut(fadeOutTime);
@@ -122,6 +134,9 @@
         .hover(
             function () {
                 leftContainer.css('visibility', 'visible');
+                rightContainer.on('click', function () {
+                    location.href = '/home';
+                });
             },
             function () {
                 leftContainer.css('visibility', 'hidden').fadeOut(fadeOutTime);

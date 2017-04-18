@@ -16,9 +16,9 @@
 
     // $('')
 
-    // console.log($('#rightContainer > .img-box').attr('src', demoPictures[i].url));
+    // console.log($('#rightContainer > .item-box').attr('src', demoPictures[i].url));
 
-    // $('#rightContainer > .img-box').css('background-image', 'url(\'' + demoPictures[i].url + '\')');
+    // $('#rightContainer > .item-box').css('background-image', 'url(\'' + demoPictures[i].url + '\')');
 
     $rightContainer.find('img').each(function (index, element) {
 

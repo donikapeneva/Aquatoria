@@ -1,17 +1,35 @@
 (() => {
 
-    const $categorySelect = $('#select-category'),
-        $itemsContainer = $('#item-container');
+    // const $categorySelect = $('#select-category'),
+      const  $itemsContainer = $('#item-container'),
+          $adminPanel = $('#adminLink');
 
-    listPhotos($categorySelect.val());
+    let $categorySelect;
 
-    console.log($categorySelect.val());
+    $adminPanel.unbind('click');
+    $adminPanel.on('click', () => {
+        $('#adminUploadPhoto').toggle();
+    });
+
+
+
+    $('ul.categories').find('li').on('click', function () {
+        $categorySelect = $(this).html();
+        console.log($categorySelect);
+        listPhotos($categorySelect);
+    });
+
+
+    // listPhotos($categorySelect.val());
+    // listPhotos($categorySelect.val());
+
+    // console.log($categorySelect.val());
     console.log(itemsListData);
 
-    $categorySelect.unbind('change');
-    $categorySelect.on('change', function(){
-        listPhotos($categorySelect.val());
-    });
+    // $categorySelect.unbind('change');
+    // $categorySelect.on('change', function(){
+    //     listPhotos($categorySelect.val());
+    // });
 
 
     // evalPhotoList();
@@ -27,23 +45,27 @@
             // $itemsContainer.find('img').attr('src', photosToShow[i].body);
             let itemData, itemInfo, itemContainer, itemEdit, itemRemove;
 
-            itemContainer = document.createElement('span');
+            itemContainer = document.createElement('figure');
 
             itemData = document.createElement('img');
             itemData.src = photosToShow[i].body;
-            itemData.style.height = '200px';
-            itemData.style.width = '250px';
+            // itemData.style.height = '200px';
+            // itemData.style.width = '250px';
             // console.log(itemData);
 
+            let figCaption = document.createElement('figcaption');
+            figCaption.innerHTML = photosToShow[i].description;
+
             //TODO: if user is authenticated
-            itemRemove = document.createElement('button');
-            itemRemove.innerHTML = 'remove';
-            itemRemove.onclick = removeItem.bind(this, photosToShow[i]._id);
+            // itemRemove = document.createElement('button');
+            // itemRemove.innerHTML = 'remove';
+            // itemRemove.onclick = removeItem.bind(this, photosToShow[i]._id);
 
             console.log(photosToShow[i]);
 
-            itemContainer.appendChild(itemRemove);
+            // itemContainer.appendChild(itemRemove);
             itemContainer.appendChild(itemData);
+            itemContainer.appendChild(figCaption);
 
             $itemsContainer.append(itemContainer);
         }
@@ -53,7 +75,7 @@
     //a problem may occurs if there's no item of some category
     //the category disappears form selection list
     function resetItemsContainer() {
-        $itemsContainer.find('span').remove();
+        $itemsContainer.find('figure').remove();
     }
 
     function removeItem(id){

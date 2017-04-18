@@ -1,0 +1,24 @@
+//.page-showPhotos{
+
+ul.categories {
+
+  margin: 10px;
+
+  li {
+    display: inline;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 15px;
+    background-color: #1b6d85;
+    color: white;
+    font-size: 15px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #28A1C4;
+    }
+  }
+}
+
+//}
+

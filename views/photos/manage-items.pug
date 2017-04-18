@@ -1,0 +1,62 @@
+extends ../_layout
+
+block app-title
+    | Admin Panel | AquatoriaDesigns
+
+block vars
+    - imageUrl = 'lalal'
+    - var bodyClass = 'managePhotos';
+
+block content
+
+    div
+        if isAdmin
+            span
+                h3 upload photo
+
+                span(id="error-upload-photo-container")
+
+                form(role="form" enctype="multipart/form-data" action="" method="post" id="upload-photo-form")
+
+                    label(for="form-file") File
+                    input(type="file"
+                    multiple="multiple"
+                    name="file"
+                    id="form-file")
+                    br
+
+                    label(for="form-upload-title") Title
+                    input(type="text"
+                    name="uploadTitle"
+                    id="form-upload-title")
+                    br
+
+                    label(for="form-select-category" || "form-input-category" ) Category
+                        select(id="form-select-category" name="uploadCategory")
+                            each category in categories.length ? categories : ['There are no categories']
+                                option(value=category) #{category}
+
+
+
+                    button(type="button" id="new-category-button") New Category
+
+                    br
+
+                    label(for="form-upload-description") Description
+                        input(type="text"
+                        name="uploadDescription"
+                        id="form-upload-description")
+                    br
+
+                    button(type="button" id="upload-button") Upload
+
+    block specificJs
+        script(src="/static/scripts/utils/sidebar.js")
+        script(src="/static/scripts/utils/validator.js")
+        script(src="/static/scripts/items/photos/upload-photo.js")
+        script(src="/static/scripts/items/photos/show-photos.js")
+        script(type='text/javascript').var itemsListData = !{JSON.stringify(itemsByCategories)};
+        script(type='text/javascript').var categories = !{JSON.stringify(categories)};
+
+
+

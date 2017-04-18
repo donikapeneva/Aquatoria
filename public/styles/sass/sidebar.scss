@@ -1,0 +1,58 @@
+.sidebar-wrapper {
+  display: none;
+  //position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #FcFcFc;
+  width: 20%;
+  height: 100%;
+  position: absolute;
+  padding: 0;
+  //transition: 1s;
+  //-webkit-transition: all 0.15s ease-out 0;
+  transition: all 0.45s ease-out 0;
+
+  .sidebar-title {
+    position: relative;
+    top: 0;
+    right: 0;
+    color: black;
+    font-size: 20px;
+    margin: 10px 20px;
+    text-align: right;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  ul {
+    position: relative;
+    list-style-type: none;
+    color: black;
+    font-size: 20px;
+    padding: 0;
+
+    li {
+      margin: 3px 0;
+      padding: 20px;
+      text-align: center;
+
+
+      &:hover {
+        background-color: #F1F1F1;
+        cursor: pointer;
+      }
+
+      &+li {
+        border-top: 1px solid black;
+      }
+    }
+  }
+
+}
+#forwardArrow {
+  &:hover {
+    cursor: pointer;
+  }
+}

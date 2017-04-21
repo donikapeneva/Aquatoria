@@ -2,7 +2,10 @@
 
 ul.categories {
 
-  margin: 10px;
+  margin: 10px auto;
+  width: 50%;
+  //TODO
+  z-index: 10;
 
   li {
     display: inline;
@@ -12,6 +15,7 @@ ul.categories {
     background-color: #1b6d85;
     color: white;
     font-size: 15px;
+
 
     &:hover {
       cursor: pointer;

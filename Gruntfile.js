@@ -8,7 +8,9 @@ module.exports = function(grunt){
                     'public/styles/css/home.css' : 'public/styles/sass/home.scss',
                     'public/styles/css/sidebar.css' : 'public/styles/sass/sidebar.scss',
                     'public/styles/css/categories-layout.css' : 'public/styles/sass/categories-layout.scss',
-                    'public/styles/css/columnar-layout.css' : 'public/styles/sass/columnar-layout.scss'
+                    'public/styles/css/columnar-layout.css' : 'public/styles/sass/columnar-layout.scss',
+                    'public/styles/css/header-parallax.css' : 'public/styles/sass/header-parallax.scss',
+                    'public/styles/css/photos/photos-page.css' : 'public/styles/sass/photos/photos-page.scss'
                 }
             }
         },

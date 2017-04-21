@@ -42,6 +42,11 @@
 
         for (let i = 0; i < photosToShow.length; i++) {
 
+            if(i === 0){
+                // $('.header-image').css('background', '#525558 url(' + photosToShow[i].body + ')');
+                console.log('setted');
+            }
+
             // $itemsContainer.find('img').attr('src', photosToShow[i].body);
             let itemData, itemInfo, itemContainer, itemEdit, itemRemove;
 
@@ -61,7 +66,7 @@
             // itemRemove.innerHTML = 'remove';
             // itemRemove.onclick = removeItem.bind(this, photosToShow[i]._id);
 
-            console.log(photosToShow[i]);
+            // console.log(photosToShow[i]);
 
             // itemContainer.appendChild(itemRemove);
             itemContainer.appendChild(itemData);

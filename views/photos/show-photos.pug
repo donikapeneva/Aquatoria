@@ -9,42 +9,58 @@ block vars
 
 block content
 
-    div.sidebar-wrapper
-        div#backArrow.sidebar-title X
-        ul
-            li Home
-            li Photos
-            li Videos
-            li Music
-            li Design
-
-    div#forwardArrow.sidebar-title ☰
-
-    div
-        h2 Photos
-
-    div
-        if isAdmin
-            //ajax to show admin mode
-            button#adminLink Editor
-
-    div#adminUploadPhoto
-        if isAdmin
-            include manage-items.pug
-
-    //TODO: select to ul
-    div#data
-        ul.categories(id="select-category")
-            each category in categories.length ? categories : ['There are no categories']
-                li #{category}
+    header
 
 
-    //TODO: columnar layout needs more than 6 pictures; it needs to be undependable!
-    div(id="item-container").columns
+        div.cover-photo.js-parallax
+
+
+
+
+
+
+
+
+
+
+    //div
+    //    if isAdmin = false
+    //        //ajax to show admin mode
+    //        button#adminLink Editor
+    //
+    //div#adminUploadPhoto
+    //    if isAdmin = false
+    //        include manage-items.pug
+
+    main.content
+        div#stickyMenu.sticky-menu
+            div#forwardArrow.sidebar-title ☰
+        a#upButton.sticky-button Up
+        div.sidebar-wrapper
+            div#backArrow.sidebar-title X
+            ul
+                li Home
+                li Photos
+                li Videos
+                li Music
+                li Design
+
+        div#data
+            ul.categories(id="select-category")
+                each category in categories.length ? categories : ['There are no categories']
+                    li #{category}
+
+
+
+            //TODO: columnar layout needs more than 6 pictures; it needs to be undependable!
+        div(id="item-container").columns
+
 
     block specificJs
         script(src="/static/scripts/utils/sidebar.js")
         script(src="/static/scripts/utils/validator.js")
+        script(src="/static/scripts/utils/header-parallax.js")
+        script(src="/static/scripts/utils/sticky-menu.js")
         script(src="/static/scripts/items/photos/upload-photo.js")
         script(src="/static/scripts/items/photos/show-photos.js")
         script(type='text/javascript').var itemsListData = !{JSON.stringify(itemsByCategories)};

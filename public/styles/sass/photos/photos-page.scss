@@ -1,0 +1,34 @@
+#data {
+  margin: auto;
+  width: 50%;
+}
+
+#stickyMenu{
+  visibility: hidden;
+}
+
+.sticky-menu {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.3);
+  height: 55px;
+  width: 100%;
+  top: 0;
+  text-align: left;
+
+
+}
+
+.sticky-button {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.3);
+  height: 55px;
+  width: 55px;
+  bottom: 0;
+  right: 0;
+  margin: 20px;
+}
+
+.sticky-button {
+  text-decoration: none;
+  transition: 3;
+}

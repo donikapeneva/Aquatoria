@@ -1,14 +1,19 @@
 (() => {
+
+    $('#stickyMenu').hide();
+    $('#upButton').hide();
+
     $(window).scroll(function() {
         let winTop = $(window).scrollTop();
         if (winTop >= $('header').height() - 5) {
-            $('#stickyMenu').css('visibility', 'visible');
-            $('#upButton').css('visibility', 'visible');
+            $('#stickyMenu').show();
+            //it has delay, so if user scrolls fast down and up, it appears where it doesn't have to be
+            $('#upButton').fadeIn();
         } else {
-            $('#stickyMenu').css('visibility', 'hidden');
-            $('#upButton').css('visibility', 'hidden');
+            $('#stickyMenu').hide();
+            $('#upButton').hide();
         }
-    })
+    });
 
     $('#upButton').click(function() {
         console.log('clicckkckckc');

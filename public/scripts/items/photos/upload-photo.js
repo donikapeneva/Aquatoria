@@ -18,6 +18,30 @@
 
     console.log(categories);
 
+
+    $("#form-file").unbind('change');
+    $("#form-file").change(function(e) {
+        $('#selectedImage').find('img').remove();
+
+        for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
+
+            var file = e.originalEvent.srcElement.files[i];
+
+            var img = document.createElement("img");
+            // // if()
+            // img.style.display = 'inline-block';
+            // img.style.height = '100%';
+            // vertical-align: middle;
+
+            var reader = new FileReader();
+            reader.onloadend = function() {
+                img.src = reader.result;
+            };
+            reader.readAsDataURL(file);
+            $('#selectedImage').append(img);
+        }
+    });
+
     $newCategoryBtn.unbind('click');
     $newCategoryBtn.on('click', function(){
         console.log('click new category');

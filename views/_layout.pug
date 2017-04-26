@@ -5,9 +5,11 @@ html(lang="en")
 
         script(src="/scripts/jquery")
         script(src="/static/scripts/main.js")
+        script(src="/styles/bootstrap/js/bootstrap.min.js")
 
         title
             block app-title
+
 
         link(rel="stylesheet", href="/static/styles/css/main.css")
         link(rel="stylesheet", href="/static/styles/css/home.css")
@@ -16,6 +18,8 @@ html(lang="en")
         link(rel="stylesheet", href="/static/styles/css/columnar-layout.css")
         link(rel="stylesheet", href="/static/styles/css/header-parallax.css")
         link(rel="stylesheet", href="/static/styles/css/photos/photos-page.css")
+        //link(rel="stylesheet", href="/styles/bootstrap")
+        link(href="/styles/bootstrap/css/bootstrap.css" rel="stylesheet" media="all")
 
     block vars
         - var bodyClass = '';

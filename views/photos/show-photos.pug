@@ -4,37 +4,29 @@ block app-title
     | Photos | AquatoriaDesigns
 
 block vars
-    - imageUrl = 'lalal'
     - var bodyClass = 'showPhotos';
 
 block content
 
     header
-
-
         div.cover-photo.js-parallax
+            div#coverText
+            if isAdmin = true
+                div#editLink Edit
 
-
-
-
-
-
-
-
-
-
+    //TODO show in edit mode -> upload | remove buttons
+    //when 'remove' -> the changes will be shown after some delay
     //div
     //    if isAdmin = false
     //        //ajax to show admin mode
     //        button#adminLink Editor
-    //
-    //div#adminUploadPhoto
-    //    if isAdmin = false
-    //        include manage-items.pug
+
+
 
     main.content
+
         div#stickyMenu.sticky-menu
-            div#forwardArrow.sidebar-title ☰
+            span#forwardArrow.sidebar-title ☰
         a#upButton.sticky-button Up
         div.sidebar-wrapper
             div#backArrow.sidebar-title X
@@ -45,16 +37,25 @@ block content
                 li Music
                 li Design
 
+        //TODO show as pop up
+        div#adminUploadPhoto.pop-up-mask
+            div.pop-up-container
+                span#popUpClose.pop-up-close x
+                if isAdmin
+                    include manage-items.pug
+                else
+                    div Error. Boo. Run.
+
+
+
+
         div#data
             ul.categories(id="select-category")
                 each category in categories.length ? categories : ['There are no categories']
                     li #{category}
 
-
-
             //TODO: columnar layout needs more than 6 pictures; it needs to be undependable!
         div(id="item-container").columns
-
 
     block specificJs
         script(src="/static/scripts/utils/sidebar.js")
@@ -62,9 +63,7 @@ block content
         script(src="/static/scripts/utils/header-parallax.js")
         script(src="/static/scripts/utils/sticky-menu.js")
         script(src="/static/scripts/items/photos/upload-photo.js")
+        script(src="/static/scripts/items/photos/admin-options.js")
         script(src="/static/scripts/items/photos/show-photos.js")
         script(type='text/javascript').var itemsListData = !{JSON.stringify(itemsByCategories)};
         script(type='text/javascript').var categories = !{JSON.stringify(categories)};
-
-
-

@@ -16,6 +16,7 @@ app.set('view engine', 'pug');
 
 app.use('/static', express.static(path.join(__dirname, '../public')));
 app.use('/scripts/jquery', express.static(path.join(__dirname, '../node_modules/jquery/dist/jquery.min.js')));
+app.use('/styles/bootstrap', express.static(path.join(__dirname, '../bower_components/bootstrap/dist')));
 
 //app middlewares for sessions
 app.use(cookieParser());

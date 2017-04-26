@@ -1,63 +1,46 @@
-extends ../_layout
 
-block app-title
-    | Admin Panel | AquatoriaDesigns
+div
+    if isAdmin
+        span
+            h3.pop-up-title upload photo
 
-block vars
-    - imageUrl = 'lalal'
-    - var bodyClass = 'managePhotos';
+        span(id="error-upload-photo-container")
+        div.col-md-12.row
+            form(role="form" enctype="multipart/form-data" action="" method="post" id="upload-photo-form").col-md-7
 
-block content
-
-    div
-        if isAdmin
-            span
-                h3 upload photo
-
-                span(id="error-upload-photo-container")
-
-                form(role="form" enctype="multipart/form-data" action="" method="post" id="upload-photo-form")
-
-                    label(for="form-file") File
-                    input(type="file"
+                input(type="file"
                     multiple="multiple"
                     name="file"
                     id="form-file")
-                    br
 
-                    label(for="form-upload-title") Title
-                    input(type="text"
+                input(type="text"
                     name="uploadTitle"
-                    id="form-upload-title")
-                    br
+                    id="form-upload-title"
+                    placeholder="Title")
 
-                    label(for="form-select-category" || "form-input-category" ) Category
-                        select(id="form-select-category" name="uploadCategory")
-                            each category in categories.length ? categories : ['There are no categories']
-                                option(value=category) #{category}
-
-
-
+                div.choose-category
+                    select(id="form-select-category" name="uploadCategory")
+                        each category in categories.length ? categories : ['There are no categories']
+                            option(value=category) #{category}
                     button(type="button" id="new-category-button") New Category
 
-                    br
+                input(type="text"
+                    name="uploadDescription"
+                    id="form-upload-description"
+                    placeholder="Description")
 
-                    label(for="form-upload-description") Description
-                        input(type="text"
-                        name="uploadDescription"
-                        id="form-upload-description")
-                    br
+                button(type="button" id="upload-button") Upload
 
-                    button(type="button" id="upload-button") Upload
+            div#selectedImage.selected-item.col-md-5
 
-    block specificJs
-        script(src="/static/scripts/utils/sidebar.js")
-        script(src="/static/scripts/utils/validator.js")
-        script(src="/static/scripts/utils/header-parallax.js")
-        script(src="/static/scripts/items/photos/upload-photo.js")
-        script(src="/static/scripts/items/photos/show-photos.js")
-        script(type='text/javascript').var itemsListData = !{JSON.stringify(itemsByCategories)};
-        script(type='text/javascript').var categories = !{JSON.stringify(categories)};
+//block specificJs
+//script(src="/static/scripts/utils/sidebar.js")
+script(src="/static/scripts/utils/validator.js")
+//script(src="/static/scripts/utils/header-parallax.js")
+script(src="/static/scripts/items/photos/upload-photo.js")
+//script(src="/static/scripts/items/photos/show-photos.js")
+script(type='text/javascript').var itemsListData = !{JSON.stringify(itemsByCategories)};
+script(type='text/javascript').var categories = !{JSON.stringify(categories)};
 
 
 

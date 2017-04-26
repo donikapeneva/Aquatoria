@@ -4,7 +4,7 @@
 }
 
 #stickyMenu{
-  visibility: hidden;
+
 }
 
 .sticky-menu {
@@ -14,8 +14,6 @@
   width: 100%;
   top: 0;
   text-align: left;
-
-
 }
 
 .sticky-button {
@@ -26,9 +24,108 @@
   bottom: 0;
   right: 0;
   margin: 20px;
+  text-decoration: none;
 }
 
-.sticky-button {
-  text-decoration: none;
-  transition: 3;
+
+#editLink {
+  position: absolute;
+  color: whitesmoke;
+  right: 0;
+  margin-right: 20px;
+  margin-top: 10px;
+  cursor: pointer;
 }
+
+.pop-up-mask {
+  display: none;
+  //TODO:
+  //height:1000px;
+  width:100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  margin-top: -500px;
+
+  .pop-up-container {
+
+    height: 500px;
+    width: 50%;
+    background-color: whitesmoke;
+    position: relative;
+    margin: auto;
+    margin-top: 100px;
+
+
+    .pop-up-close {
+      border-radius: 3em;
+      margin-left: 94%;
+      background: #212121;
+      color: #fff;
+      font-size: 1.25em;
+      padding: .4em .7em;
+      cursor: pointer;
+    }
+
+    //TODO: other scss file
+    .pop-up-title {
+      font-size: 2.25em;
+      text-transform: capitalize;
+      color: #3c3c3c;
+    }
+
+
+    div.col-md-12 {
+      margin-top: 20px;
+
+      form {
+        padding: 25px;
+        input, .choose-category, button#upload-button {
+          height: 30px;
+          margin-top: 15px;
+          width: 100%;
+          clear: both;
+        }
+
+        //TODO:
+        input {
+          &::placeholder,
+          &::-webkit-input-placeholder,
+          &::-moz-placeholder,
+          &:-ms-input-placeholder,
+          &:-moz-placeholder {
+            color: pink;
+          }
+        }
+
+
+        .choose-category {
+          select, button {
+            height: 25px;
+            width: 50%;
+          }
+        }
+
+      }
+
+      .selected-item {
+        padding: 10px;
+        height: 350px;
+        border-width: 4px;
+        border-style: dotted;
+        border-color: lightgray;
+        align-content: center;
+
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: contain;
+        }
+      }
+    }
+
+
+
+
+  }
+}
+

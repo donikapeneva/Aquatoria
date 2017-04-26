@@ -1,72 +1,47 @@
 (() => {
-
-    // const $categorySelect = $('#select-category'),
-      const  $itemsContainer = $('#item-container'),
-          $adminPanel = $('#adminLink');
+    const  $itemsContainer = $('#item-container'),
+      $adminLink = $('#adminLink');
 
     let $categorySelect;
 
-    $adminPanel.unbind('click');
-    $adminPanel.on('click', () => {
+    $adminLink.unbind('click');
+    $adminLink.on('click', () => {
         $('#adminUploadPhoto').toggle();
     });
 
-
+    //TODO if no category is chosen then load automatically the first one
 
     $('ul.categories').find('li').on('click', function () {
         $categorySelect = $(this).html();
-        console.log($categorySelect);
+        $('#coverText').text($categorySelect);
         listPhotos($categorySelect);
     });
 
-
-    // listPhotos($categorySelect.val());
-    // listPhotos($categorySelect.val());
-
-    // console.log($categorySelect.val());
-    console.log(itemsListData);
-
-    // $categorySelect.unbind('change');
-    // $categorySelect.on('change', function(){
-    //     listPhotos($categorySelect.val());
-    // });
-
-
-    // evalPhotoList();
-
     function listPhotos(selectedCategory) {
         resetItemsContainer();
-        console.log('listing photos');
         let photosToShow = itemsListData[selectedCategory].items;
-        console.log(photosToShow.items);
 
         for (let i = 0; i < photosToShow.length; i++) {
 
+            //set the first image to be the cover photo
             if(i === 0){
                 // $('.header-image').css('background', '#525558 url(' + photosToShow[i].body + ')');
-                console.log('setted');
             }
 
-            // $itemsContainer.find('img').attr('src', photosToShow[i].body);
             let itemData, itemInfo, itemContainer, itemEdit, itemRemove;
 
             itemContainer = document.createElement('figure');
 
             itemData = document.createElement('img');
             itemData.src = photosToShow[i].body;
-            // itemData.style.height = '200px';
-            // itemData.style.width = '250px';
-            // console.log(itemData);
 
             let figCaption = document.createElement('figcaption');
             figCaption.innerHTML = photosToShow[i].description;
 
-            //TODO: if user is authenticated
+            //TODO: if user is admin and he is on edit mode << this may be in other template
             // itemRemove = document.createElement('button');
             // itemRemove.innerHTML = 'remove';
             // itemRemove.onclick = removeItem.bind(this, photosToShow[i]._id);
-
-            // console.log(photosToShow[i]);
 
             // itemContainer.appendChild(itemRemove);
             itemContainer.appendChild(itemData);
@@ -78,7 +53,7 @@
 
     //TODO:
     //a problem may occurs if there's no item of some category
-    //the category disappears form selection list
+    //the category disappears form the select list
     function resetItemsContainer() {
         $itemsContainer.find('figure').remove();
     }

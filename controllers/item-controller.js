@@ -54,8 +54,8 @@ module.exports = function (data) {
                     return data.getItemsByCategory(req.params.type, req.params.category);
                 })
                 .then(items => {
-                    render(req, res, items, 'items/show-items');
-                    /*
+                    // render(req, res, items, 'items/show-items');
+                    res.render('photos/show-photos', {items: items});/*
                      if (!req.isAuthenticated()) {
                      res.render('items/show-items', {items: items});
                      } else {

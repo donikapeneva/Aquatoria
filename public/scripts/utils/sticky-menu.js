@@ -1,5 +1,7 @@
 (() => {
 
+    // $('.sticky-button').
+
     $('#stickyMenu').hide();
     $('#upButton').hide();
 

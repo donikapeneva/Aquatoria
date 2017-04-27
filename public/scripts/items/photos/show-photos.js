@@ -36,7 +36,7 @@
             itemData.src = photosToShow[i].body;
 
             let figCaption = document.createElement('figcaption');
-            figCaption.innerHTML = photosToShow[i].description;
+            figCaption.innerHTML = photosToShow[i].title;
 
             //TODO: if user is admin and he is on edit mode << this may be in other template
             // itemRemove = document.createElement('button');
@@ -50,6 +50,12 @@
             $itemsContainer.append(itemContainer);
         }
     }
+
+    $('ul.categories li').click(function() {
+        $('html, body').animate({
+            scrollTop: $('#coverText').position().top + 50
+        }, 500);
+    });
 
     //TODO:
     //a problem may occurs if there's no item of some category

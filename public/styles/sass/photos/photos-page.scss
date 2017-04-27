@@ -9,7 +9,7 @@
 
 .sticky-menu {
   position: fixed;
-  background-color: rgba(0, 0, 0, 0.3);
+  //background-color: rgba(0, 0, 0, 0.3);
   height: 55px;
   width: 100%;
   top: 0;
@@ -37,6 +37,14 @@
   cursor: pointer;
 }
 
+main {
+  height: 100%;
+  //width: 100%;
+  margin: -10px;
+  box-shadow: 0 -5px 52px 4px #333;
+}
+
+//TODO: bootstrap modal
 .pop-up-mask {
   display: none;
   //TODO:

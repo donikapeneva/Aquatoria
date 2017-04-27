@@ -1,18 +1,17 @@
 .sidebar-wrapper {
   display: none;
-  //position: fixed;
+  position: fixed;
+  z-index: 1;
   top: 0;
   left: 0;
   background-color: #FcFcFc;
   width: 20%;
   height: 100%;
-  position: absolute;
+  //position: absolute;
   padding: 0;
   //transition: 1s;
   //-webkit-transition: all 0.15s ease-out 0;
   transition: all 0.45s ease-out 0;
-
-
 
   .sidebar-title {
     position: relative;

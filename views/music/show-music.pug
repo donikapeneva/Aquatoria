@@ -1,0 +1,71 @@
+extends ../_layout
+
+block app-title
+    | Music | AquatoriaDesigns
+
+block vars
+    - var bodyClass = 'showPhotos';
+
+block content
+
+    header
+        //TODO: change cover photo
+        div.cover-photo.js-parallax
+            div#coverText
+            if isAdmin = true
+                div#editLink Edit
+
+    //TODO show in edit mode -> upload | remove buttons
+    //when 'remove' -> the changes will be shown after some delay
+    //div
+    //    if isAdmin = false
+    //        //ajax to show admin mode
+    //        button#adminLink Editor
+
+
+    main.content
+
+        include player.pug
+
+
+        //div#stickyMenu.sticky-menu
+        //    span#forwardArrow.sidebar-title ☰
+        //a#upButton.sticky-button Up
+        //div.sidebar-wrapper
+        //    div#backArrow.sidebar-title X
+        //    ul
+        //        li Home
+        //        li Photos
+        //        li Videos
+        //        li Music
+        //        li Design
+
+        div#adminUploadPhoto.pop-up-mask
+            div.pop-up-container
+                span#popUpClose.pop-up-close x
+                if isAdmin = true
+                    include upload-music-form.pug
+                else
+                    div Error. Boo. Run.
+
+
+
+
+        div#data
+            ul.categories(id="select-category")
+                each category in categories.length ? categories : ['There are no categories']
+                    li #{category}
+
+            //TODO: columnar layout needs more than 6 pictures; it needs to be undependable!
+        div(id="item-container").columns
+
+    block specificJs
+        script(src="/static/scripts/utils/sidebar.js")
+        script(src="/static/scripts/utils/validator.js")
+        script(src="/static/scripts/utils/header-parallax.js")
+        script(src="/static/scripts/utils/sticky-menu.js")
+        script(src="/static/scripts/items/music/upload-music.js")
+        script(src="/static/scripts/items/photos/admin-options.js")
+        script(src="/static/scripts/items/music/show-music.js")
+        //script(type='text/javascript').var itemsListData = !{JSON.stringify(itemsByCategories)};
+        //script(type='text/javascript').var categories = !{JSON.stringify(categories)};

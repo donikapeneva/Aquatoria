@@ -14,16 +14,25 @@ module.exports = function (data) {
             return Promise.resolve()
                 .then(() => {
                     //TODO: cases of params.type
-                    console.log(req.params.type);
+                    let wantedItems;
+                    switch(req.params.type) {
+                        default:
+                        case 'photos' :
+                            wantedItems = 'photo';
+                            break;
+                        case 'music' :
+                            wantedItems = 'music';
+                            break;
+                    }
                     // return data.getItemsGroupedByCategories(req.params.type);
-                    return data.getItemsGroupedByCategories('photo');
+                    return data.getItemsGroupedByCategories(wantedItems);
                 })
                 .then(itemsByCategories => {
                     //TODO: see if you can export it in function :/
                     let categories = Object.keys(itemsByCategories);
 
                     let templatePath = req.params.type + '/show-' + req.params.type;
-                    res.render('photos/show-photos', {categories: categories, itemsByCategories: itemsByCategories, isAdmin: true});
+                    res.render(templatePath, {categories: categories, itemsByCategories: itemsByCategories, isAdmin: true});
 
                     // if (!req.isAuthenticated()) {
                     //     res.render('items/show-items-by-categories', {items: items});
@@ -114,6 +123,7 @@ module.exports = function (data) {
                 return res.redirect('/login');
             }
         },
+        //TODO: universal for all items
         uploadItem(req, res){
 
             //TODO: abstraction photo -> item
@@ -124,33 +134,51 @@ module.exports = function (data) {
             //     category: item.category,
             //     description: item.description,
             //     madeBy: item.madeBy
-            let photo = {};
+            let item = {},
+                itemType,
+                itemTypeFolder;
 
+            switch(req.params.type){
+                default:
+                case 'photos':
+                    itemType = 'photo';
+                    itemTypeFolder = 'photos';
+                    break;
+                case 'music':
+                    itemType = 'song';
+                    itemTypeFolder = 'music';
+                    break;
+                case 'video':
+                    itemType = 'videoLink';
+                    itemTypeFolder = 'videos';
+                    break;
+            }
 
             return new Promise((resolve, reject) => {
                 console.log('uploading item');
 
                 let form = new formidable.IncomingForm();
+                //TODO:
                 //max size: 2MB
-                form.maxFieldSize = 2 * 1024 * 1024;
+                form.maxFieldSize = 10 * 1024 * 1024;
 
-                let photoFile = {},
-                    photoInfo = {};
+                let itemFile = {},
+                    itemInfo = {};
 
                 form.parse(req)
                     .on('file', function (name, file) {
-                        photoFile = file;
+                        itemFile = file;
                         // console.log(photoFile);
                         console.log('Got file:', name);
                     })
                     .on('field', function (name, field) {
-                        photoInfo = JSON.parse(field);
-                        photo.title = photoInfo.uploadTitle;
-                        photo.category = photoInfo.uploadCategory;
-                        photo.description = photoInfo.uploadDescription;
-                        photo.type = 'photo';
+                        itemInfo = JSON.parse(field);
+                        item.title = itemInfo.uploadTitle;
+                        item.category = itemInfo.uploadCategory;
+                        item.description = itemInfo.uploadDescription;
+                        item.type = itemType;
 
-                        console.log(photoInfo);
+                        console.log(itemInfo);
                         console.log('Got a field:', name);
                     })
                     .on('error', function (err) {
@@ -161,15 +189,17 @@ module.exports = function (data) {
 
                         console.log('on end');
 
-                        if (photoFile.size > form.maxFieldSize) {
+                        if (itemFile.size > form.maxFieldSize) {
+                            console.log('wrong size ');
                             return reject({name: 'ValidationError', message: 'Maximum file size is 2MB'});
                         } else {
-                            let categoryFolder = photoInfo.uploadCategory,
-                                uploadPathToFolder = path.join(__dirname, '../public/uploads/photos', categoryFolder),
-                                newFileName = photoInfo.uploadTitle + Date.now();
+                            console.log('try to post');
+                            let categoryFolder = itemInfo.uploadCategory,
+                                uploadPathToFolder = path.join(__dirname, '../public/uploads/' + itemTypeFolder, categoryFolder),
+                                newFileName = itemInfo.uploadTitle + Date.now();
 
                             //uploading an avatar picture in user's folder
-                            uploader.uploadFile(photoFile, uploadPathToFolder, newFileName)
+                            uploader.uploadFile(itemFile, uploadPathToFolder, newFileName)
                                 .then(uploadedFileName => {
                                     console.log('uploaded');
                                     resolve(uploadedFileName);
@@ -200,13 +230,15 @@ module.exports = function (data) {
 
                     //the url should not be absolute path
                     //TODO: check for relative path formatter function
-                    let photoUrl = '/static/uploads/photos/' + photo.category + '/' + fileName;
-                    console.log(photoUrl);
-                    photo.body = photoUrl;
-                    console.log(photo);
-                    data.createItem(photo);
+                    let itemUrl = '/static/uploads/' + itemTypeFolder +'/' + item.category + '/' + fileName;
+                    console.log(itemUrl);
+                    item.body = itemUrl;
+                    console.log(item);
+                    data.createItem(item);
                 })
                 .then((something) => {
+
+                    console.log('something');
                     console.log(something);
                     res.status(200)
                         .send({redirectRoute: '/items/' + req.params.type});

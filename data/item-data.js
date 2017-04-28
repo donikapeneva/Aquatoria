@@ -24,6 +24,9 @@ module.exports = function (models) {
                     console.log('err');
                         return reject(err);
                     }
+
+                    console.log('createItem');
+                    console.log(createItem);
                     return resolve(createItem);
                 });
             });

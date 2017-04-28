@@ -7,7 +7,7 @@
         fadeOpacity = '0.5',
         linkToPhotos = '/items/photos',
         linkToVideos = '',
-        linkToMusic = '',
+        linkToMusic = '/items/music',
         linkToDesign = '';
 
     let topTriangleBtn = $('.wrapper.triangle.top'),
@@ -21,7 +21,7 @@
 
     topTriangleBtn
         .on('click', function () {
-            location.href = '/home';
+            location.href = linkToMusic;
         })
         .hover(
             function () {

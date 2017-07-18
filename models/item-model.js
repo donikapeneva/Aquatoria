@@ -17,7 +17,6 @@ let itemSchema = new mongoose.Schema({
         type: String,
         enum: roles
     },
-    //TODO: think how the categories must be
     category: {
         type: String,
         default: 'no category'
@@ -31,7 +30,7 @@ let itemSchema = new mongoose.Schema({
         type: String
     },
     //TODO: maybe -> link to creator
-    madeBy: {
+    autor: {
         fullName: {
             type: String
         }

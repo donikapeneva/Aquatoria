@@ -3,12 +3,16 @@
         {url: '/static/media/cover2.jpg'},
         {url: '/static/media/cover3.jpg'},
         {url: '/static/media/cover4.jpg'}];
+    let mainCoverUrl = '/static/media/cover.jpg';
 
     console.log('slideshow');
 
     // $('.carousel').carousel({
     //     interval: 2000
     // })
+
+
+    // $('homepage-cover blured').css('background-image', 'url(' + pictures[0].url + ')');
 
 
     $('.first').css('background-image', 'url(' + pictures[0].url + ')');

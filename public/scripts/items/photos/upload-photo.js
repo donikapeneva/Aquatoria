@@ -12,7 +12,7 @@
         $uploadPhotoButton = $('#upload-button'),
         $photoFile = $('#form-file'),
         itemContainer = document.getElementById('item-container'),
-        itemListChildren = itemContainer.children,
+        // itemListChildren = itemContainer.children,
         $newCategoryBtn = $('#new-category-button');
 
 

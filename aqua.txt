@@ -1,0 +1,16 @@
+/photos -> scroll only items << when you're in the catecory
+ -> menu : Portfolio | Contacts ... | Magazine?
+Projects | 
+Before & After // Payment & Free | 
+Templates & Project files (+project files - .psd , adobe) | << Like B & A 
+// photo filter preview 
+Behind the Scenes | Contact us <<
+
+Load categories with pictures (>>Phlearn)
+mouseover -> show text category + zoom 
+selected category -> show menu with categories (sticky menu)
+
+6 pictures to show -> horizontal scroll
+selectet picture -> show preview 
+
+Stock footage ? 

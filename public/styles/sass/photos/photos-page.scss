@@ -1,47 +1,47 @@
 #data {
-  margin: auto;
-  width: 50%;
-}
-
-#stickyMenu{
-
-}
-
-.sticky-menu {
-  position: fixed;
-  //background-color: rgba(0, 0, 0, 0.3);
-  height: 55px;
+  padding: 5%;
   width: 100%;
-  top: 0;
-  text-align: left;
 }
 
-.sticky-button {
-  position: fixed;
-  background-color: rgba(0, 0, 0, 0.3);
-  height: 55px;
-  width: 55px;
-  bottom: 0;
-  right: 0;
-  margin: 20px;
-  text-decoration: none;
-}
+//#stickyMenu{
+//
+//}
+//
+//.sticky-menu {
+//  position: fixed;
+//  //background-color: rgba(0, 0, 0, 0.3);
+//  height: 55px;
+//  width: 100%;
+//  top: 0;
+//  text-align: left;
+//}
+//
+//.sticky-button {
+//  position: fixed;
+//  background-color: rgba(0, 0, 0, 0.3);
+//  height: 55px;
+//  width: 55px;
+//  bottom: 0;
+//  right: 0;
+//  margin: 20px;
+//  text-decoration: none;
+//}
 
 
-#editLink {
-  position: absolute;
-  color: whitesmoke;
-  right: 0;
-  margin-right: 20px;
-  margin-top: 10px;
-  cursor: pointer;
-}
+//#editLink {
+//  position: absolute;
+//  color: whitesmoke;
+//  right: 0;
+//  margin-right: 20px;
+//  margin-top: 10px;
+//  cursor: pointer;
+//}
 
 main {
   height: 100%;
   //width: 100%;
-  margin: -10px;
-  box-shadow: 0 -5px 52px 4px #333;
+  //margin: -10px;
+  //box-shadow: 0 -5px 52px 4px #333;
 }
 
 //TODO: bootstrap modal

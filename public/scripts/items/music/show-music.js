@@ -35,6 +35,7 @@
             itemContainer = document.createElement('div');
             let audioContainer = document.createElement('audio');
             audioContainer.setAttribute('controls', '');
+            audioContainer.setAttribute('class', 'col');
 
             //source(src="/static/media/neshto.mp3" type="audio/mpeg")
             audioData = document.createElement('source');

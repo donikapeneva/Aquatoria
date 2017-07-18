@@ -1,0 +1,33 @@
+nav {
+  //background-color: rgba(0, 0, 0, 0.3);
+  height: 55px;
+  width: 100%;
+  top: 0;
+  text-align: right;
+  background-color: #9d9d9d;
+
+
+  .menu-banner {
+    box-sizing: border-box;
+    margin: 0 50px;
+
+    a {
+      display: inline;
+    }
+
+    ul {
+      display: block;
+      float: right;
+
+      li {
+        display: inline;
+        margin-left: 20px;
+
+        &:hover {
+          cursor: pointer;
+          color: white;
+        }
+      }
+    }
+  }
+}

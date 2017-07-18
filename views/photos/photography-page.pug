@@ -1,0 +1,58 @@
+extends ../_layout
+
+block app-title
+    | Photography | AquatoriaDesigns
+
+block vars
+    //TODO
+    - var bodyClass = 'photography';
+
+block content
+
+    //TODO: there's 2 nav
+    nav
+        div(class="menu-banner")
+            a(class="logo" href="/")
+                span Aqua
+
+            ul(class="menu-items")
+                //dynamically loading
+                //li(class="menu-option")
+                li Projects
+                li Before & After
+                li Templates & Project Files
+                li Behind the Scenes
+                li Contact us
+
+    main.content
+
+        div.adminPanel
+
+            div#adminUploadPhoto.pop-up-mask
+                div.pop-up-container
+                    span#popUpClose.pop-up-close x
+                    if isAdmin
+                        include manage-items.pug
+                    else
+                        div Error. Boo. Run.
+
+
+        div#data
+            ul.categories(id="select-category")
+                each category in categories.length ? categories : ['There are no categories']
+                    li
+                        span #{category}
+                        //TODO:image url from category object
+                        div.item
+                            img(url="")
+
+    block specificJs
+        script(src="/static/scripts/utils/sidebar.js")
+        script(src="/static/scripts/utils/validator.js")
+        script(src="/static/scripts/utils/header-parallax.js")
+        script(src="/static/scripts/utils/sticky-menu.js")
+        script(src="/static/scripts/items/photos/upload-photo.js")
+        script(src="/static/scripts/items/photos/admin-options.js")
+        script(src="/static/scripts/items/photos/show-photos.js")
+        script(type='text/javascript').var itemsListData = !{JSON.stringify(itemsByCategories)};
+        script(type='text/javascript').var categories = !{JSON.stringify(categories)};

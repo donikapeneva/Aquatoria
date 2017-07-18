@@ -1,0 +1,26 @@
+.page-photography .categories {
+  margin: 0;
+  width: 100%;
+  padding: 0;
+  display: inline-grid;
+  grid-template-columns: auto auto auto;
+  grid-auto-rows: 300px;
+  grid-gap: 10px; }
+  .page-photography .categories li {
+    display: inline;
+    background-color: #1b6d85;
+    color: white;
+    font-size: 15px; }
+    .page-photography .categories li span {
+      display: block;
+      font-size: 45px;
+      background: transparent;
+      font-weight: bold;
+      text-align: center;
+      height: 100%;
+      padding: 25%; }
+    .page-photography .categories li:hover {
+      cursor: pointer;
+      background-color: #28A1C4; }
+
+/*# sourceMappingURL=categories-layout.css.map */

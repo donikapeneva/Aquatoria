@@ -9,14 +9,19 @@ div
             form(role="form" enctype="multipart/form-data" action="" method="post" id="upload-music-form").col-md-7
 
                 input(type="file"
-                multiple="multiple"
-                name="file"
-                id="form-file")
+                    multiple="multiple"
+                    name="musicFile"
+                    id="form-music-file")
+
+                input(type="file"
+                    multiple="multiple"
+                    name="coverFile"
+                    id="form-cover-file")
 
                 input(type="text"
-                name="uploadTitle"
-                id="form-upload-title"
-                placeholder="Title")
+                    name="uploadTitle"
+                    id="form-upload-title"
+                    placeholder="Title")
 
                 div.choose-category
                     select(id="form-select-category" name="uploadCategory")
@@ -25,9 +30,9 @@ div
                     button(type="button" id="new-category-button") New Category
 
                 input(type="text"
-                name="uploadDescription"
-                id="form-upload-description"
-                placeholder="Description")
+                    name="uploadDescription"
+                    id="form-upload-description"
+                    placeholder="Description")
 
                 button(type="button" id="upload-button") Upload
 

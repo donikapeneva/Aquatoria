@@ -1,0 +1,22 @@
+nav {
+  height: 55px;
+  width: 100%;
+  top: 0;
+  text-align: right;
+  background-color: #9d9d9d; }
+  nav .menu-banner {
+    box-sizing: border-box;
+    margin: 0 50px; }
+    nav .menu-banner a {
+      display: inline; }
+    nav .menu-banner ul {
+      display: block;
+      float: right; }
+      nav .menu-banner ul li {
+        display: inline;
+        margin-left: 20px; }
+        nav .menu-banner ul li:hover {
+          cursor: pointer;
+          color: white; }
+
+/*# sourceMappingURL=header.css.map */

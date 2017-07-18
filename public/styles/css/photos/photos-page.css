@@ -1,0 +1,59 @@
+#data {
+  padding: 5%;
+  width: 100%; }
+
+main {
+  height: 100%; }
+
+.pop-up-mask {
+  display: none;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  margin-top: -500px; }
+  .pop-up-mask .pop-up-container {
+    height: 500px;
+    width: 50%;
+    background-color: whitesmoke;
+    position: relative;
+    margin: auto;
+    margin-top: 100px; }
+    .pop-up-mask .pop-up-container .pop-up-close {
+      border-radius: 3em;
+      margin-left: 94%;
+      background: #212121;
+      color: #fff;
+      font-size: 1.25em;
+      padding: .4em .7em;
+      cursor: pointer; }
+    .pop-up-mask .pop-up-container .pop-up-title {
+      font-size: 2.25em;
+      text-transform: capitalize;
+      color: #3c3c3c; }
+    .pop-up-mask .pop-up-container div.col-md-12 {
+      margin-top: 20px; }
+      .pop-up-mask .pop-up-container div.col-md-12 form {
+        padding: 25px; }
+        .pop-up-mask .pop-up-container div.col-md-12 form input, .pop-up-mask .pop-up-container div.col-md-12 form .choose-category, .pop-up-mask .pop-up-container div.col-md-12 form button#upload-button {
+          height: 30px;
+          margin-top: 15px;
+          width: 100%;
+          clear: both; }
+        .pop-up-mask .pop-up-container div.col-md-12 form input::placeholder, .pop-up-mask .pop-up-container div.col-md-12 form input::-webkit-input-placeholder, .pop-up-mask .pop-up-container div.col-md-12 form input::-moz-placeholder, .pop-up-mask .pop-up-container div.col-md-12 form input:-ms-input-placeholder, .pop-up-mask .pop-up-container div.col-md-12 form input:-moz-placeholder {
+          color: pink; }
+        .pop-up-mask .pop-up-container div.col-md-12 form .choose-category select, .pop-up-mask .pop-up-container div.col-md-12 form .choose-category button {
+          height: 25px;
+          width: 50%; }
+      .pop-up-mask .pop-up-container div.col-md-12 .selected-item {
+        padding: 10px;
+        height: 350px;
+        border-width: 4px;
+        border-style: dotted;
+        border-color: lightgray;
+        align-content: center; }
+        .pop-up-mask .pop-up-container div.col-md-12 .selected-item img {
+          height: 100%;
+          width: 100%;
+          object-fit: contain; }
+
+/*# sourceMappingURL=photos-page.css.map */

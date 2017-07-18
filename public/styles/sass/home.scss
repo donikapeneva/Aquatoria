@@ -33,6 +33,10 @@ $border-lines-color: #fff;
   margin: 0;
   position: absolute;
 
+  nav {
+    display: none;
+  }
+
   #loginLink {
     position: absolute;
     right: 80px;
@@ -61,6 +65,11 @@ $border-lines-color: #fff;
     font-weight: 600;
     letter-spacing: 4px;
     //text-transform: uppercase;
+    //@font-face {
+    //  font-family: "Langoustine";
+    //  src: url('/static/fonts/Langoustine.ttf')
+    //
+    //}
   }
 
   .align {

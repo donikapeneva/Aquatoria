@@ -31,7 +31,8 @@ module.exports = function (data) {
                     //TODO: see if you can export it in function :/
                     let categories = Object.keys(itemsByCategories);
 
-                    let templatePath = req.params.type + '/show-' + req.params.type;
+                    // let templatePath = req.params.type + '/show-' + req.params.type;
+                    let templatePath = req.params.type + '/photography-page';
                     res.render(templatePath, {categories: categories, itemsByCategories: itemsByCategories, isAdmin: true});
 
                     // if (!req.isAuthenticated()) {
@@ -177,6 +178,7 @@ module.exports = function (data) {
                         item.category = itemInfo.uploadCategory;
                         item.description = itemInfo.uploadDescription;
                         item.type = itemType;
+                        item.autor = itemInfo.autor;
 
                         console.log(itemInfo);
                         console.log('Got a field:', name);

@@ -1,25 +1,34 @@
 html {
-  /*background: url('/static/media/cover.jpg') no-repeat center center fixed;*/
+  /*background: url('/static/media/cover-old.jpg') no-repeat center center fixed;*/
   /*-webkit-background-size: cover;*/
   /*-moz-background-size: cover;*/
   /*-o-background-size: cover;*/
   /*background-size: cover;*/ }
 
 body {
+  margin: 0;
   float: left;
   width: 100%;
   height: 100%;
   font-family: 'Montserrat', sans-serif;
   overflow-x: hidden; }
 
-#homepage-cover {
-  background: url("/static/media/cover.jpg") no-repeat center center fixed;
+.homepage-cover {
+  background: no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   width: 100vw;
   height: 100vh;
-  position: fixed; }
+  position: fixed;
+  transform: scale(1.02); }
+
+.blured {
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
+  -moz-filter: blur(2px);
+  -o-filter: blur(2px);
+  -ms-filter: blur(2px); }
 
 /*# sourceMappingURL=main.css.map */

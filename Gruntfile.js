@@ -10,7 +10,8 @@ module.exports = function(grunt){
                     'public/styles/css/categories-layout.css' : 'public/styles/sass/categories-layout.scss',
                     'public/styles/css/columnar-layout.css' : 'public/styles/sass/columnar-layout.scss',
                     'public/styles/css/header-parallax.css' : 'public/styles/sass/header-parallax.scss',
-                    'public/styles/css/photos/photos-page.css' : 'public/styles/sass/photos/photos-page.scss'
+                    'public/styles/css/photos/photos-page.css' : 'public/styles/sass/photos/photos-page.scss',
+                    'public/styles/css/header.css' : 'public/styles/sass/header.scss'
                 }
             }
         },

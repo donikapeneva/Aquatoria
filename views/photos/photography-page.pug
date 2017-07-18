@@ -38,19 +38,22 @@ block content
 
 
         div#data
-            ul.categories(id="select-category")
+            ul.categories.full(id="select-category")
                 each category in categories.length ? categories : ['There are no categories']
-                    li
+                    li #{category}
                         span #{category}
                         //TODO:image url from category object
-                        div.item
+                        //div.item
                             img(url="")
+
+        div(id="item-container").columns
 
     block specificJs
         script(src="/static/scripts/utils/sidebar.js")
         script(src="/static/scripts/utils/validator.js")
         script(src="/static/scripts/utils/header-parallax.js")
         script(src="/static/scripts/utils/sticky-menu.js")
+        script(src="/static/scripts/utils/navigation.js")
         script(src="/static/scripts/items/photos/upload-photo.js")
         script(src="/static/scripts/items/photos/admin-options.js")
         script(src="/static/scripts/items/photos/show-photos.js")

@@ -1,4 +1,20 @@
-.page-photography .categories {
+ul.categories.shrinked {
+  margin: 10px auto;
+  width: 50%;
+  z-index: 10; }
+  ul.categories.shrinked li {
+    display: inline;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 15px;
+    background-color: #1b6d85;
+    color: white;
+    font-size: 15px; }
+    ul.categories.shrinked li:hover {
+      cursor: pointer;
+      background-color: #28A1C4; }
+
+.page-photography .categories.full {
   margin: 0;
   width: 100%;
   padding: 0;
@@ -6,12 +22,12 @@
   grid-template-columns: auto auto auto;
   grid-auto-rows: 300px;
   grid-gap: 10px; }
-  .page-photography .categories li {
+  .page-photography .categories.full li {
     display: inline;
     background-color: #1b6d85;
     color: white;
     font-size: 15px; }
-    .page-photography .categories li span {
+    .page-photography .categories.full li span {
       display: block;
       font-size: 45px;
       background: transparent;
@@ -19,7 +35,7 @@
       text-align: center;
       height: 100%;
       padding: 25%; }
-    .page-photography .categories li:hover {
+    .page-photography .categories.full li:hover {
       cursor: pointer;
       background-color: #28A1C4; }
 

@@ -12,12 +12,21 @@
     //TODO if no category is chosen then load automatically the first one
 
     $('ul.categories').find('li').on('click', function () {
-        $categorySelect = $(this).html();
+        $categorySelect = $(this).find('span').html();
+        console.log($categorySelect);
+
         $('#coverText').text($categorySelect);
+        shrinkCategories();
         listPhotos($categorySelect);
     });
 
+    function shrinkCategories(){
+        $('ul.categories').removeClass('full').addClass('shrinked');
+
+    }
+
     function listPhotos(selectedCategory) {
+        console.log('show me');
         resetItemsContainer();
         let photosToShow = itemsListData[selectedCategory].items;
 

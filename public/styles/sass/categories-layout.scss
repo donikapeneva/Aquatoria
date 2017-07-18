@@ -1,33 +1,33 @@
 //.page-showPhotos{
 
-//ul.categories {
-//
-//  margin: 10px auto;
-//  width: 50%;
-//  //TODO
-//  z-index: 10;
-//
-//  li {
-//    display: inline;
-//    padding: 10px 20px;
-//    margin: 5px;
-//    border-radius: 15px;
-//    background-color: #1b6d85;
-//    color: white;
-//    font-size: 15px;
-//
-//
-//    &:hover {
-//      cursor: pointer;
-//      background-color: #28A1C4;
-//    }
-//  }
-//}
+ul.categories.shrinked {
+
+  margin: 10px auto;
+  width: 50%;
+  //TODO
+  z-index: 10;
+
+  li {
+    display: inline;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 15px;
+    background-color: #1b6d85;
+    color: white;
+    font-size: 15px;
+
+
+    &:hover {
+      cursor: pointer;
+      background-color: #28A1C4;
+    }
+  }
+}
 
 //}
 
 .page-photography {
-  .categories {
+  .categories.full {
 
     margin: 0;
     width: 100%;

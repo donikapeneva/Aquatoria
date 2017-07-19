@@ -29,26 +29,43 @@ ul.categories.shrinked {
 .page-photography {
   .categories.full {
 
-    margin: 0;
+    //flex
+    display: flex;
+    flex-wrap: wrap;
+
+    //grid
+    /*
+    margin: 0 auto;
     width: 100%;
     padding: 0;
     display: inline-grid;
-    grid-template-columns: auto auto auto;
+    //grid-template-columns: auto auto auto;
+    grid-template-columns: repeat(3, 300px);
 
     //grid-auto-columns: 300px;
     grid-auto-rows: 300px;
     grid-gap: 10px;
     //grid-auto-rows: minmax(100px, auto);
-
+*/
     li {
-      display: inline;
-      //padding: 10px 20px;
-      //margin: 5px;
-      //border-radius: 15px;
       background-color: #1b6d85;
       color: white;
       font-size: 15px;
 
+      //flex
+      flex: 0 0 33.3333%;
+      max-width: 33.3333%;
+      padding: 0 10px;
+      margin-bottom: 40px;
+
+
+      //grid
+      /*
+      display: inline;
+      //padding: 10px 20px;
+      //margin: 5px;
+      //border-radius: 15px;
+    */
       span {
         display: block;
         font-size: 45px;

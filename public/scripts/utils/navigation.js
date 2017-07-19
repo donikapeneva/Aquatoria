@@ -8,6 +8,7 @@
     });
 
     // TODO:
+    //Todo: selected changes the color
     function loadSelected (selected) {
 
     }

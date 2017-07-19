@@ -37,7 +37,7 @@ block content
                         div Error. Boo. Run.
 
 
-        div#data
+        div#data(class="cb-row-cont col-sm-12 col-sm-offset-0")
             ul.categories.full(id="select-category")
                 each category in categories.length ? categories : ['There are no categories']
                     li #{category}

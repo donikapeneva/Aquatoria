@@ -40,8 +40,9 @@ block content
         div#data(class="cb-row-cont col-sm-12 col-sm-offset-0")
             ul.categories.full(id="select-category")
                 each category in categories.length ? categories : ['There are no categories']
-                    li #{category}
-                        span #{category}
+                    li
+                        span.category-name #{category}
+                        span.category-cover
                         //TODO:image url from category object
                         //div.item
                             img(url="")
@@ -52,6 +53,8 @@ block content
         script(src="/static/scripts/utils/sidebar.js")
         script(src="/static/scripts/utils/validator.js")
         script(src="/static/scripts/utils/header-parallax.js")
+            //TODO rename to categories
+        script(src="/static/scripts/utils/category-loading.js")
         script(src="/static/scripts/utils/sticky-menu.js")
         script(src="/static/scripts/utils/navigation.js")
         script(src="/static/scripts/items/photos/upload-photo.js")
@@ -59,3 +62,4 @@ block content
         script(src="/static/scripts/items/photos/show-photos.js")
         script(type='text/javascript').var itemsListData = !{JSON.stringify(itemsByCategories)};
         script(type='text/javascript').var categories = !{JSON.stringify(categories)};
+        script(type='text/javascript').var categoriesWithPicture = !{JSON.stringify(categoriesWithPicture)};

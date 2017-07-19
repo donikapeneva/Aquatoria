@@ -31,9 +31,9 @@ ul.categories.shrinked {
     //grid-auto-rows: minmax(100px, auto);
 */ }
   .page-photography .categories.full li {
-    background-color: #1b6d85;
     color: white;
     font-size: 15px;
+    background-image: url(https://www.w3schools.com/css/css3_images.asp);
     flex: 0 0 33.3333%;
     max-width: 33.3333%;
     padding: 0 10px;
@@ -47,11 +47,14 @@ ul.categories.shrinked {
     .page-photography .categories.full li span {
       display: block;
       font-size: 45px;
-      background: transparent;
       font-weight: bold;
       text-align: center;
       height: 100%;
       padding: 25%; }
+      .page-photography .categories.full li span.category-name {
+        background: transparent; }
+      .page-photography .categories.full li span.category-cover {
+        background: teal; }
     .page-photography .categories.full li:hover {
       cursor: pointer;
       background-color: #28A1C4; }

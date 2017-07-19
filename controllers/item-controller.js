@@ -30,10 +30,23 @@ module.exports = function (data) {
                 .then(itemsByCategories => {
                     //TODO: see if you can export it in function :/
                     let categories = Object.keys(itemsByCategories);
+                    let catObj = [];
+                    for(let i=0; i < categories.length; i++){
+                        let categoryWithPicture = {
+                            category: categories[i],
+                            cover: itemsByCategories[categories[i]].items[0].body
+                        };
+                        // console.log(itemsByCategories[categories[i]].items[0].body);
+                        catObj.push(categoryWithPicture);
+
+
+                    }
+
+                    // console.log(itemsByCategories.);
 
                     // let templatePath = req.params.type + '/show-' + req.params.type;
                     let templatePath = req.params.type + '/photography-page';
-                    res.render(templatePath, {categories: categories, itemsByCategories: itemsByCategories, isAdmin: true});
+                    res.render(templatePath, {categoriesWithPicture: catObj, categories: categories, itemsByCategories: itemsByCategories, isAdmin: true});
 
                     // if (!req.isAuthenticated()) {
                     //     res.render('items/show-items-by-categories', {items: items});

@@ -48,9 +48,10 @@ ul.categories.shrinked {
     //grid-auto-rows: minmax(100px, auto);
 */
     li {
-      background-color: #1b6d85;
+      //background-color: #1b6d85;
       color: white;
       font-size: 15px;
+      background-image: url(https://www.w3schools.com/css/css3_images.asp);
 
       //flex
       flex: 0 0 33.3333%;
@@ -69,11 +70,19 @@ ul.categories.shrinked {
       span {
         display: block;
         font-size: 45px;
-        background: transparent;
         font-weight: bold;
         text-align: center;
         height: 100%;
         padding: 25%;
+
+        &.category-name {
+          background: transparent;
+
+        }
+
+        &.category-cover {
+          background: teal;
+        }
       }
 
       .item {

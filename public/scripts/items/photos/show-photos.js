@@ -10,7 +10,7 @@
     });
 
     //TODO if no category is chosen then load automatically the first one
-
+    //TODO: Category logic js
     $('ul.categories').find('li').on('click', function () {
         $categorySelect = $(this).find('span').html();
         console.log($categorySelect);

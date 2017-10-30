@@ -10,19 +10,8 @@ block vars
 block content
 
     //TODO: there's 2 nav
-    nav
-        div(class="menu-banner")
-            a(class="logo" href="/")
-                span Aqua
-
-            ul(class="menu-items")
-                //dynamically loading
-                //li(class="menu-option")
-                li Projects
-                li Before & After
-                li Templates & Project Files
-                li Behind the Scenes
-                li Contact us
+    //nav
+    include photography-navigation.pug
 
     main.content
 
@@ -40,13 +29,17 @@ block content
         div#data(class="cb-row-cont col-sm-12 col-sm-offset-0")
             ul.categories.full(id="select-category")
                 each category in categories.length ? categories : ['There are no categories']
-                    li
+                    li #{category}
                         span.category-name #{category}
+                        span.category-cover
 
         div(id="item-container").columns
 
     block specificJs
-        script(src="/static/scripts/utils/sidebar.js")
+        //script(type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js?ver=1.3.2')
+        ////script(type='text/javascript' src='/js/jquery.mousewheel.min.js')
+        //script(type='text/javascript' src='http://code.jquery.com/jquery-2.1.4.min.js')
+        //script(src="/static/scripts/utils/sidebar.js")
         script(src="/static/scripts/utils/validator.js")
         script(src="/static/scripts/utils/header-parallax.js")
             //TODO rename to categories

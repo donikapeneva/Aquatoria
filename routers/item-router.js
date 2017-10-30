@@ -7,9 +7,10 @@ module.exports = function (app, data, express) {
 
     router
         .get('/:type', itemController.getItems)
+        .get('/photography/:items', itemController.getPhotos)
         // .get('/photos', itemController.getItems)
-        .get('/:type/:category', itemController.getItemsByCategory)
-        .get('/:type/:id', itemController.getItemDetails)
+        // .get('/:type/:category', itemController.getItemsByCategory)
+        // .get('/:type/:id', itemController.getItemDetails)
 
         //TODO: search
 

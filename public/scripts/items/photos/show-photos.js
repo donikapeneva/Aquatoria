@@ -20,8 +20,24 @@
         listPhotos($categorySelect);
     });
 
+    function horizontalScroll(){
+        console.log('ulalal');
+        $('ul.categories').mousewheel(function(event, delta) {
+
+            this.scrollLeft -= (delta * 30);
+
+            event.preventDefault();
+
+        });
+    }
+
+    horizontalScroll();
+
     function shrinkCategories(){
         $('ul.categories').removeClass('full').addClass('shrinked');
+        $('ul.categories li').each(function () {
+            $(this).css('background-image', 'none');
+        })
 
     }
 

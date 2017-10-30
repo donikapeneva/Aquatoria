@@ -4,6 +4,8 @@ ul.categories.shrinked {
   width: 50%;
   //TODO
   z-index: 10;
+  overflow: auto;
+  white-space: nowrap;
 
   li {
     display: inline;
@@ -30,14 +32,14 @@ ul.categories.shrinked {
     flex-wrap: wrap;
 
     li {
-      background-color: #1b6d85;
+
+      //background-color: #1b6d85;
       color: white;
-      font-size: 15px;
-      background-size: cover;
+      font-size: 0;
       //flex
       flex: 0 0 33.3333%;
       max-width: 33.3333%;
-      padding: 0 10px;
+      padding: 10px 10px;
       margin-bottom: 40px;
 
       span {
@@ -48,13 +50,22 @@ ul.categories.shrinked {
         height: 100%;
         padding: 25%;
 
+
         &.category-name {
-          background: transparent;
+          &.visible {
+            visibility: visible;
+          }
+          width: 100%;
+          float: left;
+          visibility: hidden;
+          background: rgba(102, 104, 122, 0.3);
 
         }
 
         &.category-cover {
           background: teal;
+          width: 100%;
+          background-size: cover;
         }
       }
 
@@ -71,7 +82,7 @@ ul.categories.shrinked {
 
       &:hover {
         cursor: pointer;
-        background-color: #28A1C4;
+        //background-color: #28A1C4;
       }
     }
   }

@@ -70,6 +70,60 @@ module.exports = function (data) {
                         .send(JSON.stringify({validationError: [err.message]}));
                 });
         },
+        getPhotos(req, res){
+            return Promise.resolve()
+                .then(() => {
+
+                    switch(req.params.navTag) {
+                        default:
+                        case 'projects':
+                            //TODO: get except before and after!!!
+                            return data.getItemsGroupedByCategories('photos');
+                        case 'beforeAfter':
+                            return data.getItemsByCategory('photos', 'beforeAfter');
+                        case 'behindTheScenes':
+                            return data.getItemsByCategory('photos', 'behindTheScenes');
+                    }
+                })
+                .then(photos => {
+                    let templatePath;
+                    switch(req.params.navTag){
+                        default:
+                        case 'projects':
+                            //TODO: see if you can export it in function :/
+                            let categories = Object.keys(photos);
+                            let catObj = [];
+                            for(let i=0; i < categories.length; i++){
+                                if(categories[i] === 'beforeAfter' || categories[i] === 'behindTheScenes'){
+                                    continue;
+                                }
+                                let categoryWithPicture = {
+                                    category: categories[i],
+                                    cover: photos[categories[i]].items[0].body
+                                };
+                                catObj.push(categoryWithPicture);
+                            }
+                            console.log(photos);
+                            templatePath = 'photos/photography-page';
+                            res.render(templatePath, {categoriesWithPicture: catObj, categories: categories, itemsByCategories: photos, isAdmin: true});
+                            break;
+                        case 'beforeAfter':
+                            templatePath = req.params.type + '/before-after';
+                            res.render(templatePath, {itemsByCategories: photos, isAdmin: true});
+                            break;
+                        case 'behindTheScenes':
+                            templatePath = req.params.type + '/behind-the-scenes';
+                            res.render(templatePath, {itemsByCategories: photos, isAdmin: true});
+                            break;
+                    }
+                })
+                .catch((err) => {
+                    console.log(err);
+                    res.status(400)
+                        .send(JSON.stringify({validationError: [err.message]}));
+                });
+        },
+
         getItemsByCategory(req, res){
 
             return Promise.resolve()
